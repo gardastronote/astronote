@@ -1,0 +1,134 @@
+body{
+	padding-top: 70px;
+	background-color: #FFF;
+}
+
+.navbar-brand img{
+	max-width: 50px;
+}
+.top-nav{
+	padding:0 15px;
+}
+.top-nav li{
+	display: inline-block;
+	float: left;
+}
+.side-nav li a:hover{
+	background-color: #000 !important;
+}
+.side-nav{
+	background-color: #222;
+	position: fixed;
+	top: 51px;
+	left: 225px;
+	width: 225px;
+	margin-left: -225px;
+	overflow: auto;
+	height: 100%;
+}
+
+.side-nav li{
+	width: 225px;
+}
+
+.side-nav li a{
+    padding: 15px 15px 15px;
+	color: #999;
+}
+.side-nav li a:hover{
+	background-color: #000 !important;
+}
+
+.content-wrapper{
+	width: 100%;
+	padding-left: 225px;
+}
+
+/*
+|-------------------------------------------------------------------------
+| Data pegawai
+|-------------------------------------------------------------------------
+*/
+.dropdown-side{
+	margin: 0;
+	padding: 0;
+}
+.dropdown-side li{
+	padding: 15px;
+}
+.dropdown-side li:hover{
+	background-color: #000 !important;
+}
+.dropdown-side li a:hover{
+	text-decoration: none;
+}
+
+/*
+|-------------------------------------------------------------------------
+| Pengaturan data pelatihan
+|-------------------------------------------------------------------------
+*/
+.pengaturan_data_pegawai{
+	height: 300px;
+	overflow: auto;
+}
+
+/*
+|-------------------------------------------------------------------------
+| Button
+|-------------------------------------------------------------------------
+*/
+
+.circle{
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	line-height: 30px;
+}
+
+.fixed-btn{
+	position: fixed;
+	z-index: 999;
+}
+.btn-right{
+	right: 15px;
+}
+.btn-left-1{
+	margin-top: 55px;
+}
+.circle-fly{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	line-height: 30px;
+}
+.btn-download{
+	right: 75px;
+}
+
+/*
+|-------------------------------------------------------------------------
+| Alert
+|-------------------------------------------------------------------------
+*/
+.alert-float {
+  position: fixed;
+  top: 47px;
+  left: 0;
+  right: 0;
+  padding-left: 225px;
+  z-index: 1000;
+}
+
+/*
+|-------------------------------------------------------------------------
+| Form
+|-------------------------------------------------------------------------
+*/
+.center-form{
+	margin-bottom: 15px;
+}
+
+.search-data{
+	margin: 15px 0;
+}
