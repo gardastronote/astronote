@@ -2,11 +2,17 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/login.css')}}">
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-4 text-center">
+		<div class="col-md-8 col-md-offset-2 text-center">
+			<h1>Diklat BJB</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4 text-center">
 			@if(Session::has('alert'))
 			<div class="alert @if(Session::has('alert.error')) alert-error @endif)">
 			<p>{{Session::pull('alert.error')}}</p>
@@ -15,34 +21,13 @@
 			{{Form::open(['url'=>'/login','class'=>'form-horizontal'])}}
 			<!--USERNAME-->
 			<div class="form-group @if($errors->has('username')) has-error @endif">
-			 <div class="col-md-4">
-			  <div class="input-group">
-			   <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-			    <input class="form-control input-lg" placeholder="User Name" name="username" type="password">
-			  </div>
-				@if($errors->has('username'))<p class="help-block alert-danger">{{$errors->first('username')}}</p>@endif
-		     </div>
+				{{Form::text('username','',['class'=>'form-control input-lg','placeholder'=>'Username'])}}
 			</div>
-			<!--USERNAME OVER-->
-			
-			<!--PASSWORD-->
-			<div class="form-group @if($errors->has('password')) has-error @endif">
-			 <div class="col-md-4"> 
-			  <div class="input-group">
-			   <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>	
-				<input class="form-control input-lg" placeholder="Password" name="password" type="password">
-			  </div>
-				@if($errors->has('password'))<p class="help-block alert-danger">{{$errors->first('password')}}</p>@endif
-			 </div>
+			<div class="form-group @if($errors->has('password')) has-error @endif"> 
+				{{Form::password('password',['class'=>'form-control input-lg','placeholder'=>'Password'])}}
 			</div>
-			<!--PASSWORD  OVER-->
-
-
-
-			<div class="form-group">
-				<div class="col-md-4"> 
-					<button class="btn btn-info btn-lg btn-block" type="submit">Login</button>
-				</div>
+			<div class="form-group"> 
+				{{Form::submit('Login',['class'=>'btn btn-block btn-info btn-lg'])}}
 			</div>
 			{{Form::close()}}
 		</div>

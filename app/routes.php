@@ -44,14 +44,88 @@ Route::get('/feed',function(){
 	| Data pegawai
 	|---------------------------------------------------------------------
 	*/
-	Route::get('/pengaturan_data_pegawai','MonitoringController@pengaturan_data_pegawai');
+	Route::get('/pengaturan_data_pegawai',function(){
+		$grades = Pegawai_grade::orderBy('id','DESC')->take(5)->get();
+		$jeniss = Pegawai_jenis::orderBy('id','DESC')->take(5)->get();
+		$jobs = Pegawai_job::orderBy('id','DESC')->take(5)->get();
+		$penempatans = Pegawai_penempatan::orderBy('id','DESC')->take(5)->get();
+		$titles = Pegawai_title::orderBy('id','DESC')->take(5)->get();
+		$units = Pegawai_unit::orderBy('id','DESC')->take(5)->get();
+		$view = View::make('monitoring.pengaturan_data_pegawai',array(
+			'url'=>'/add_pengaturan_data_pegawai',
+			'grades'=>$grades,
+			'jeniss'=>$jeniss,
+			'jobs'=>$jobs,
+			'penempatans'=>$penempatans,
+			'titles'=>$titles,
+			'units'=>$units,
+			'button'=>"Tambah"
+			));
+		if(Request::ajax()){
+			$section = $view->renderSections();
+			return $section['content'];
+		}
+		return $view;
+	});
+
+	// route grade
+	Route::get('/pengaturan_data/{type}',function($type){
+		if($type !== 'grade' && $type !== 'jenis' && $type !== 'job' && $type !== 'penempatan' && $type !== 'title' && $type !== 'unit'){
+			App::abort(404,'Halaman tidak di temukan');
+		}
+		switch($type){
+			case 'grade':
+			$model = 'Pegawai_grade';
+			$type = 'grade';
+			break;
+
+			case 'jenis':
+			$model = 'Pegawai_jenis';
+			$type = 'jenis';
+			break;
+
+			case 'job':
+			$model = 'Pegawai_job';
+			$type = 'job';
+			break;
+
+			case 'penempatan':
+			$model = 'Pegawai_penempatan';
+			$type = 'penempatan';
+			break;
+
+			case 'title':
+			$model = 'Pegawai_title';
+			break;
+
+			case 'unit':
+			$model = 'Pegawai_unit';
+			break;
+		}
+		$datas = $model::orderBy('id','DESC')->paginate(10);
+		$view = View::make('monitoring.pengaturan_data',array(
+			'datas'=>$datas,
+			'type'=>$type,
+			'model'=>$model
+			));
+		if(Request::ajax()){
+			$section = $view->renderSections();
+			return $section['content'];
+		}
+		return $view;
+	});
 	Route::get('/add_pengaturan_data_pegawai/{obj}/{type}',function($obj,$type){
-		return View::make('monitoring.merge_pengaturan_data_pegawai',array(
+		$view = View::make('monitoring.merge_pengaturan_data_pegawai',array(
 			'url'=>'/add_pengaturan_data_pegawai',
 			'obj'=>$obj,
 			'type'=>$type,
 			'button'=>'Tambah'
 			));
+		if(Request::ajax()){
+			$section = $view->renderSections();
+			return $section['content'];
+		}
+		return $view;
 	});
 	Route::post('/add_pengaturan_data_pegawai','MonitoringController@add_pengaturan_data_pegawai');
 	Route::get('/delete_pengaturan_data_pegawai/{type}/{id}/',array(
@@ -60,7 +134,23 @@ Route::get('/feed',function(){
 		));
 	Route::get('/edit_pengaturan_data_pegawai/{obj}/{type}/{id}',array(
 		'as'=>'edit_pengaturan_data_pegawai',
-		'uses'=>'MonitoringController@edit_pengaturan_data_pegawai'
+		function($obj,$type,$id){
+			$data = $obj::find($id);
+			if(!count($data)>0){
+				App::abort(404,'Halaman Tidak di temukan');
+			}
+			$view = View::make('monitoring.merge_pengaturan_data_pegawai',array(
+				'url'=>'/edit_pengaturan_data_pegawai',
+				'data'=>$data,
+				'type'=>$type,
+				'obj'=>$obj 
+				));
+			if(Request::ajax()){
+					$section = $view->renderSections();
+					return $section['content'];
+				}
+			return $view;
+			}
 		));
 	Route::post('/edit_pengaturan_data_pegawai','MonitoringController@post_edit_pengaturan_data_pegawai');
 	Route::get('/data_pegawai',function(){
@@ -308,12 +398,17 @@ Route::get('/feed',function(){
 		if(!count($data)>0){
 			App::abort(404,'Halaman tidak di temukan');
 		}
-		return View::make('monitoring.vendor.merge_data_vendor',array(
+		$view = View::make('monitoring.vendor.merge_data_vendor',array(
 			'url'=>'/vendor/edit',
 			'back'=>Session::get('back'),
 			'data'=>$data,
 			'button'=>'Ubah'
 			));
+		if(Request::ajax()){
+				$section = $view->renderSections();
+				return $section['content'];
+			}
+		return $view;
 	});
 	Route::post('/vendor/edit','VendorController@edit');
 	Route::get('/vendor/delete/{id}','VendorController@delete');
@@ -470,13 +565,6 @@ Route::get('/feed',function(){
 
 
 	Route::get('/feed',function(){
-		$data = Pelatihan_data::find(8);
-		$input = array(
-			'id_pelatihan'=>1,
-			'tanggal'=>123456,
-			'lama'=>12322,
-			);
-		$input = $data->update($input);
 	});
 
 	Route::get('/ajax',function(){
