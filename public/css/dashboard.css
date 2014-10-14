@@ -78,12 +78,26 @@ body{
 | Button
 |-------------------------------------------------------------------------
 */
-
+.add-list{
+  background-color: #5cb85c;
+  color: #FFF !important;
+}
+.add-list:hover{
+  background-color: #449d44 !important;
+}
 .circle{
 	width: 40px;
 	height: 40px;
 	border-radius: 20px;
 	line-height: 30px;
+}
+.dropdown-update:hover{
+  background-color: #5bc0de !important;
+  color: #FFF !important;
+}
+.dropdown-delete:hover{
+  background-color: #d9534f !important;
+  color: #FFF !important;
 }
 
 .fixed-btn{
@@ -131,4 +145,12 @@ body{
 
 .search-data{
 	margin: 15px 0;
+}
+/*
+|-------------------------------------------------------------------------
+| Paginate
+|-------------------------------------------------------------------------
+*/
+.paginate-default .pagination{
+	margin: 0;
 }

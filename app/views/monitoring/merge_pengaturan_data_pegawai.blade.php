@@ -1,3 +1,5 @@
+@extends('layout.dashboard')
+@section('content')
 <div class="fixed-btn">
 	<a class="btn btn-info btn-lg circle-fly loadContent" onclick="return false" href="{{url('/pengaturan_data_pegawai')}}"><span class="glyphicon glyphicon-chevron-left"></span></a>
 </div>
@@ -19,3 +21,4 @@
 		{{Form::close()}}
 	</div>
 </div>
+@stop

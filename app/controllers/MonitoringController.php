@@ -6,24 +6,6 @@ class MonitoringController extends BaseController
 	| Pengaturan Data pegawai
 	|---------------------------------------------------------------------
 	*/
-	public function pengaturan_data_pegawai(){
-		$grades = Pegawai_grade::all();
-		$jeniss = Pegawai_jenis::all();
-		$jobs = Pegawai_job::all();
-		$penempatans = Pegawai_penempatan::all();
-		$titles = Pegawai_title::all();
-		$units = Pegawai_unit::all();
-		return View::make('monitoring.pengaturan_data_pegawai',array(
-			'url'=>'/add_pengaturan_data_pegawai',
-			'grades'=>$grades,
-			'jeniss'=>$jeniss,
-			'jobs'=>$jobs,
-			'penempatans'=>$penempatans,
-			'titles'=>$titles,
-			'units'=>$units,
-			'button'=>"Tambah"
-			));
-	}
 	public function add_pengaturan_data_pegawai(){
 		$input = Input::all();
 		$validated = Validator::make($input,$input['obj']::rules(),$input['obj']::messages());
@@ -35,17 +17,6 @@ class MonitoringController extends BaseController
 			return Redirect::to('/add_pengaturan_data_pegawai/')->with('alert.error',ERR_DEV);
 		}
 		return Redirect::to('/pengaturan_data_pegawai')->with('alert.success','Data berhasil di tambahkan');
-	}
-	public function edit_pengaturan_data_pegawai($obj,$type,$id){
-		$data = $obj::find($id);
-		if(!count($data)>0){
-			App::abort(404,'Halaman Tidak di temukan');
-		}
-		return View::make('monitoring.edit_pengaturan_data_pegawai',array(
-			'data'=>$data,
-			'type'=>$type,
-			'obj'=>$obj 
-			));
 	}
 
 	public function post_edit_pengaturan_data_pegawai(){
@@ -72,9 +43,9 @@ class MonitoringController extends BaseController
 		}
 		$delete = $delete->delete();
 		if(!$delete){
-			return Redirect::back('alert.error',ERR_DEV);
+			return Redirect::to('pengaturan_data_pegawai/')->with('alert.error',ERR_DEV);
 		}
-		return Redirect::back()->with('alert.success','Data berhasil di hapus');
+		return Redirect::to('pengaturan_data/'.str_replace('Pegawai_',"",$type))->with('alert.success','Data berhasil di hapus');
 	}
 	/*--------------------------------------------------------------------
 	| Merge Data pegawai

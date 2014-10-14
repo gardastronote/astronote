@@ -20,10 +20,10 @@
 		</button>
 		<a href="#" class="navbar-brand"><img src="{{asset('images/logo.png')}}"></a>
 	</div>
-	<ul class="nav navbar-nav navbar-right top-nav">
+	<ul class="nav navbar-nav pull-right">
 		<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong class="caret"></strong> User</a>
-			<ul class="dropdown-menu">
+			<ul class="dropdown-menu pull-right">
 				<li><a href="{{action('AppController@logout')}}">Logout</a></li>
 			</ul>
 		</li>
@@ -83,7 +83,7 @@ var loading = "<img src='{{asset('images/loading.gif')}}'>";
 		$(document).on('click','.loadContent',function(e){
 			e.preventDefault();
 			var  url = $(this).attr('href');
-			history.replaceState({},'',url);
+		
 			content.html(loading);
 			content.load(url,null,function(){
 				content.hide();
@@ -94,8 +94,7 @@ var loading = "<img src='{{asset('images/loading.gif')}}'>";
 		$(document).on('click','.pagination li a',function(e){
 			e.preventDefault();
 			var  url = $(this).attr('href');
-
-history.replaceState({},'',url);				content.html(loading);
+				content.html(loading);
 				content.load(url,function(){
 				window.load = loadChart();
 			});
@@ -103,7 +102,6 @@ history.replaceState({},'',url);				content.html(loading);
 		$(document).on('submit','.dataSubmit',function(e){
 			e.preventDefault();
 			var url = $(this).attr('action');
-			history.replaceState({},'',url);
 			content.html(loading);
 			$.post(url,$(this).serialize(),function(data){
 				content.html(data);
@@ -112,7 +110,7 @@ history.replaceState({},'',url);				content.html(loading);
 		$(document).on('submit','.dataGet',function(e){
 			e.preventDefault();
 			var url = $(this).attr('action');
-			history.replaceState({},'',url);
+		
 			content.html(loading);
 			$.get(url,$(this).serialize(),function(data){
 				content.html(data);

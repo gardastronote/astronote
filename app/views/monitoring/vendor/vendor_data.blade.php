@@ -25,9 +25,9 @@
 					<td>{{ucfirst($vendor->jenis)}}</td>
 					<td>{{$vendor->nama}}</td>
 					<td class="text-center">{{round(Vendor_kegiatan::where('id_vendor','=',$vendor->id)->avg('nilai'),2)}}</td>
-					<td><a class="btn btn-info circle" href="{{url('/vendor/data/'.$vendor->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
-					<td><a class="btn btn-warning circle" href="{{url('/vendor/edit/'.$vendor->id)}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a class="btn btn-danger circle" href="{{url('/vendor/delete/'.$vendor->id)}}"><span class="glyphicon glyphicon-trash"></span></a></td>
+					<td><a class="btn btn-info circle loadContent" href="{{url('/vendor/data/'.$vendor->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
+					<td><a class="btn btn-warning circle  loadContent" href="{{url('/vendor/edit/'.$vendor->id)}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a class="btn btn-danger circle loadContent" href="{{url('/vendor/delete/'.$vendor->id)}}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 				@endforeach
 			</tbody>

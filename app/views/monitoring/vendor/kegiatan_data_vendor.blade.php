@@ -18,8 +18,8 @@
 					<td>{{$kegiatan->kegiatan}}</td>
 					<td>{{$kegiatan->tanggal}}</td>
 					<td>{{round($kegiatan->nilai,2)}}</td>
-					<td><a class="btn btn-warning circle" href="{{url('/vendor/data/'.$kegiatan->id_vendor.'/edit/'.$kegiatan->id)}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a class="btn btn-danger circle" href="{{url('/vendor/data/'.$kegiatan->id_vendor.'/delete/'.$kegiatan->id)}}"><span class="glyphicon glyphicon-trash"></span></a></td>
+					<td><a class="btn btn-warning circle loadContent" href="{{url('/vendor/data/'.$kegiatan->id_vendor.'/edit/'.$kegiatan->id)}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+					<td><a class="btn btn-danger circle loadContent" href="{{url('/vendor/data/'.$kegiatan->id_vendor.'/delete/'.$kegiatan->id)}}"><span class="glyphicon glyphicon-trash"></span></a></td>
 				</tr>
 				@endforeach
 			</tbody>

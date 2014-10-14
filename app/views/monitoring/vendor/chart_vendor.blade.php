@@ -7,7 +7,7 @@
 	</div>
 </div>
 <div class="row">
-	<h3 class="text-center">Total Rata-rata penilaian vendor dalam berdasarkan jenis</h3>
+	<h3 class="text-center">Total Rata-rata penilaian vendor berdasarkan jenis</h3>
 	<div class="col-md-6 text-center">
 		<canvas height="200" width="200" id="donutVendor"></canvas>
 	</div>
