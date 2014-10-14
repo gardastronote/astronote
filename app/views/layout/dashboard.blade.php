@@ -6,13 +6,20 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/dashboard.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('bootstrap/datepicker/datepicker3.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('semantic/css/semantic.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
 	@show
 	<script type="text/javascript" src="{{asset('js/jquery-2.1.1.min.js')}}"></script>
 </head>
 <body onload="loadChart()">
 <nav class="navbar navbar-inverse navbar-fixed-top">
-	<a href="#" class="navbar-brand"><img src="{{asset('images/logo.png')}}"></a>
+	<div class="nabar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a href="#" class="navbar-brand"><img src="{{asset('images/logo_bjb/logo_bjb(putih).png')}}"></a>
+	</div>
 	<ul class="nav navbar-nav pull-right">
 		<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong class="caret"></strong> {{Auth::user()->full_name}} <img class="avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}"></a>
@@ -27,23 +34,24 @@
 	<ul class="nav navbar-nav side-nav">
 		<li><a id="home" href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 		<li>
-			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><b class="caret"></b> Daftar Vendor</a>
+			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="fa fa-link"></i> Vendor<i class="caret"></i></a>
 			<ul id="vendor-menu" class="dropdown-side collapse">
-				<li><a href="/vendor/chart" class="loadContent">Chart</a></li>
-				<li><a href="/vendor" class="loadContent">Vendor</a></li>
-				<li><a href="/vendor/pelatihan" class="loadContent"><i class="puzzle piece icon"></i> Pelatihan</a></li>
-				<li><a href="/vendor/catering" class="loadContent"><i class="food icon"></i> Catering</a></li>
-				<li><a href="/vendor/hotel" class="loadContent"><i class="building icon"></i> Hotel</a></li>
+				<li><a href="/vendor/chart" class="loadContent"><i class="fa fa-line-chart"></i> Chart</a></li>
+				<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i>  Vendor</a></li>
+				<li><a href="/vendor/pelatihan" class="loadContent"><i class="fa fa-book"></i> Pelatihan</a></li>
+				<li><a href="/vendor/catering" class="loadContent"><i class="fa fa-spoon"></i> Catering</a></li>
+				<li><a href="/vendor/hotel" class="loadContent"><i class="fa fa-building"></i> Hotel</a></li>
 			</ul>
 		</li>
+		
 		@if(Auth::user()->access == MTR || Auth::user()->access == ADMIN)
 		<li>
-			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><span class="caret"></span> Daftar Pelatihan</a>
+			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><i class="fa fa-user"></i> Data Pegawai<span class="caret"></span></a>
 			<ul id="data_pegawai" class="dropdown-side collapse">
-				<li><a class="loadContent" id="pegawai" href="/data_pegawai"><span class="glyphicon glyphicon-user"></span> Data Pegawai</a></li>
-				<li><a class="loadContent" id="pegawai" href="/pelatihan"><span class="glyphicon glyphicon-user"></span> Data Pelatihan</a></li>
-				<li><a class="loadContent" href="/pengaturan_data_pegawai"><span class="glyphicon glyphicon-cog"></span> Atur Data Pegawai</a></li>
-				<li><a class="loadContent" href="/pengaturan_data_pelatihan"><span class="glyphicon glyphicon-cog"></span> Atur Data Pelatihan</a></li>
+				<li><a class="loadContent" id="pegawai" href="/data_pegawai"><i class="fa fa-users"></i> Data Pegawai</a></li>
+				<li><a class="loadContent" id="pegawai" href="/pelatihan"><i class="fa fa-institution"></i> Data Pelatihan</a></li>
+				<li><a class="loadContent" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
+				<li><a class="loadContent" href="/pengaturan_data_pelatihan"><i class="fa fa-cog"></i> Atur Data Pelatihan</a></li>
 			</ul>
 		</li> 
 		@endif
