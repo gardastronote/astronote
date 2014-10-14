@@ -8,8 +8,9 @@
 				<tr>
 					<th>Jenis</th>
 					<th>Nama</th>
-					<th class="text-center">Total Rata-rata</th>
-					<th class="text-center" colspan="3">Pilihan</th>
+					<th class="text-center"><span class="glyphicon glyphicon-thumbs-up"></th>
+					<th class="text-center"><span class="glyphicon glyphicon-list"></span></th>
+					<th class="text-center"><span class="glyphicon glyphicon-tasks"></span></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -25,9 +26,14 @@
 					<td>{{ucfirst($vendor->jenis)}}</td>
 					<td>{{$vendor->nama}}</td>
 					<td class="text-center">{{round(Vendor_kegiatan::where('id_vendor','=',$vendor->id)->avg('nilai'),2)}}</td>
-					<td><a class="btn btn-info circle loadContent" href="{{url('/vendor/data/'.$vendor->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
-					<td><a class="btn btn-warning circle  loadContent" href="{{url('/vendor/edit/'.$vendor->id)}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a class="btn btn-danger circle loadContent" href="{{url('/vendor/delete/'.$vendor->id)}}"><span class="glyphicon glyphicon-trash"></span></a></td>
+					<td class="text-center"><a class="loadContent" href="{{url('/vendor/data/'.$vendor->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
+					<td class="dropdown text-center">
+						<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
+						<ul class="dropdown-menu pull-right">
+							<li><a class="dropdown-update loadContent" href="{{url('/vendor/edit/'.$vendor->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
+							<li><a class="dropdown-delete loadContent" href="{{url('/vendor/delete/'.$vendor->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+						</ul>
+					</td>
 				</tr>
 				@endforeach
 			</tbody>

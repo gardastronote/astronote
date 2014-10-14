@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
 	<div class="col-md-12">
-		{{Form::open(['url'=>$url,'class'=>'form-horizontal'])}}
+		{{Form::open(['url'=>$url,'class'=>'form-horizontal dataSubmit'])}}
 		<div class="form-group @if($errors->has('kegiatan')) has-error @endif">
 			{{Form::label('kegiatan','Kegiatan',['class'=>'control-label col-md-4'])}}
 			<div class="col-md-4"> 
@@ -41,4 +41,14 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript" src="{{asset('bootstrap/datepicker/bootstrap-datepicker.js')}}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.datepicker').datepicker({
+			format:'yyyy-mm-dd',
+			autoclose:true,
+			todayHighlight:true,
+			});
+	});
+</script>
 @stop

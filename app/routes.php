@@ -313,7 +313,7 @@ Route::get('/feed',function(){
 	Route::get('/vendor/search','VendorController@search');
 	Route::get('/vendor',function(){
 		$average = Vendor_kegiatan::avg('nilai');
-		$vendors = Vendor_data::all();
+		$vendors = Vendor_data::orderBy('id','DESC')->get();
 		//line chart
 		$dates = Vendor_kegiatan::select(DB::raw('MONTHNAME(tanggal) bulan,YEAR(tanggal)tahun,AVG(nilai) as average'))->where('tanggal', '>=',(DB::raw('CURDATE() - INTERVAL 1 YEAR')))->groupBy('bulan')->groupBy('tahun')->orderBy('tanggal','ASC')->get();
 		//donut chart

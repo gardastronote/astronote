@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-12 search-data text-center">
-		{{Form::open(['url'=>'/vendor/search','method'=>'GET','class'=>'form-inline'])}}
+		{{Form::open(['url'=>'/vendor/search','method'=>'GET','class'=>'form-inline dataGet'])}}
 		@if($choose)
 		<div class="form-group">
 			{{Form::select('jenis',[

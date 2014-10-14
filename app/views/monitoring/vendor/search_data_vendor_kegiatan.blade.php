@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-12 text-center">
-		{{Form::open(['url'=>"/vendor/data/$id/search",'method'=>'GET','class'=>'form-inline'])}}
+		{{Form::open(['url'=>"/vendor/data/$id/search",'method'=>'GET','class'=>'form-inline dataGet'])}}
 		<div class="form-group">
 			{{Form::text('kegiatan',Input::get('kegiatan'),['class'=>'form-control input-lg'])}}
 		</div>

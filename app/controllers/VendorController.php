@@ -73,7 +73,7 @@ class VendorController extends BaseController
 		if(strstr(URL::previous(), '/vendor/data') && !strstr(URL::previous(), '/search?')){
 			Session::put('back',URL::previous());
 		}
-		$kegiatans = Vendor_kegiatan::where('kegiatan','LIKE','%'.$input['kegiatan'].'%')->paginate(7);
+		$kegiatans = Vendor_kegiatan::where('kegiatan','LIKE','%'.$input['kegiatan'].'%')->where('id_vendor','=',$id)->paginate(17);
 		$view = View::make('monitoring.vendor.search_kegiatan_data_vendor',array(
 			'id'=>$id,
 			'back'=>Session::get('back'),
