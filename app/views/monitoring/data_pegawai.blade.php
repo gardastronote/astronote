@@ -10,7 +10,7 @@
 </div>
 @endif
 <div class="fixed-btn btn-right">
-	<a href="/add_data_pegawai" class="circle-fly btn btn-success btn-lg loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
+	<a href="/add_data_pegawai" class="btn-flat btn btn-success btn-lg loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
 </div>
 <div class="row">
 	<div class="col-md-12 text-center">
@@ -40,24 +40,29 @@
 		<div class="text-center">
 			{{$pegawai->appends(Input::all())->links()}}
 		</div>
-		<table class="table table-condensed table-bordered">
+		<table class="table table-condensed">
 			<thead>
 				<th class="text-center">NIP</th>
-				<th class="text-center">Nama</th>
+				<th>Nama</th>
 				<th class="text-center">Grade</th>
-				<th class="text-center">Job</th>
-				<th class="text-center">Detail</th>
-				<th class="text-center" colspan="2">Opsi</th>
+				<th>Job</th>
+				<th class="text-center"><span class="glyphicon glyphicon-list"></span></th>
+				<th class="text-center"><span class="glyphicon glyphicon-tasks"></span></th>
 			</thead>
 			@foreach($pegawai as $data)
 			<tr>
-				<td>{{$data->nip}}</td>
+				<td class="text-center">{{$data->nip}}</td>
 				<td>{{$data->nama}}</td>
-				<td>{{$data->grade->grade}}</td>
+				<td class="text-center">{{$data->grade->grade}}</td>
 				<td>{{$data->job->job}}</td>
-				<td><a class="btn btn-info circle loadContent" onclick="return false" href="{{url('/data_pelatihan',$data->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
-				<td><a class="btn btn-warning circle loadContent" onclick="return false" href="{{action('MonitoringController@edit_data_pegawai',$data->id)}}"><span class="glyphicon glyphicon-pencil"></span></a></a></td>
-				<td><a class="btn btn-danger circle" href="{{action('MonitoringController@delete_data_pegawai',$data->id)}}"><span class="glyphicon glyphicon-trash"></span></a></a></td>
+				<td class="text-center"><a class="loadContent" onclick="return false" href="{{url('/data_pelatihan',$data->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
+				<td class="text-center dropdown">
+					<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
+					<ul class="dropdown-menu pull-right">
+						<li><a class="dropdown-update loadContent" onclick="return false" href="{{action('MonitoringController@edit_data_pegawai',$data->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
+						<li><a class="dropdown-delete loadContent" href="{{action('MonitoringController@delete_data_pegawai',$data->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+					</ul>
+				</td>
 			@endforeach
 		</table>
 		<div class="text-center">

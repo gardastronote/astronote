@@ -1,5 +1,5 @@
 <div class="fixed-btn btn-right">
-	<a href="/add_pengaturan_data_pelatihan" class="circle-fly btn btn-success btn-lg loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
+	<a href="/add_pengaturan_data_pelatihan" class="btn-flat btn btn-success btn-lg loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row">
 	<div class="col-md-12">
@@ -23,14 +23,20 @@
 			<table class="table table-condensed ">
 				<thead>
 					<th class="text-center">Pelatihan</th>
-					<th class="text-center" colspan="3">Pilihan</th>
+					<th class="text-center"><span class="glyphicon glyphicon-list"></span></th>
+					<th class="text-center"><span class="glyphicon glyphicon-tasks"></span></th>
 				</thead>
 			@foreach($pelatihans as $pelatihan)
 				<tr>
 					<td>{{$pelatihan->pelatihan}}</td>
-					<td><a class="btn btn-info circle loadContent" onclick="return false" href="{{url('/pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
-					<td><a class="btn btn-warning circle loadContent" onclick="return false" href="{{url('/edit_pengaturan_data_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-					<td><a class="btn btn-danger circle loadContent" onclick="return false" href="{{url('/delete_pengaturan_data_pelatihan/Pelatihan_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-trash"></span></a></td>
+					<td><a class="loadContent" href="{{url('/pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
+					<td class="dropdown">
+						<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-update loadContent" onclick="return false" href="{{url('/edit_pengaturan_data_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
+							<li><a class="dropdown-delete loadContent" onclick="return false" href="{{url('/delete_pengaturan_data_pelatihan/Pelatihan_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+						</ul>
+					</td>
 				</tr>
 			@endforeach
 			</table>

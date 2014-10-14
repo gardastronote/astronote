@@ -7,16 +7,29 @@ class UserController extends BaseController
 		if(!count($user)>0){
 			App::abort(404,'Halaman tidak di temukan');
 		}
-		$validated = Validator::make($input,User::rules(),User::messages());
+		if(!empty($input['password'])){
+			$pass = true;
+		}else{
+			unset($input['password']);
+			$pass = false;
+		}
+		$validated = Validator::make($input,User::update_rules($input['id'],$pass),User::messages());
 		if($validated->fails()){
 			return Redirect::to('/user/setting/'.$input['id'])->withInput()->withErrors($validated);
 		}
+		if(!empty($input['password'])){
+			$input['password'] = Hash::make($input['password']);
+		}
 		if(Input::hasFile('avatar')){
-			$name = Str::random(32);
-			$extension = Input::file('avatar')->getClientOriginalExtension();
-			$name = $name.$extension;
+				$avatar = Input::file('avatar');
+				$name = Str::random(32);
+				$path = public_path().'/avatar/';
+				$extension = $avatar->guessClientExtension();
+				$name = $name.'.'.$extension;
+				$avatar->move($path,$name);
+				$input['avatar'] = $name;
 		}else{
-			unset($Input['avatar']);
+			unset($input['avatar']);
 		}
 		$update = $user->update($input);
 		if(!$update){

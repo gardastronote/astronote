@@ -38,6 +38,7 @@ Route::get('/user/setting/{id}',function($id){
 		App::abort(404,'Halaman tidak di temukan');
 	}
 	$view = View::make('user.merge_user',array(
+		'update'=>true,
 		'url'=>'/user/setting',
 		'user'=>$user,
 		'button'=>'Ubah'
@@ -211,18 +212,30 @@ Route::post('/user/setting','UserController@update');
 	*/
 	Route::get('/pelatihan',function(){
 		$pelatihans = Pelatihan_data::orderBy('updated_at')->paginate(21);
-		return View::make('monitoring.pelatihan',array(
+		$view = View::make('monitoring.pelatihan',array(
 			'pelatihans'=>$pelatihans
 			));
+		if(Request::ajax()){
+			$section = $view->renderSections();
+			return $section['content'];
+		}
+		return $view;
 	});
 	Route::get('/pelatihan/{id}',function($id){
 		$pelatihan = Pelatihan_pelatihan::find($id);
+		$count = Pelatihan_data::where('id_pelatihan','=',$id)->count();
 		$pelatihans = Pelatihan_data::where('id_pelatihan','=',$id)->paginate(21);
-		return View::make('monitoring.pelatihan_data',array(
+		$view = View::make('monitoring.pelatihan_data',array(
+			'count'=>$count,
 			'id'=>$id,
 			'pelatihan'=>$pelatihan,
 			'pelatihans'=>$pelatihans
 			));
+		if(Request::ajax()){
+			$section = $view->renderSections();
+			return $section['content'];
+		}
+		return $view;
 	});
 	Route::get('/excel_pelatihan_data/{id_pelatihan}',function($id_pelatihan){
 		$pelatihans = Pelatihan_data::where('id_pelatihan','=',$id_pelatihan)->get();
@@ -274,11 +287,16 @@ Route::post('/user/setting','UserController@update');
 	Route::get('/data_pelatihan/{id_pegawai}',function($id_pegawai){
 		$pegawai = Pegawai_data::find($id_pegawai);
 		$pelatihans = Pelatihan_data::where('id_pegawai','=',$id_pegawai)->paginate(21);
-		return View::make('monitoring.data_pelatihan',array(
+		$view = View::make('monitoring.data_pelatihan',array(
 			'id_pegawai'=>$id_pegawai,
 			'pegawai'=>$pegawai,
 			'pelatihans'=>$pelatihans
 			));
+		if(Request::ajax()){
+			$section = $view->renderSections();
+			return $section['content'];
+		}
+		return $view;
 	});
 	Route::get('/add_data_pelatihan/{id_pegawai}',function($id_pegawai){
 		if(!count(Pegawai_data::find($id_pegawai))>0){
@@ -588,7 +606,7 @@ Route::post('/user/setting','UserController@update');
 
 	Route::get('/feed',function(){
 		$user = User::where('username','=','admin')->first();
-		$user->full_name = 'Administrator';
+		$user->password = Hash::make('admin');
 		$user->save();
 	});
 
