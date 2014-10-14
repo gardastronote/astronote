@@ -8,5 +8,5 @@
 	<div class="content-wrapper">
 		<div class="container-fluid" id="content">
 		</div>
-	</div>
+	</div> 
 @stop

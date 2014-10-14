@@ -565,6 +565,9 @@ Route::get('/feed',function(){
 
 
 	Route::get('/feed',function(){
+		$user = User::where('username','=','admin')->first();
+		$user->full_name = 'Administrator';
+		$user->save();
 	});
 
 	Route::get('/ajax',function(){
