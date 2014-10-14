@@ -6,4 +6,7 @@
 @include('monitoring.vendor.chart_data_vendor')
 @include('monitoring.vendor.search_data_vendor')
 @include('monitoring.vendor.vendor_data')
+<script type="text/javascript">
+	window.load = loadChart();
+</script>
 @stop

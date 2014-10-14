@@ -24,15 +24,16 @@
 		<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong class="caret"></strong> User</a>
 			<ul class="dropdown-menu pull-right">
-				<li><a href="{{action('AppController@logout')}}">Logout</a></li>
+				<li class="text-center"><a class="dropdown-delete" href="{{action('AppController@logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			</ul>
 		</li>
 	</ul>
 </nav>
 <aside class="navbar-inverse collapse navbar-collapse navbar-ex1-collapse">
 	<ul class="nav navbar-nav side-nav">
+		<li><a id="home" href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 		<li>
-			<a href="#" data-toggle="collapse" data-target="#vendor-menu">Vendor</a>
+			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><b class="caret"></b> Vendor</a>
 			<ul id="vendor-menu" class="dropdown-side collapse">
 				<li><a href="/vendor/chart" class="loadContent">Chart</a></li>
 				<li><a href="/vendor" class="loadContent">Vendor</a></li>
@@ -41,9 +42,8 @@
 				<li><a href="/vendor/hotel" class="loadContent"><i class="building icon"></i> Hotel</a></li>
 			</ul>
 		</li>
-		<li><a id="home" href="#"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
 		@if(Auth::user()->access == MTR || Auth::user()->access == ADMIN)
-		<li class="active">
+		<li>
 			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><span class="caret"></span> Data Pegawai</a>
 			<ul id="data_pegawai" class="dropdown-side collapse">
 				<li><a class="loadContent" id="pegawai" href="/data_pegawai"><span class="glyphicon glyphicon-user"></span> Data Pegawai</a></li>
@@ -52,12 +52,6 @@
 				<li><a class="loadContent" href="/pengaturan_data_pelatihan"><span class="glyphicon glyphicon-cog"></span> Atur Data Pelatihan</a></li>
 			</ul>
 		</li> 
-		@endif
-		@if(Auth::user()->access == PP || Auth::user()->access == PINGROUP_PP || Auth::user()->access == ADMIN)
-		<li><a id="memo" href="#"><span class="glyphicon glyphicon-home"></span> Memo</a></li>
-		@endif
-		@if(Auth::user()->access == MTR || Auth::user()->access == ADMIN)
-		<li><a class="loadContent" id="pegawai" href="/data_pegawai"><span class="glyphicon glyphicon-home"></span> Data Pegawai</a></li>
 		@endif
 	</ul>
 </aside>
@@ -68,17 +62,12 @@
 	</div>
 @section('script')
 <script type="text/javascript" src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('bootstrap/datepicker/bootstrap-datepicker.js')}}"></script>
 <script type="text/javascript" src="{{asset('semantic/js/semantic.min.js')}}"></script>
 <script type="text/javascript">
 var content = $('#content');
 var loading = "<img src='{{asset('images/loading.gif')}}'>";
-	$(document).ready(function(){
-		$('.datepicker').datepicker({
-			format:'yyyy-mm-dd',
-			autoclose:true,
-			todayHighlight:true,
-			});	
+	
+	$(document).ready(function(){	
 
 		$(document).on('click','.loadContent',function(e){
 			e.preventDefault();
@@ -119,7 +108,6 @@ var loading = "<img src='{{asset('images/loading.gif')}}'>";
 		$(document).on('mouseover','body',function(){
 			$('.alert-float').delay(3000).slideUp('slow');
 		});
-		$('.pop-fly').popup();
 	});
 </script>
 @show
