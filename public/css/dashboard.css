@@ -52,19 +52,22 @@ body{
 .side-nav li{
 	width: 225px;
 }
-
 .side-nav li a{
     padding: 15px 15px 15px;
 	color: #999;
 }
 .side-nav li a:hover{
 	background-color: #000 !important;
+	color: white;
+
 }
 
 .content-wrapper{
 	width: 100%;
 	padding-left: 225px;
 }
+
+
 
 /*
 |-------------------------------------------------------------------------

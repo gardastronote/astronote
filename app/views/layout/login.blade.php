@@ -7,8 +7,8 @@
 <body>
 <div class="container">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-2 text-center">
-		 <img class="logo-bjb" src="{{asset('images/logo_bjb/logo_diklat(putih).png')}}"></img>
+		<div class="col-md-8 col-md-offset-2 text-center">
+		 <img class="logo-bjb" src="{{asset('images/logo_bjb/logo_bjb(putih).png')}}"></img>
 		 <h4>Service Excellent - Professionalism - Intellegence - Respect - Integrity - Trust</h4>
 		</div>
 	</div>
@@ -16,7 +16,7 @@
 		<div class="col-md-4 col-md-offset-4 text-center">
 			@if(Session::has('alert'))
 			<div class="alert @if(Session::has('alert.error')) alert-error @endif)">
-			 <p class="help-block alert-danger">{{Session::pull('alert.error')}}</p>
+			 <p class="help-block alert-danger text-uppercase">{{Session::pull('alert.error')}}</p>
 			</div> 
 			@endif
 			{{Form::open(['url'=>'/login','class'=>'form-horizontal'])}}
