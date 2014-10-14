@@ -18,7 +18,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a href="#" class="navbar-brand"><img src="{{asset('images/logo.png')}}"></a>
+		<a href="#" class="navbar-brand"><img src="{{asset('images/logo_bjb/logo_bjb(putih).png')}}"></a>
 	</div>
 	<ul class="nav navbar-nav pull-right">
 		<li class="dropdown">
