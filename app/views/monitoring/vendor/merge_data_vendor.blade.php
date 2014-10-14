@@ -1,8 +1,5 @@
 @extends('layout.dashboard')
 @section('content')
-<div class="fixed-btn">
-	<a class="btn btn-info btn-lg circle-fly loadContent" href="{{$back}}"><span class="glyphicon glyphicon-chevron-left"></span></a>
-</div>
 <div class="row">
 	<div class="col-md-12">
 		{{Form::open(['url'=>$url,'class'=>'form-horizontal dataSubmit'])}}

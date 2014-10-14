@@ -105,17 +105,15 @@ body{
 	z-index: 999;
 }
 .btn-right{
-	right: 15px;
+	right: 0px;
+}
+.btn-flat{
+	border-radius: 0;
 }
 .btn-left-1{
 	margin-top: 55px;
 }
-.circle-fly{
-	height: 50px;
-	width: 50px;
-	border-radius: 25px;
-	line-height: 30px;
-}
+
 .btn-download{
 	right: 75px;
 }
@@ -132,6 +130,20 @@ body{
   right: 0;
   padding-left: 225px;
   z-index: 1000;
+}
+/*
+|-------------------------------------------------------------------------
+| Avatar
+|-------------------------------------------------------------------------
+*/
+.avatar{
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+	margin: -23px 0;
+}
+.ava-form{
+	margin: -10px 0;
 }
 
 /*

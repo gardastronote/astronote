@@ -12,19 +12,13 @@
 </head>
 <body onload="loadChart()">
 <nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="nabar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<a href="#" class="navbar-brand"><img src="{{asset('images/logo.png')}}"></a>
-	</div>
+	<a href="#" class="navbar-brand"><img src="{{asset('images/logo.png')}}"></a>
 	<ul class="nav navbar-nav pull-right">
 		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong class="caret"></strong> {{Auth::user()->full_name}}</a>
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong class="caret"></strong> {{Auth::user()->full_name}} <img class="avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}"></a>
 			<ul class="dropdown-menu pull-right">
-				<li class="text-center"><a class="dropdown-delete" href="{{action('AppController@logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				<li><a class="dropdown-update loadContent" href="{{url('/user/setting/'.Auth::user()->id)}}"><span class="glyphicon glyphicon-cog"></span> Pengaturan</a></li>
+				<li><a class="dropdown-delete" href="{{action('AppController@logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			</ul>
 		</li>
 	</ul>

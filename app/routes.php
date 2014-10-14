@@ -28,6 +28,28 @@ Route::post('/login','AppController@loginPost');
 Route::get('/logout','AppController@logout');
 Route::get('/feed',function(){
 });
+/*--------------------------------------------------------------------
+| User
+|---------------------------------------------------------------------
+*/
+Route::get('/user/setting/{id}',function($id){
+	$user = User::find($id);
+	if(!count($user)>0){
+		App::abort(404,'Halaman tidak di temukan');
+	}
+	$view = View::make('user.merge_user',array(
+		'url'=>'/user/setting',
+		'user'=>$user,
+		'button'=>'Ubah'
+		));
+	if(Request::ajax()){
+		$section = $view->renderSections();
+		return $section['content'];
+	}
+	return $view;
+});
+
+Route::post('/user/setting','UserController@update');
 
 /*
 |-------------------------------------------------------------------------
