@@ -5,7 +5,23 @@ body{
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
 }
+.logo-bjb{
+	margin-top: -70px;
+	max-height: 170px;
+}
 
 h1{
 	color: #FFF;
+}
+h4{
+	color: #FFF;
+}
+
+.white{
+	background-color: white;
+}
+
+.round-bottom{
+	border-bottom-right-radius:10px;
+	border-bottom-left-radius:10px;  
 }
