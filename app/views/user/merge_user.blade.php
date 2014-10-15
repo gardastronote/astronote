@@ -9,10 +9,11 @@
 @endif
 <div class="row">
 	<div class="col-md-12">
-		{{Form::open(['url'=>$url,'class'=>'form-horizontal','files'=>true])}}
+		@if(!isset($load)) <?php $load = '' ?> @endif
+		{{Form::open(['url'=>$url,'class'=>"form-horizontal $load",'files'=>true])}}
 		<div class="form-group @if($errors->has('username')) has-error @endif">
 			{{Form::label('username','User Name',['class'=>'col-md-4 control-label'])}}
-			<div class="col-md-4"> 
+			<div class="col-md-4">
 				{{Form::text('username',isset($user)?$user->username:'',['class'=>'form-control input-lg'])}}
 			</div>
 			@if($errors->has('username'))
@@ -67,7 +68,12 @@
 		</div>
 		<div class="form-group @if($errors->has('avatar')) has-error @endif">
 			<div class="col-md-4">
+				@if(isset($user))
 				<img class="avatar pull-right ava-form" src="{{asset('avatar/'.$user->avatar)}}">
+					@if($user->avatar !== 'default.png')
+					<a class="pull-right" href="{{url('/user/deleteAvatar/'.$user->id.'/'.$type)}}">Hapus</a>
+					@endif
+				@endif
 			</div>
 			<div class="col-md-4"> 
 				{{Form::file('avatar','',['class'=>'form-control input-lg'])}}
@@ -83,6 +89,7 @@
 				@if(isset($user))
 				{{Form::hidden('id',$user->id)}}
 				@endif
+				{{Form::hidden('type',$type)}}
 				{{Form::submit($button,['class'=>'btn btn-success btn-lg'])}}
 			</div>
 		</div>

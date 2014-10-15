@@ -7,14 +7,19 @@
 </div>
 <script type="text/javascript" src="{{asset('js/Chart.js')}}"></script>
 <script type="text/javascript">
-
 	//line chart
 	var lineData = {
-		labels : [@foreach ($dates as $date) {{'"'.$date->bulan.'"'}}, @endforeach],
+		labels : [
+		@if(count($dates) == 1) 0, @endif
+		@foreach ($dates as $date) {{'"'.$date->bulan.'"'}}, @endforeach
+		],
 		datasets : [{
 					strokeColor: {{'"'.$strokeColor.'"'}},
 					pointColor: "rgba(0,0,0,1)",
-					data : [@foreach ($dates as $date) {{round($date->average,2)}}, @endforeach]
+					data : [
+					@if(count($dates) == 1) 0, @endif
+					@foreach ($dates as $date) {{round($date->average,2)}}, @endforeach
+					]
 				}]
 	}
 	function loadChart(){

@@ -43,7 +43,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			'email'=>'unique:users,email,'.$id,
 			'password'=>'min:3|max:32',
 			're_password'=>$re.'|same:password',
-			'avatar'=>'avatar'
+			'avatar'=>'image'
 			);
 	}
 
@@ -53,7 +53,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			'full_name'=>'required|max:18',
 			'email'=>'email|unique:users,email',
 			'password'=>'required|max:32',
-			're_password'=>'same:password',
+			're_password'=>'required|same:password',
 			'avatar'=>'image'
 			);
 	}
@@ -66,7 +66,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			'max'=>':attribute terlalu panjang',
 			'unique'=>':attribute sudah di gunakan',
 			'email'=>':attribute harus berupa email',
-			'same'=>'password yang di masukan tidak sama'
+			'same'=>'password yang di masukan tidak sama',
+			'image'=>'data yang di masukan harus berupa gambar'
 			);
 	}
 

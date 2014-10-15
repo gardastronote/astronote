@@ -3,7 +3,6 @@ class Vendor_data extends Eloquent
 {
 	protected $table = 'vendor_data';
 	protected $fillable = array('nama','jenis');
-	public $timestamps = false;
 
 	public static function rules($id = NULL){
 		return array(

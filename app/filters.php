@@ -36,7 +36,7 @@ App::after(function($request, $response)
 Route::filter('auth', function()
 {
 	if (Auth::guest()){
-		return View::make('layout.login');
+		return Redirect::to('/login');
 	}
 });
 
@@ -61,7 +61,11 @@ Route::filter('guest', function()
 {
 	if (Auth::check()) return Redirect::to('/');
 });
-
+Route::filter('admin',function(){
+	if(Auth::user()->access !== ADMIN){
+		App::abort(403,'Anda tidak memiliki hak mengakses halaman ini');
+	}
+});
 /*
 |--------------------------------------------------------------------------
 | CSRF Protection Filter

@@ -8,7 +8,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2 text-center">
-		 <img class="logo-bjb" src="{{asset('images/logo_bjb/logo_bjb(putih).png')}}"></img>
+		 <img class="logo-bjb" src="{{asset('images/logo_bjb/logo_diklat(putih).png')}}"></img>
 		 <h4>Service Excellent - Professionalism - Intellegence - Respect - Integrity - Trust</h4>
 		</div>
 	</div>

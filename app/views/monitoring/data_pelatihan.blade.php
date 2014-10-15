@@ -1,16 +1,6 @@
 @extends('layout.dashboard')
 @section('content')
-@if(Session::has('alert.error') || Session::has('alert.success'))
-<div class="alert-float text-center">
-	<div class="alert @if(Session::has('alert.error')) alert-danger @else alert-success @endif">
-		@if(Session::has('alert.error'))
-		<strong><span class="glyphicon glyphicon-bullhorn"></span> {{Session::pull('alert.error')}}</strong>
-		@else
-		<strong><span class="glyphicon glyphicon-bullhorn"></span> {{Session::pull('alert.success')}}</strong>
-		@endif
-	</div>
-</div>
-@endif
+@include('notif')
 @if(count($pelatihans)>0)
 <div style="margin-top:50px" class="fixed-btn btn-right">
 	<a class="btn btn-primary btn-lg btn-flat" href="{{url('/excel_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-download-alt"></span></a>
@@ -18,6 +8,12 @@
 @endif
 <div class="fixed-btn btn-right">
 	<a class="btn btn-success btn-lg btn-flat loadContent" onclick="return false" href="{{url('/add_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-plus"></span></a>
+</div>
+<div class="row">
+	<div class="col-md-12 text-center">
+		<h1>{{$pegawai->nama}}</h1>
+		<h1><small>{{$pegawai->nip}}</small>
+	</div>
 </div>
 <div class="row">
 	<div class="col-md-12 center-form text-center">
@@ -30,12 +26,6 @@
 			<button type="submit" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span></button>
 		</div>
 		{{Form::close()}}
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-12 text-center">
-		<h1>{{$pegawai->nama}}</h1>
-		<h1><small>{{$pegawai->nip}}</small>
 	</div>
 </div>
 <div class="row">

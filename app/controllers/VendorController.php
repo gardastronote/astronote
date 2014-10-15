@@ -32,7 +32,7 @@ class VendorController extends BaseController
 		if(!$add){
 			return Redirect::to('/vendor/add')->with('alert.error',ERR_DEV);
 		}
-		return Redirect::to('/vendor')->with('alert.success','Data berhasil di tambahkan');
+		return Redirect::to('/vendor/'.$input['jenis'])->with('alert.success','Data berhasil di tambahkan');
 	}
 
 	public function edit(){
@@ -49,7 +49,7 @@ class VendorController extends BaseController
 		if(!$edit){
 			return Redirect::to('/vendor/edit/',$input['id'])->with('alert-error',ERR_DEV);
 		}
-		return Redirect::to('/vendor')->with('alert.success','Data berhasil di tambah');
+		return Redirect::to('/vendor/'.$input['jenis'])->with('alert.success','Data berhasil di ubah');
 	}
 
 	public function delete($id){
@@ -57,11 +57,12 @@ class VendorController extends BaseController
 		if(!count($delete)>0){
 			App::abort(404,'Halaman tidak di temukan');
 		}
+		$jenis = $delete->jenis;
 		$delete = $delete->delete();
 		if(!$delete){
 			return Redirect::to('/vendor/data/'.$id)->with('alert.error',ERR_DEV);
 		}
-		return Redirect::to('/vendor')->with('alert.success','Data berhasil di hapus');
+		return Redirect::to('/vendor/'.$jenis)->with('alert.success','Data berhasil di hapus');
 	}
 
 	public function search_kegiatan($id){
@@ -112,7 +113,7 @@ class VendorController extends BaseController
 		if(!$update){
 			return Redirect::to('/vendor/data/'.$input['id_vendor'].'/edit/'.$input['id'])->with('alert.error',ERR_DEV);
 		}
-		return Redirect::to('/vendor/data/'.$input['id_vendor'])->with('alert.success','Data berhasil di tambahkan');
+		return Redirect::to('/vendor/data/'.$input['id_vendor'])->with('alert.success','Data berhasil di ubah');
 	}
 
 	public function delete_kegiatan($id_vendor,$id){

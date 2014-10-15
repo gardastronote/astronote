@@ -1,3 +1,5 @@
+@extends('layout.dashboard')
+@section('content')
 <div class="fixed-btn btn-right">
 	<a href="/add_pengaturan_data_pelatihan" class="btn-flat btn btn-success btn-lg loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
@@ -29,10 +31,10 @@
 			@foreach($pelatihans as $pelatihan)
 				<tr>
 					<td>{{$pelatihan->pelatihan}}</td>
-					<td><a class="loadContent" href="{{url('/pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
-					<td class="dropdown">
+					<td class="text-center"><a class="loadContent" href="{{url('/pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
+					<td class="dropdown text-center">
 						<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
-						<ul class="dropdown-menu">
+						<ul class="dropdown-menu pull-right">
 							<li><a class="dropdown-update loadContent" onclick="return false" href="{{url('/edit_pengaturan_data_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
 							<li><a class="dropdown-delete loadContent" onclick="return false" href="{{url('/delete_pengaturan_data_pelatihan/Pelatihan_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 						</ul>
@@ -47,3 +49,4 @@
 		</div>
 	</div>
 </div>
+@stop

@@ -18,13 +18,23 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a href="{{url('/')}}" class="brand-logo navbar-brand"><img src="{{asset('images/logo_bjb/logo_bjb(putih).png')}}"></a>
+		<a href="{{url('/')}}" class="brand-logo navbar-brand"><img src="{{asset('images/logo_bjb/logo_diklat(putih).png')}}"></a>
 	</div>
 	<ul class="nav navbar-nav pull-right">
+		@if(Auth::user()->access == ADMIN)
+		<li class="dropdown">
+			<a data-toggle="dropdown" href="#"><b class="caret"></b> User <i class="fa fa-users"></i></a>
+			<ul class="dropdown-menu">
+				<li><a class="dropdown-success loadContent" href="{{url('/user/add')}}"><i class="fa fa-user"></i> Tambah User</a></li>
+				<li class="divider"></li>
+				<li><a class="dropdown-update loadContent" href="{{url('/user')}}"><i class="fa fa-users"></i> Daftar User</a></li>
+			</ul>
+		</li>
+		@endif
 		<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong class="caret"></strong> {{Auth::user()->full_name}} <img class="avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}"></a>
 			<ul class="dropdown-menu pull-right">
-				<li><a class="dropdown-update loadContent" href="{{url('/user/setting/'.Auth::user()->id)}}"><span class="glyphicon glyphicon-cog"></span> Pengaturan</a></li>
+				<li><a class="dropdown-update loadContent" href="{{url('/user/setting')}}"><span class="glyphicon glyphicon-cog"></span> Pengaturan</a></li>
 				<li><a class="dropdown-delete" href="{{action('AppController@logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			</ul>
 		</li>

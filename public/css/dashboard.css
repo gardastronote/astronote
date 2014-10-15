@@ -125,6 +125,10 @@ body{
 	border-radius: 20px;
 	line-height: 30px;
 }
+.dropdown-success:hover{
+  background-color: #5cb85c !important;
+  color: #FFF !important;
+}
 .dropdown-update:hover{
   background-color: #5bc0de !important;
   color: #FFF !important;
@@ -140,6 +144,12 @@ body{
 }
 .btn-right{
 	right: 0px;
+}
+.btn-top-right{
+	position:absolute;
+	top: 0;
+	right: 0;
+	margin:10px;
 }
 .btn-flat{
 	border-radius: 0;

@@ -1,11 +1,5 @@
-<div class="fixed-btn">
-	<a class="btn btn-primary btn-lg circle-fly loadContent" onclick="return false" href="{{url('/data_pelatihan',isset($id_pegawai)?$id_pegawai:$data->id_pegawai)}}"><span class="glyphicon glyphicon-user"></span></a>
-</div>
-@if(isset($data))
-<div class="fixed-btn btn-left-1">
-	<a class="btn btn-info btn-lg circle-fly loadContent" onclick="return false" href="{{url('/pelatihan',$data->id_pelatihan)}}"><span class="glyphicon glyphicon-list-alt"></span></a>
-</div>
-@endif
+@extends('layout.dashboard')
+@section('content')
 <div class="row">
 	<div class="col-md-12"> 
 		{{Form::open(['url'=>$url,'class'=>'form-horizontal dataSubmit','onsubmit'=>'return false'])}}
@@ -103,3 +97,4 @@
 		});
 	});
 	</script>
+@stop

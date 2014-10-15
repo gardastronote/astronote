@@ -1,16 +1,8 @@
-@if(Session::has('alert.error') || Session::has('alert.success'))
-<div class="alert-float text-center">
-	<div class="alert @if(Session::has('alert.error')) alert-danger @else alert-success @endif">
-		@if(Session::has('alert.error'))
-		<strong><span class="glyphicon glyphicon-bullhorn"></span> {{Session::pull('alert.error')}}</strong>
-		@else
-		<strong><span class="glyphicon glyphicon-bullhorn"></span> {{Session::pull('alert.success')}}</strong>
-		@endif
-	</div>
-</div>
-@endif
+@extends('layout.dashboard')
+@section('content')
+@include('notif')
 <div class="fixed-btn btn-right">
-	<a href="/add_data_pegawai" class="btn-flat btn btn-success btn-lg loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span> Tambah</a>
+	<a href="/add_data_pegawai" class="btn-flat btn btn-success btn-lg loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row">
 	<div class="col-md-12 text-center">
@@ -35,7 +27,7 @@
 <div class="row">
 	<div class="col-md-12"> 
 		@if(!count($pegawai)>0)
-		<h1>Tidak ada pegawai</h1>
+		<h1 class="text-center">Tidak ada pegawai</h1>
 		@else
 		<div class="text-center">
 			{{$pegawai->appends(Input::all())->links()}}
@@ -71,3 +63,4 @@
 		@endif
 	</div>
 </div>
+@stop
