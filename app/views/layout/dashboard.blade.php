@@ -32,7 +32,7 @@
 </nav>
 <aside class="navbar-inverse collapse navbar-collapse navbar-ex1-collapse">
 	<ul class="nav navbar-nav side-nav">
-		<li><a id="home" href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+		<li><a id="home" href="/dashboard" class="loadContent"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 		<li>
 			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="fa fa-link"></i> Vendor<i class="caret"></i></a>
 			<ul id="vendor-menu" class="dropdown-side collapse">
@@ -67,7 +67,7 @@
 <script type="text/javascript" src="{{asset('semantic/js/semantic.min.js')}}"></script>
 <script type="text/javascript">
 var content = $('#content');
-var loading = "<img src='{{asset('images/loading.gif')}}'>";
+var loading = "<img style=\"margin-left:45%;margin-top:20%;\" src='{{asset('images/loading.gif')}}'>";
 	
 	$(document).ready(function(){	
 

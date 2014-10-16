@@ -57,6 +57,21 @@ Route::post('/user/setting','UserController@update');
 |-------------------------------------------------------------------------
 */
 
+/*--------------------------------------------------------------------
+| Dashboard
+|---------------------------------------------------------------------
+*/
+Route::get('/dashboard',function(){
+	$view = View::make('dashboard');
+
+	if(Request::ajax()){
+		$section = $view->renderSections();
+		return $section['content'];
+	}
+	return $view;
+}); 
+
+
 /*
 |-------------------------------------------------------------------------
 | Monitoring

@@ -30,13 +30,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			);
 	}
 
-	public static function messages(){
-		return array(
-			'username.required'=>'Username Harus di isi',
-			'password.required'=>'Password Harus di isi'
-			);
-	}
-
 	public static function update_rules($id = null){
 		return array(
 			'username'=>'required|max:8|unique:users,username,'.$id,

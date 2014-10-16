@@ -2,6 +2,31 @@ body{
 	padding-top: 70px;
 	background-color: #FFF;
 }
+body::-webkit-scrollbar{
+	width: 14px;
+}
+
+
+body::-webkit-scrollbar-track{
+	background-color: #222;
+	cursor: pointer;
+}
+
+body::-webkit-scrollbar-thumb{
+	background-color: #aaa;
+	border:3px solid #222;
+	border-radius:10px;
+}
+
+body::-webkit-scrollbar-thumb:hover{
+	background-color: #ccc;
+
+}
+
+body::-webkit-scrollbar-thumb:active{
+	background-color: #ddd;
+}
+
 
 .navbar-brand img{
 	max-width: 50px;
@@ -67,8 +92,56 @@ body{
 	padding-left: 225px;
 }
 
+/*
+|-------------------------------------------------------------------------
+| Dashboard
+|-------------------------------------------------------------------------
+*/
+.panel-green{
+	background-color: #46C246;
+	color:white;
+}
+.panel-green a{
+	color: #46C246;
+}
+.panel-green a:hover{
+	color: #C46500;
+}
+.panel-green .panel-footer:hover{
+	background-color: #ddd;
 
+}
 
+.panel-orange{
+	background-color: #FF9626;
+	color:white;
+}
+.panel-orange a{
+	color: #FF9626;
+}
+.panel-orange a:hover{
+	color: #C46500;
+}
+.panel-orange .panel-footer:hover{
+	background-color: #ddd;
+}
+.panel-red{
+	background-color: #FF4040;
+	color:white;
+}
+.panel-red a{
+	color: #FF4040;
+}
+.panel-red a:hover{
+	color: #C42F2F;
+}
+.panel-red .panel-footer:hover{
+	background-color: #ddd;
+}
+
+.huge {
+    font-size: 40px;
+}
 /*
 |-------------------------------------------------------------------------
 | Data pegawai
@@ -130,13 +203,17 @@ body{
 	z-index: 999;
 }
 .btn-right{
-	right: 0px;
+	right: -5px;
 }
 .btn-flat{
 	border-radius: 0;
 }
 .btn-left-1{
 	margin-top: 55px;
+}
+.btn-annoy{
+	background-color: #FF8808;
+	color:white;
 }
 
 .btn-download{
