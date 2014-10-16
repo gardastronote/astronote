@@ -13,10 +13,6 @@ class TempatVendor extends Migration {
 	public function up()
 	{
 		Schema::table('vendor_kegiatan',function($table){
-			$table->dropColumn('tanggal');
-		});
-		Schema::table('vendor_kegiatan',function($table){
-			$table->string('tanggal');
 			$table->string('tempat');
 		});
 	}
@@ -29,11 +25,7 @@ class TempatVendor extends Migration {
 	public function down()
 	{
 		Schema::table('vendor_kegiatan',function($table){
-			$table->dropColumn('tanggal');
-		});
-
-		Schema::table('vendor_kegiatan',function($table){
-			$table->date('tanggal');
+			$table->dropColumn('tempat');
 		});
 	}
 

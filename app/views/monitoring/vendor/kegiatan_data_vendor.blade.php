@@ -8,6 +8,7 @@
 				<tr>
 					<th>Kegiatan</th>
 					<th class="text-center"><span class="glyphicon glyphicon-calendar"></span></th>
+					<th class="text-center"><span class="glyphicon glyphicon-home"></span></th>
 					<th class="text-center"><span class="glyphicon glyphicon-thumbs-up"></span></th>
 					<th class="text-center"><span class="glyphicon glyphicon-tasks"></span></th>
 				</tr>
@@ -17,6 +18,7 @@
 				<tr>
 					<td>{{$kegiatan->kegiatan}}</td>
 					<td class="text-center">{{date('d M Y',strtotime($kegiatan->tanggal))}}</td>
+					<td class="text-center">{{$kegiatan->tempat}}</td>
 					<td class="text-center">{{round($kegiatan->nilai,2)}}</td>
 					<td class="dropdown text-center">
 						<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>

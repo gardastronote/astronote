@@ -622,7 +622,7 @@ Route::group(array('before'=>'auth'),function(){
 				Session::put('back',URL::previous());
 			}
 			$average = Vendor_kegiatan::where('id_vendor','=',$id)->avg('nilai');
-			$kegiatans = Vendor_kegiatan::where('id_vendor','=',$id)->paginate(17);
+			$kegiatans = Vendor_kegiatan::where('id_vendor','=',$id)->paginate(11);
 			$view = View::make('monitoring.vendor.data_vendor_kegiatan',array(
 				'id'=>$id,
 				'back'=>Session::get('back'),
