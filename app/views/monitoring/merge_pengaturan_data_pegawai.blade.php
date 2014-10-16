@@ -1,8 +1,5 @@
 @extends('layout.dashboard')
 @section('content')
-<div class="fixed-btn">
-	<a class="btn btn-info btn-lg circle-fly loadContent" onclick="return false" href="{{url('/pengaturan_data_pegawai')}}"><span class="glyphicon glyphicon-chevron-left"></span></a>
-</div>
 <div class="row">
 	<div class="col-md-12 text-center"> 
 		{{Form::open(['url'=>$url,'method'=>'post','class'=>'form-inline dataSubmit','onsubmit'=>'return false'])}}

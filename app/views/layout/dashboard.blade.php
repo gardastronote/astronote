@@ -18,13 +18,23 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a href="#" class="navbar-brand"><img src="{{asset('images/logo_bjb/logo_bjb(putih).png')}}"></a>
+		<a href="{{url('/')}}" class="brand-logo navbar-brand"><img src="{{asset('images/logo_bjb/logo_diklat(putih).png')}}"></a>
 	</div>
 	<ul class="nav navbar-nav pull-right">
+		@if(Auth::user()->access == ADMIN)
+		<li class="dropdown">
+			<a data-toggle="dropdown" href="#"><b class="caret"></b> User <i class="fa fa-users"></i></a>
+			<ul class="dropdown-menu">
+				<li><a class="dropdown-success loadContent" href="{{url('/user/add')}}"><i class="fa fa-user"></i> Tambah User</a></li>
+				<li class="divider"></li>
+				<li><a class="dropdown-update loadContent" href="{{url('/user')}}"><i class="fa fa-users"></i> Daftar User</a></li>
+			</ul>
+		</li>
+		@endif
 		<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong class="caret"></strong> {{Auth::user()->full_name}} <img class="avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}"></a>
 			<ul class="dropdown-menu pull-right">
-				<li><a class="dropdown-update loadContent" href="{{url('/user/setting/'.Auth::user()->id)}}"><span class="glyphicon glyphicon-cog"></span> Pengaturan</a></li>
+				<li><a class="dropdown-update loadContent" href="{{url('/user/setting')}}"><span class="glyphicon glyphicon-cog"></span> Pengaturan</a></li>
 				<li><a class="dropdown-delete" href="{{action('AppController@logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			</ul>
 		</li>
@@ -34,24 +44,31 @@
 	<ul class="nav navbar-nav side-nav">
 		<li><a id="home" href="/dashboard" class="loadContent"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 		<li>
-			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="fa fa-link"></i> Vendor<i class="caret"></i></a>
+			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="fa fa-link"></i> Daftar Vendor<i class="caret"></i></a>
 			<ul id="vendor-menu" class="dropdown-side collapse">
-				<li><a href="/vendor/chart" class="loadContent"><i class="fa fa-line-chart"></i> Chart</a></li>
 				<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i>  Vendor</a></li>
 				<li><a href="/vendor/pelatihan" class="loadContent"><i class="fa fa-book"></i> Pelatihan</a></li>
 				<li><a href="/vendor/catering" class="loadContent"><i class="fa fa-spoon"></i> Catering</a></li>
 				<li><a href="/vendor/hotel" class="loadContent"><i class="fa fa-building"></i> Hotel</a></li>
+				<li><a href="/vendor/chart" class="loadContent"><i class="fa fa-line-chart"></i> Chart</a></li>
 			</ul>
 		</li>
 		
 		@if(Auth::user()->access == MTR || Auth::user()->access == ADMIN)
 		<li>
-			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><i class="fa fa-user"></i> Data Pegawai<span class="caret"></span></a>
+			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><i class="fa fa-users"></i> Daftar Pegawai<i class="caret"></i></a>
 			<ul id="data_pegawai" class="dropdown-side collapse">
-				<li><a class="loadContent" id="pegawai" href="/data_pegawai"><i class="fa fa-users"></i> Data Pegawai</a></li>
-				<li><a class="loadContent" id="pegawai" href="/pelatihan"><i class="fa fa-institution"></i> Data Pelatihan</a></li>
+				<li><a class="loadContent" id="pegawai" href="/data_pegawai"><i class="fa fa-user"></i> Data Pegawai</a></li>
 				<li><a class="loadContent" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
-				<li><a class="loadContent" href="/pengaturan_data_pelatihan"><i class="fa fa-cog"></i> Atur Data Pelatihan</a></li>
+			</ul>
+		</li> 
+		@endif
+		@if(Auth::user()->access == MTR || Auth::user()->access == ADMIN)
+		<li>
+			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="fa fa-institution"></i> Daftar Pelatihan<i class="caret"></i></a>
+			<ul id="data_pelatihan" class="dropdown-side collapse">
+				<li><a class="loadContent" href="/pengaturan_data_pelatihan"> <i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
+				<li><a class="loadContent" id="pegawai" href="/pelatihan"> <span class="glyphicon glyphicon-tasks"></span> Data Pelatihan</a></li>
 			</ul>
 		</li> 
 		@endif

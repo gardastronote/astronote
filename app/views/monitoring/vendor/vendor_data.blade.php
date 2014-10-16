@@ -6,7 +6,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Jenis</th>
+					<th><i class="fa fa-link"></i> Jenis Vendor</th>
 					<th>Nama</th>
 					<th class="text-center"><span class="glyphicon glyphicon-thumbs-up"></th>
 					<th class="text-center"><span class="glyphicon glyphicon-list"></span></th>
@@ -17,13 +17,16 @@
 				@foreach($vendors as $vendor)
 					@if($vendor->jenis == 'pelatihan')
 						<?php $jenis = 'success'; ?>
+						<?php $glyph = '<i class="fa fa-book"></i>'; ?>
 					@elseif($vendor->jenis == 'catering')
 						<?php $jenis = 'danger'; ?>
+						<?php $glyph = '<i class="fa fa-spoon"></i>'; ?>
 					@else
 						<?php $jenis = 'warning'; ?>
+						<?php $glyph = '<i class="fa fa-building"></i>'; ?>
 					@endif
 				<tr class="{{$jenis}}">
-					<td>{{ucfirst($vendor->jenis)}}</td>
+					<td>{{$glyph}} {{ucfirst($vendor->jenis)}}</td>
 					<td>{{$vendor->nama}}</td>
 					<td class="text-center">{{round(Vendor_kegiatan::where('id_vendor','=',$vendor->id)->avg('nilai'),2)}}</td>
 					<td class="text-center"><a class="loadContent" href="{{url('/vendor/data/'.$vendor->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>

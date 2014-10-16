@@ -26,8 +26,9 @@ body::-webkit-scrollbar-thumb:hover{
 body::-webkit-scrollbar-thumb:active{
 	background-color: #ddd;
 }
-
-
+.margin-top{
+	margin-top: 50px;
+}
 .navbar-brand img{
 	max-width: 50px;
 }
@@ -99,19 +100,20 @@ body::-webkit-scrollbar-thumb:active{
 */
 .panel-green{
 	background-color: #46C246;
-	color:white;
 }
 .panel-green a{
-	color: #46C246;
+	color: white;
 }
-.panel-green a:hover{
-	color: #C46500;
+.panel-green:hover{
+	background-color: #3EAB3E !important;
+}
+.panel-green .panel-footer{
+	color: #46C246 !important;
 }
 .panel-green .panel-footer:hover{
+	color: #46C246;
 	background-color: #ddd;
-
 }
-
 .panel-orange{
 	background-color: #FF9626;
 	color:white;
@@ -155,7 +157,7 @@ body::-webkit-scrollbar-thumb:active{
 	padding: 15px;
 }
 .dropdown-side li:hover{
-	background-color: #000 !important;
+	background-color: #111 !important;
 }
 .dropdown-side li a:hover{
 	text-decoration: none;
@@ -246,6 +248,10 @@ body::-webkit-scrollbar-thumb:active{
 }
 .ava-form{
 	margin: -10px 0;
+}
+
+.welcome-avatar{
+	max-height: 160px;
 }
 
 /*

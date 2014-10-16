@@ -22,6 +22,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password', 'remember_token');
+	protected $fillable = array('username','full_name','password','email','avatar');
 
 	public static function rules(){
 		return array(
@@ -30,13 +31,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			);
 	}
 
-	public static function update_rules($id = null){
+	public static function update_rules($id = null,$pass){
+		if($pass == true){
+			$re = 'required';
+		}else{
+			$re = null;
+		}
 		return array(
-			'username'=>'required|max:8|unique:users,username,'.$id,
+			'username'=>'required|max:12|unique:users,username,'.$id,
 			'full_name'=>'required|max:18',
 			'email'=>'unique:users,email,'.$id,
-			'password'=>'max:32',
-			're_password'=>'same:password'
+			'password'=>'min:3|max:32',
+			're_password'=>$re.'|same:password',
+			'avatar'=>'image'
 			);
 	}
 
@@ -46,18 +53,21 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			'full_name'=>'required|max:18',
 			'email'=>'email|unique:users,email',
 			'password'=>'required|max:32',
-			're_password'=>'same:password'
+			're_password'=>'required|same:password',
+			'avatar'=>'image'
 			);
 	}
 
 	public static function messages(){
 		return array(
-			'username.required'=>'Username Harus di isi',
-			'password.required'=>'Password Harus di isi',
+			'required'=>':attribute Harus di isi',
+			'required'=>':attribute Harus di isi',
+			're_password.required'=>'pengulangan password harus di isi',
 			'max'=>':attribute terlalu panjang',
 			'unique'=>':attribute sudah di gunakan',
 			'email'=>':attribute harus berupa email',
-			'same'=>'password yang di masukan tidak sama'
+			'same'=>'password yang di masukan tidak sama',
+			'image'=>'data yang di masukan harus berupa gambar'
 			);
 	}
 

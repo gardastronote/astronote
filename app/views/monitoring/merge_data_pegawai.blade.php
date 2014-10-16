@@ -1,6 +1,5 @@
-<div class="fixed-btn">
-	<a class="btn btn-info btn-lg circle-fly loadContent" onclick="return false" href="{{url('/data_pegawai')}}"><span class="glyphicon glyphicon-chevron-left"></span></a>
-</div>
+@extends('layout.dashboard')
+@section('content')
 <div class="row">
 	<div class="col-md-12"> 
 		{{Form::open(['url'=>isset($data)?'/edit_data_pegawai':$url,'class'=>'form-horizontal dataSubmit','onsubmit'=>'return false'])}}
@@ -96,3 +95,4 @@
 		{{Form::close()}}
 	</div>
 </div>
+@stop

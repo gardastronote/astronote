@@ -20,6 +20,7 @@
   	<!--Pelatihan-->
 	<div class="col-lg-4 col-md-4">
 		<div class="panel panel-green">
+			<a href="/vendor/pelatihan" class="loadContent">
 		 	<div class="panel-heading">
 				<div class="row">
 					<div class="col-xs-3">
@@ -31,6 +32,7 @@
 					</div>
 				</div>	
 			</div>
+		</a>
 			<a href="/vendor/pelatihan" class="loadContent">
 			<div class="panel-footer">
 				<span class="pull-left">View Details</span>

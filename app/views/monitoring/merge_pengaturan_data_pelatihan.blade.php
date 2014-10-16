@@ -1,6 +1,5 @@
-<div class="fixed-btn">
-	<a class="btn btn-info btn-lg circle-fly loadContent" onclick="return false" href="{{url('/pengaturan_data_pelatihan')}}"><span class="glyphicon glyphicon-chevron-left"></span></a>
-</div>
+@extends('layout.dashboard')
+@section('content')
 <div class="row">
 	<div class="col-md-12">
 		<div class="text-center">
@@ -19,3 +18,4 @@
 		</div>
 	</div>
 </div>
+@stop

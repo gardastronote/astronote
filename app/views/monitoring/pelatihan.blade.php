@@ -1,15 +1,14 @@
-<div class="fixed-btn">
-	<a class="btn btn-info btn-lg circle-fly loadContent" onclick="return false" href="{{url('/pengaturan_data_pelatihan')}}"><span class="glyphicon glyphicon-chevron-left"></span></a>
-</div>
+@extends('layout.dashboard')
+@section('content')
 <div class="row">
 	<div class="col-md-12">
 		<div class="text-center">
 			{{Form::open(['url'=>'/search_pelatihan','class'=>'form-inline dataGet center-form','method'=>'get','onsubmit'=>'return false'])}}
-			<div class="form-group @if($errors->has('pelatihan')) has-error @endif">
+			<div class="form-group input-group @if($errors->has('pelatihan')) has-error @endif">
 				{{Form::text('p','',['class'=>'input-lg form-control'])}}
-			</div>
-			<div class="form-group">
-				<button class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span></button>
+				<div class="input-group-btn">
+					<button class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span></button>
+				</div>
 			</div>
 			{{Form::close()}}
 		</div>
@@ -23,12 +22,12 @@
 		<div class="text-center">
 			{{$pelatihans->appends(Input::all())->links()}}
 		</div>
-		<table class="table table-bordered">
+		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Nama</th>
 					<th>Pelatihan</th>
-					<th>Tanggal</th>
+					<th class="text-center"><span class="glyphicon glyphicon-calendar"></span></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,7 +35,7 @@
 				<tr>
 					<td>{{$pelatihan->pegawai->nama}}</td>
 					<td>{{$pelatihan->pelatihan->pelatihan}}</td>
-					<td>{{$pelatihan->tanggal}}</td>
+					<td class="text-center">{{$pelatihan->tanggal}}</td>
 				</tr>
 				@endforeach
 			</tbody>
@@ -47,3 +46,4 @@
 		@endif
 	</div>
 </div>
+@stop

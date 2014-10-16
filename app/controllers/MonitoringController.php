@@ -16,7 +16,7 @@ class MonitoringController extends BaseController
 		if(!$insert){
 			return Redirect::to('/add_pengaturan_data_pegawai/')->with('alert.error',ERR_DEV);
 		}
-		return Redirect::to('/pengaturan_data_pegawai')->with('alert.success','Data berhasil di tambahkan');
+		return Redirect::to('/pengaturan_data/'.$input['type'])->with('alert.success','Data berhasil di tambahkan');
 	}
 
 	public function post_edit_pengaturan_data_pegawai(){
@@ -27,13 +27,13 @@ class MonitoringController extends BaseController
 		}
 		$validated = Validator::make($input,$input['obj']::rules($input['id']),$input['obj']::messages());
 		if($validated->fails()){
-			return Redirect::to('/pengaturan_data_pegawai')->withErrors($validated);
+			return Redirect::to('/add_pengaturan_data_pegawai/'.$input['obj'].'/'.$input['type'])->withInput()->withErrors($validated);
 		}
 		$update = $data->update($input);
 		if(!$update){
 			Redirect::to('/pengaturan_data_pegawai')->with('alert.error',ERR_DEV);
 		}
-		return Redirect::to('/pengaturan_data_pegawai')->with('alert.success','Data berhasil di ubah');
+		return Redirect::to('/pengaturan_data/'.$input['type'])->with('alert.success','Data berhasil di ubah');
 	}
 
 	public function delete_pengaturan_data_pegawai($type,$id){
@@ -70,9 +70,9 @@ class MonitoringController extends BaseController
 		}
 		$data = $data->delete();
 		if(!$data){
-			return Redirect::back()->with('alert.error',ERR_DEV);
+			return Redirect::to('/data_pegawai')->with('alert.error',ERR_DEV);
 		}
-		return Redirect::back()->with('alert.success','Data berhasil di hapus');
+		return Redirect::to('/data_pegawai')->with('alert.success','Data berhasil di hapus');
 	}
 
 	public function edit_data_pegawai($id){
@@ -86,7 +86,7 @@ class MonitoringController extends BaseController
 		$units = Pegawai_unit::lists('unit','id');
 		$penempatans = Pegawai_penempatan::lists('penempatan','id');
 		$jeniss = Pegawai_jenis::lists('jenis','id');
-		return View::make('monitoring.merge_data_pegawai',array(
+		$view = View::make('monitoring.merge_data_pegawai',array(
 			'data'=>$data,
 			'grades'=>$grades,
 			'titles'=>$titles,
@@ -96,6 +96,11 @@ class MonitoringController extends BaseController
 			'jeniss'=>$jeniss,
 			'submit'=>'Tambah'
 			));
+		if(Request::ajax()){
+			$section = $view->renderSections();
+			return $section['content'];
+			}
+		return $view;
 	}
 
 	public function post_edit_data_pegawai(){
@@ -127,9 +132,14 @@ class MonitoringController extends BaseController
 				$Q->where(Input::get('type'),'LIKE',"%".Input::get('q')."%");
 			})->paginate(33);
 		}
-		return View::make('monitoring.data_pegawai',array(
+		$view = View::make('monitoring.data_pegawai',array(
 			'pegawai'=>$pegawai
 			));
+		if(Request::ajax()){
+			$section = $view->renderSections();
+			return $section['content'];
+			}
+		return $view;
 	}
 	/*--------------------------------------------------------------------
 	| Pengaturan data pelatihan
@@ -165,9 +175,14 @@ class MonitoringController extends BaseController
 
 	public function search_pengaturan_data_pelatihan(){
 		$pelatihans = Pelatihan_pelatihan::where('pelatihan','LIKE','%'.Input::get('p').'%')->paginate(21);
-		return View::make('monitoring.pengaturan_data_pelatihan',array(
+		$view = View::make('monitoring.pengaturan_data_pelatihan',array(
 			'pelatihans'=>$pelatihans
 			));
+		if(Request::ajax()){
+			$section = $view->renderSections();
+			return $section['content'];
+			}
+		return $view;
 	}
 
 	/*--------------------------------------------------------------------
@@ -202,11 +217,15 @@ class MonitoringController extends BaseController
 		if($validated->fails()){
 			return Redirect::to('/edit_data_pelatihan/'.$input['id'])->withInput()->withErrors($validated);
 		}
+		$check = Pelatihan_data::where('id_pegawai','=',$input['id_pegawai'])->where('id_pelatihan','=',$input['id_pelatihan'])->count();
+		if($check > 0 && $update->id_pelatihan != $input['id_pelatihan']){
+			return Redirect::to('/data_pelatihan/'.$input['id_pegawai'])->with('alert.error','Pegawai sudah mengikuti pelatihan yg di Input');
+		}
 		$update = $update->update($input);
 		if(!$update){
 			return Redirect::back()->with('alert.error',ERR_DEV);
 		}
-		return Redirect::to('/data_pelatihan/'.$input['id_pegawai']);
+		return Redirect::to('/data_pelatihan/'.$input['id_pegawai'])->with('alert.success','Data berhasil di ubah');
 	}
 
 	public function search_data_pelatihan(){
@@ -218,20 +237,30 @@ class MonitoringController extends BaseController
 		$pelatihans = Pelatihan_data::whereHas('pelatihan',function($Q){
 			$Q->where('pelatihan','LIKE','%'.Input::get('pelatihan').'%')->where('id_pegawai','=',Input::get('p'));
 		})->paginate(21);
-		return View::make('monitoring.data_pelatihan',array(
+		$view = View::make('monitoring.data_pelatihan',array(
 			'id_pegawai'=>Input::get('p'),
 			'pegawai'=>$pegawai,
 			'pelatihans'=>$pelatihans
 			));
+		if(Request::ajax()){
+			$section = $view->renderSections();
+			return $section['content'];
+			}
+		return $view;
 	}
 
 	public function search_pelatihan(){
 		$pelatihans = Pelatihan_data::whereHas('pelatihan',function($q){
 			$q->where('pelatihan','LIKE','%'.Input::get('p').'%');
-		})->paginate(3);
-		return View::make('monitoring.pelatihan',array(
+		})->paginate(21);
+		$view = View::make('monitoring.pelatihan',array(
 			'pelatihans'=>$pelatihans
 			));
+		if(Request::ajax()){
+			$section = $view->renderSections();
+			return $section['content'];
+			}
+		return $view;
 	}
 }
 ?>
