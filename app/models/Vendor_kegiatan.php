@@ -9,7 +9,7 @@ class Vendor_kegiatan extends Eloquent
 			'id_vendor'=>'required|numeric',
 			'kegiatan'=>'required',
 			'nilai'=>'required|numeric|max:5',
-			'tanggal'=>'required|date_format:Y-m-d'
+			'tanggal'=>'required'
 			);
 	}
 
@@ -18,7 +18,6 @@ class Vendor_kegiatan extends Eloquent
 			'required'=>':attribute harus di isi',
 			'max'=>':attribute terlalu besar',
 			'numeric'=>':attribute harus berupa angka',
-			'date_format'=>'Tanggal yang di masukan tidak benar'
 			);
 	}
 
