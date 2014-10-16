@@ -18,12 +18,12 @@
 <div class="row">
 	<div class="col-md-12 center-form text-center">
 		{{Form::open(['url'=>'/search_data_pelatihan','method'=>'GET','class'=>'form-inline dataGet','onsubmit'=>'return false'])}}
-		<div class="form-group">
+		<div class="form-group input-group">
 			{{Form::text('pelatihan','',['class'=>'form-control input-lg'])}}
-		</div>
-		<div class="form-group">
-			{{Form::hidden('p',$id_pegawai)}}
-			<button type="submit" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span></button>
+			<div class="input-group-btn">
+				{{Form::hidden('p',$id_pegawai)}}
+				<button type="submit" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span></button>
+			</div>
 		</div>
 		{{Form::close()}}
 	</div>
@@ -36,7 +36,7 @@
 		<div class="text-center">
 			{{$pelatihans->appends(Input::all())->links()}}
 		</div>
-		<table class="table table-condensed">
+		<table class="table table-condensed table-striped">
 			<thead  class="text-center">
 				<th>Pelatihan</th>
 				<th class="text-center"><span class="glyphicon glyphicon-calendar"></span></th>

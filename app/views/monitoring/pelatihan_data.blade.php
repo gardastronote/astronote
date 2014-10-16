@@ -15,7 +15,7 @@
 			<h1><small>{{$count}} Orang mengikuti pelatihan ini</small></h1>
 			{{$pelatihans->appends(Input::all())->links()}}
 		</div>
-		<table class="table table-condensed">
+		<table class="table table-condensed table-striped">
 			<thead>
 				<tr>
 					<th>Nama</th>

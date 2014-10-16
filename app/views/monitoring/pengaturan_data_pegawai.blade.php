@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-6 ">
 		<div>
 			<div class="list-group">
 				<a class="list-group-item add-list loadContent text-center" onclick="return false" href="{{url('/add_pengaturan_data_pegawai/Pegawai_grade/grade')}}">

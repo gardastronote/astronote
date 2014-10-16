@@ -2,7 +2,7 @@
 @section('content')
 @include('notif')
 <div class="fixed-btn btn-right">
-	<a href="/add_data_pegawai" class="btn-flat btn btn-success btn-lg loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
+	<a href="/add_data_pegawai" class=" btn btn-success  loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row">
 	<div class="col-md-12 text-center">
@@ -15,11 +15,11 @@
 			'job'=>'Job',
 			],'',['class'=>'form-control input-lg'])}}
 		</div>
-		<div class="form-group">
+		<div class="form-group input-group">
 			{{Form::text('q','',['class'=>'form-control input-lg'])}}
-		</div>
-		<div class="form-group">
-			<button type="submit" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span></button>
+			<div class="input-group-btn">
+				<button type="submit" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span></button>
+			</div>
 		</div>
 		{{Form::close()}}
 	</div>
@@ -32,7 +32,7 @@
 		<div class="text-center">
 			{{$pegawai->appends(Input::all())->links()}}
 		</div>
-		<table class="table table-condensed">
+		<table class="table table-condensed table-striped">
 			<thead>
 				<th class="text-center">NIP</th>
 				<th>Nama</th>
