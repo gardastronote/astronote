@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
-<div class="row">
+<div class="row margin-top">
 	<div class="col-md-8 paginate-default">
 		{{$datas->links()}}
 	</div>

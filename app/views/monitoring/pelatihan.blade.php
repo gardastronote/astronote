@@ -4,11 +4,11 @@
 	<div class="col-md-12">
 		<div class="text-center">
 			{{Form::open(['url'=>'/search_pelatihan','class'=>'form-inline dataGet center-form','method'=>'get','onsubmit'=>'return false'])}}
-			<div class="form-group @if($errors->has('pelatihan')) has-error @endif">
+			<div class="form-group input-group @if($errors->has('pelatihan')) has-error @endif">
 				{{Form::text('p','',['class'=>'input-lg form-control'])}}
-			</div>
-			<div class="form-group">
-				<button class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span></button>
+				<div class="input-group-btn">
+					<button class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span></button>
+				</div>
 			</div>
 			{{Form::close()}}
 		</div>
@@ -22,7 +22,7 @@
 		<div class="text-center">
 			{{$pelatihans->appends(Input::all())->links()}}
 		</div>
-		<table class="table">
+		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Nama</th>

@@ -10,14 +10,15 @@
 			],Input::get('jenis'),['class'=>'form-control input-lg'])}}
 		</div>
 		@endif
-		<div class="form-group">
+		<div class="form-group input-group">
 			{{Form::text('nama',Input::get('nama'),['class'=>'form-control input-lg'])}}
-		</div>
-		<div class="form-group">
+
 			@if(isset($jenis))
 			{{Form::hidden('jenis',$jenis)}}
 			@endif
-			<button class="btn btn-lg btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+			<span class="input-group-btn">
+				<button class="btn btn-lg btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+			</span>
 		</div>
 		{{Form::close()}}
 	</div>

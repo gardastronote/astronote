@@ -15,7 +15,7 @@ class AppController extends BaseController
 			'password'=>$input['password']
 			);
 		if(Auth::attempt($data)){
-			return Redirect::to('/');
+			return Redirect::to('/dashboard');
 		}
 		return Redirect::back()->with('alert.error','Username atau Password Salah');
 	}
