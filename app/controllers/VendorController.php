@@ -49,7 +49,7 @@ class VendorController extends BaseController
 		if(!$edit){
 			return Redirect::to('/vendor/edit/',$input['id'])->with('alert-error',ERR_DEV);
 		}
-		return Redirect::to('/vendor/'.$input['jenis'])->with('alert.success','Data berhasil di ubah');
+		return Redirect::to('/vendor/data/'.$input['id'])->with('alert.success','Data berhasil di ubah');
 	}
 
 	public function delete($id){

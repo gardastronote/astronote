@@ -6,11 +6,6 @@
 </div>
 @include('monitoring.vendor.chart_data_vendor')
 @include('monitoring.vendor.search_data_vendor')
-<div class="row">
-	<div class="col-md-12 text-center">
-		{{$vendors->links()}}
-	</div>
-</div>
 @include('monitoring.vendor.vendor_data')
 <script type="text/javascript">
 	window.load = loadChart();

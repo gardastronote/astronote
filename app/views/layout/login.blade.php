@@ -3,6 +3,9 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/login.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/credit.css')}}">
+	<script type="text/javascript" src="{{asset('js/jquery-2.1.1.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 </head>
 <body>
 <div class="container">
@@ -49,5 +52,9 @@
 		</div>
 	</div>
 </div>
+<div class="astro-dev">
+	<p>&copy; <strong><a data-toggle="modal" data-target="#credit" href="#">Art Stream of Note</a></strong> <img src="{{asset('/images/astro-note.png')}}"></p>
+</div>
+@include('credit')
 </body>
 </html>

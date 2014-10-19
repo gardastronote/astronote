@@ -98,6 +98,9 @@ body::-webkit-scrollbar-thumb:active{
 | Dashboard
 |-------------------------------------------------------------------------
 */
+.brand-logo{
+	margin-left: 63.75px;
+}
 .panel-green{
 	background-color: #46C246;
 }
@@ -178,6 +181,17 @@ body::-webkit-scrollbar-thumb:active{
 | Button
 |-------------------------------------------------------------------------
 */
+.btn-top-left{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.btn-top-right{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 15px;
+}
 .add-list{
   background-color: #5cb85c;
   color: #FFF !important;

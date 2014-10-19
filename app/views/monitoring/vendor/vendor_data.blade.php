@@ -1,4 +1,9 @@
 <div class="row">
+	<div class="col-md-12 text-center">
+		{{$vendors->links()}}
+	</div>
+</div>
+<div class="row">
 	<div class="col-md-12">
 		@if(!count($vendors)>0)
 		<h1 class="text-center">Tidak ada vendor</h1>

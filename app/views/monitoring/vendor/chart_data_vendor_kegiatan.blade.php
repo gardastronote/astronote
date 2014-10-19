@@ -1,6 +1,5 @@
 <div class="row">
 	<div class="text-center col-md-12">
-		<h1>{{$vendor->nama}}</h1>
 		<h1><small>Total Rata-Rata {{ucfirst($vendor->jenis)}} : {{round($average,2)}}</small></h1>
 		<canvas height="210" width="760" id="bar"></canvas>
 	</div>

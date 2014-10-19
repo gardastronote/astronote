@@ -12,6 +12,33 @@
 				@if($errors->has('nama'))<p class="help-block">{{$errors->first('nama')}}</p>@endif
 			</div>
 		</div>
+		<div class="form-group @if($errors->has('nama')) has-error @endif ">
+			{{Form::label('alamat','Alamat Vendor',['class'=>'col-md-4 control-label'])}}
+			<div class="col-md-4"> 
+				{{form::text('alamat',isset($data->alamat)?$data->alamat:'',['class'=>'form-control input-lg'])}}
+			</div>
+			<div class="col-md-4"> 
+				@if($errors->has('alamat'))<p class="help-block">{{$errors->first('alamat')}}</p>@endif
+			</div>
+		</div>
+		<div class="form-group @if($errors->has('nama')) has-error @endif ">
+			{{Form::label('phone','Nomor Telefon Vendor',['class'=>'col-md-4 control-label'])}}
+			<div class="col-md-4"> 
+				{{form::text('phone',isset($data->phone)?$data->phone:'',['class'=>'form-control input-lg'])}}
+			</div>
+			<div class="col-md-4"> 
+				@if($errors->has('phone'))<p class="help-block">{{$errors->first('phone')}}</p>@endif
+			</div>
+		</div>
+		<div class="form-group @if($errors->has('nama')) has-error @endif ">
+			{{Form::label('keterangan','Keterangan Vendor',['class'=>'col-md-4 control-label'])}}
+			<div class="col-md-4"> 
+				{{form::textarea('keterangan',isset($data->keterangan)?$data->keterangan:'',['class'=>'form-control input-lg','rows'=>'2'])}}
+			</div>
+			<div class="col-md-4"> 
+				@if($errors->has('keterangan'))<p class="help-block">{{$errors->first('keterangan')}}</p>@endif
+			</div>
+		</div>
 		<div class="form-group @if($errors->has('jenis')) has-error @endif">
 			{{Form::label('jenis','Jenis Vendor',['class'=>'col-md-4 control-label'])}}
 			<div class="col-md-4"> 

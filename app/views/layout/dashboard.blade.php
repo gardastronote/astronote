@@ -5,6 +5,7 @@
 	@section('style')
 	<link rel="stylesheet" type="text/css" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/dashboard.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/credit.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('bootstrap/datepicker/datepicker3.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
 	@show
@@ -35,6 +36,7 @@
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong class="caret"></strong> {{Auth::user()->full_name}} <img class="avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}"></a>
 			<ul class="dropdown-menu pull-right">
 				<li><a class="dropdown-update loadContent" href="{{url('/user/setting')}}"><span class="glyphicon glyphicon-cog"></span> Pengaturan</a></li>
+				<li><a data-toggle="modal" data-target="#credit" class="dropdown-update" href="#"><img class="astro-drop" src="{{asset('/images/astro-note.png')}}"> Credit</a></li>
 				<li><a class="dropdown-delete" href="{{action('AppController@logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			</ul>
 		</li>
@@ -44,7 +46,7 @@
 	<ul class="nav navbar-nav side-nav">
 		<li><a id="home" href="/dashboard" class="loadContent"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 		<li>
-			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="fa fa-link"></i> Daftar Vendor<i class="caret"></i></a>
+			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="caret"></i> <i class="fa fa-link"></i> Daftar Vendor</a>
 			<ul id="vendor-menu" class="dropdown-side collapse">
 				<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i>  Vendor</a></li>
 				<li><a href="/vendor/pelatihan" class="loadContent"><i class="fa fa-book"></i> Pelatihan</a></li>
@@ -56,7 +58,7 @@
 		
 		@if(Auth::user()->access == MTR || Auth::user()->access == ADMIN)
 		<li>
-			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><i class="fa fa-users"></i> Daftar Pegawai<i class="caret"></i></a>
+			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><i class="caret"></i> <i class="fa fa-users"></i> Daftar Pegawai</a>
 			<ul id="data_pegawai" class="dropdown-side collapse">
 				<li><a class="loadContent" id="pegawai" href="/data_pegawai"><i class="fa fa-user"></i> Data Pegawai</a></li>
 				<li><a class="loadContent" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
@@ -65,7 +67,7 @@
 		@endif
 		@if(Auth::user()->access == MTR || Auth::user()->access == ADMIN)
 		<li>
-			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="fa fa-institution"></i> Daftar Pelatihan<i class="caret"></i></a>
+			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="caret"></i> <i class="fa fa-institution"></i> Daftar Pelatihan</a>
 			<ul id="data_pelatihan" class="dropdown-side collapse">
 				<li><a class="loadContent" href="/pengaturan_data_pelatihan"> <i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
 				<li><a class="loadContent" id="pegawai" href="/pelatihan"> <span class="glyphicon glyphicon-tasks"></span> Data Pelatihan</a></li>
@@ -81,7 +83,6 @@
 	</div>
 @section('script')
 <script type="text/javascript" src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('semantic/js/semantic.min.js')}}"></script>
 <script type="text/javascript">
 var content = $('#content');
 var loading = "<img style=\"margin-left:45%;margin-top:20%;\" src='{{asset('images/loading.gif')}}'>";
@@ -130,5 +131,6 @@ var loading = "<img style=\"margin-left:45%;margin-top:20%;\" src='{{asset('imag
 	});
 </script>
 @show
+@include('credit')
 </body>
 </html>

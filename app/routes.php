@@ -39,7 +39,6 @@ Route::group(array('before'=>'auth'),function(){
 		function(){
 			$view = View::make('user.merge_user',array(
 				'update'=>false,
-				'load'=>'dataSubmit',
 				'type'=>'admin',
 				'url'=>'/user/add',
 				'button'=>'Tambah'
@@ -113,7 +112,32 @@ Route::group(array('before'=>'auth'),function(){
 	|-------------------------------------------------------------------------
 	*/
 	Route::get('/dashboard',function(){
-		$view = View::make('dashboard');
+		//donut chart
+		$pelatihan = Vendor_kegiatan::whereHas('vendor_data',function($q){
+			$q->where('jenis','=','pelatihan');
+		})->avg('nilai');
+		$catering = Vendor_kegiatan::whereHas('vendor_data',function($q){
+			$q->where('jenis','=','catering');
+		})->avg('nilai');
+		$hotel = Vendor_kegiatan::whereHas('vendor_data',function($q){
+			$q->where('jenis','=','hotel');
+		})->avg('nilai');
+		//count pelatihan
+		$count_pelatihan = Vendor_data::where('jenis','=','pelatihan')->count();
+		//count catering
+		$count_catering = Vendor_data::where('jenis','=','catering')->count();
+		//count hotel
+		$count_hotel = Vendor_data::where('jenis','=','hotel')->count();
+		$view = View::make('dashboard',array(
+			//donut chart
+			'pelatihan'=>$pelatihan,
+			'catering'=>$catering,
+			'hotel'=>$hotel,
+			//count
+			'count_pelatihan'=>$count_pelatihan,
+			'count_catering'=>$count_catering,
+			'count_hotel'=>$count_hotel
+			));
 
 		if(Request::ajax()){
 		$section = $view->renderSections();
@@ -455,7 +479,7 @@ Route::group(array('before'=>'auth'),function(){
 		Route::get('/vendor/search','VendorController@search');
 		Route::get('/vendor',function(){
 			$average = Vendor_kegiatan::avg('nilai');
-			$vendors = Vendor_data::orderBy('id','DESC')->get();
+			$vendors = Vendor_data::orderBy('updated_at','DESC')->paginate(17);
 			//line chart
 			$dates = Vendor_kegiatan::select(DB::raw('MONTHNAME(tanggal) bulan,YEAR(tanggal)tahun,AVG(nilai) as average'))->where('tanggal', '>=',(DB::raw('CURDATE() - INTERVAL 1 YEAR')))->groupBy('bulan')->groupBy('tahun')->orderBy('tanggal','ASC')->get();
 			//donut chart

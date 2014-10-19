@@ -22,9 +22,9 @@
 		}
 		</style>
 		<ul class="list-color">
-			<li><h4><span style="width:20px;height:20px;display:inline-block;background-color:rgba(0,255,0,1)"></span> Pelatihan : {{$pelatihan}}</h4></li>
-			<li><h4><span style="width:20px;height:20px;display:inline-block;background-color:rgba(255,0,0,1)"></span> Catering : {{$catering}}</h4></li>
-			<li><h4><span style="width:20px;height:20px;display:inline-block;background-color:rgba(255,128,0,1)"></span> Hotel : {{$hotel}}</h4></li>
+			<li><h4><span style="width:20px;height:20px;border-radius:10px;display:inline-block;background-color:rgba(0,255,0,1)"></span> Pelatihan : {{$pelatihan}}</h4></li>
+			<li><h4><span style="width:20px;height:20px;border-radius:10px;display:inline-block;background-color:rgba(255,0,0,1)"></span> Catering : {{$catering}}</h4></li>
+			<li><h4><span style="width:20px;height:20px;border-radius:10px;display:inline-block;background-color:rgba(255,128,0,1)"></span> Hotel : {{$hotel}}</h4></li>
 		</ul>
 	</div>
 </div>

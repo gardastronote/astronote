@@ -1,0 +1,20 @@
+#credit img{
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+}
+
+#credit h4{
+	color: #000;
+}
+.astro-dev a{
+	color: #fff;
+}
+.astro-dev a:hover{
+	text-decoration: none;
+}
+
+.astro-drop{
+	width: 16px;
+	height: 16px;
+}
