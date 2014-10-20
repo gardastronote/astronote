@@ -1,8 +1,14 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
+<div class="row">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a>
+		<li class="active"><i class="fa fa-users"></i> Daftar Pegawai</li>
+	</ol>
+</div>
 <div class="fixed-btn btn-right">
-	<a href="/add_data_pegawai" class=" btn btn-success  loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
+	<a href="/add_data_pegawai" class=" btn btn-lg btn-success loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row">
 	<div class="col-md-12 text-center">

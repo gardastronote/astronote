@@ -25,7 +25,7 @@
 						<?php $glyph = '<i class="fa fa-book"></i>'; ?>
 					@elseif($vendor->jenis == 'catering')
 						<?php $jenis = 'danger'; ?>
-						<?php $glyph = '<i class="fa fa-spoon"></i>'; ?>
+						<?php $glyph = '<i class="glyphicon glyphicon-cutlery"></i>'; ?>
 					@else
 						<?php $jenis = 'warning'; ?>
 						<?php $glyph = '<i class="fa fa-building"></i>'; ?>

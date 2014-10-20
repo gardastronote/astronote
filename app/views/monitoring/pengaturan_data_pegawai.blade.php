@@ -1,6 +1,13 @@
 @extends('layout.dashboard')
 @section('content')
 <div class="row">
+	<div class="col-md-12">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li class="active"><i class="fa fa-cog"></i> Atur Data Pegawai</li>
+			</ol>
+		</div>
+	</div>
 	<div class="col-md-6 ">
 		<div>
 			<div class="list-group">

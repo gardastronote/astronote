@@ -1,13 +1,20 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
+<div class="row">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a>
+		<li class="active"><a href="/data_pegawai" class="loadContent"><i class="fa fa-users"></i> Daftar Pegawai</a></li>
+		<li class="active"><i class="fa fa-book"></i> Daftar Pelatihan</li>
+	</ol>
+</div>
 @if(count($pelatihans)>0)
 <div style="margin-top:50px" class="fixed-btn btn-right">
-	<a class="btn btn-primary btn-lg btn-flat" href="{{url('/excel_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-download-alt"></span></a>
+	<a class="btn btn-primary" href="{{url('/excel_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-download-alt"></span> Ms. Excel</a>
 </div>
 @endif
 <div class="fixed-btn btn-right">
-	<a class="btn btn-success btn-lg btn-flat loadContent" onclick="return false" href="{{url('/add_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-plus"></span></a>
+	<a class="btn btn-success btn-lg loadContent" onclick="return false" href="{{url('/add_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row">
 	<div class="col-md-12 text-center">

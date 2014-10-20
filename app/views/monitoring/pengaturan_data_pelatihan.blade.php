@@ -1,9 +1,9 @@
 @extends('layout.dashboard')
 @section('content')
 <div class="fixed-btn btn-right">
-	<a href="/add_pengaturan_data_pelatihan" class="btn-flat btn btn-success btn-lg loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
+	<a href="/add_pengaturan_data_pelatihan" class="btn btn-success btn-lg loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
-<div class="row ">
+<div class="row">
 	<div class="col-md-12">
 		<div class="text-center">
 			{{Form::open(['url'=>'/search_pengaturan_data_pelatihan','class'=>'form-inline dataGet center-form','method'=>'get','onsubmit'=>'return false'])}}

@@ -1,16 +1,21 @@
 @extends('layout.dashboard')
 @section('content')
 
-<div class="row">
+<div class="row margin-top">
  <div class="col-md-12">
   <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">
-            Dashboard <small>Overview</small>
-        </h1>
+    	<h3 class="page-header">
+    	<img class="welcome-avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}">
+        
+        	Welcome, {{Auth::user()->full_name}}<br>
+            <h1>Dashboard <small>Overview</small></h1>
+        </h3>
         <ol class="breadcrumb">
         	<li class="active">
-                <i class="fa fa-link"></i> Vendors
+        		<a href="/vendor" class="loadContent">
+                	<i class="fa fa-link"></i> Vendors
+            	</a>
             </li>
         </ol>
     </div>
@@ -28,7 +33,7 @@
 					</div>
 					<div class="col-xs-9 text-right">
 						<div class="huge">{{$count_pelatihan}}</div>
-						<div><span class="glyphicon glyphicon-thumbs-up"></span> {{round($pelatihan,2)}}</div>
+						<div><span class="glyphicon glyphicon-thumbs-up"></span> <u>{{round($pelatihan,2)}}</u></div>
 						<div>Vendor Pelatihan</div>
 					</div>
 				</div>	
@@ -45,32 +50,36 @@
 	</div><!--Kotak pelatihan over-->
 
 	<!--Catering-->
-    <div class="col-lg-4 col-md-4">
-   		<div class="panel panel-red">
-   			 <div class="panel-heading">
-   	  			<div class="row">
-   	  				<div class="col-xs-3">
-   	  	 				<i class="fa fa-spoon fa-5x"></i>
-   	  				</div>
-   	  				<div class="col-xs-9 text-right">
-   	  	 				<div class="huge">{{$count_catering}}</div>
-						<div><span class="glyphicon glyphicon-thumbs-up"></span> {{round($catering,2)}}</div>
-   	  	 				<div>Vendor Catering</div>
-   	  				</div>
-   	  			</div>
-   	 		 </div>
-   	  		 <a href="/vendor/catering" class="loadContent">
-   			  <div class="panel-footer">
-   	  			<span class="pull-left">Lihat Selengkapnya</span>
-   	  			<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-   	  			<div class="clearfix"></div>
-   	 		  </div>	
-   	 		 </a>
-   		</div>
-   	</div><!-- kotak catering over-->
+	<div class="col-lg-4 col-md-4">
+		<div class="panel panel-red">
+			<a href="/vendor/catering" class="loadContent">
+		 	<div class="panel-heading">
+				<div class="row">
+					<div class="col-xs-3">
+						<i class="glyphicon glyphicon-cutlery fa-5x"></i>	
+					</div>
+					<div class="col-xs-9 text-right">
+						<div class="huge">{{$count_catering}}</div>
+						<div><span class="glyphicon glyphicon-thumbs-up"></span> <u>{{round($catering,2)}}</u></div>
+						<div>Vendor Pelatihan</div>
+					</div>
+				</div>	
+			</div>
+		</a>
+			<a href="/vendor/catering" class="loadContent">
+			<div class="panel-footer">
+				<span class="pull-left">Lihat Selengkapnya</span>
+				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+				<div class="clearfix"></div>	
+			</div>
+		 	</a>
+		</div>
+	</div><!--Kotak catering over-->
+
    	<!--Hotel-->
 	<div class="col-lg-4 col-md-4">
 		<div class="panel panel-orange">
+			<a href="/vendor/hotel" class="loadContent">
 		 	<div class="panel-heading">
 				<div class="row">
 					<div class="col-xs-3">
@@ -78,11 +87,12 @@
 					</div>
 					<div class="col-xs-9 text-right">
 						<div class="huge">{{$count_hotel}}</div>
-						<div><span class="glyphicon glyphicon-thumbs-up"></span> {{round($hotel,2)}}</div>
-						<div>Vendor Hotel</div>
+						<div><span class="glyphicon glyphicon-thumbs-up"></span> <u>{{round($hotel,2)}}</u></div>
+						<div>Vendor Pelatihan</div>
 					</div>
 				</div>	
 			</div>
+		</a>
 			<a href="/vendor/hotel" class="loadContent">
 			<div class="panel-footer">
 				<span class="pull-left">Lihat Selengkapnya</span>
@@ -172,7 +182,7 @@
 
 
 					<!--Data Pegawai Over-->
-						<a href="#">
+						<a href="/data_pegawai" class="loadContent">
 							<div class="pull-right">
 								Lihat Selengkapnya <i class="fa fa-arrow-circle-right"></i>
 							</div>
