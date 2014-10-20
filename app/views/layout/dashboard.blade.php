@@ -5,7 +5,6 @@
 	@section('style')
 	<link rel="stylesheet" type="text/css" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/dashboard.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/credit.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('bootstrap/datepicker/datepicker3.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
 	@show
@@ -36,7 +35,6 @@
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong class="caret"></strong> {{Auth::user()->full_name}} <img class="avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}"></a>
 			<ul class="dropdown-menu pull-right">
 				<li><a class="dropdown-update loadContent" href="{{url('/user/setting')}}"><span class="glyphicon glyphicon-cog"></span> Pengaturan</a></li>
-				<li><a data-toggle="modal" data-target="#credit" class="dropdown-update" href="#"><img class="astro-drop" src="{{asset('/images/astro-note.png')}}"> Credit</a></li>
 				<li><a class="dropdown-delete" href="{{action('AppController@logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			</ul>
 		</li>
@@ -131,6 +129,5 @@ var loading = "<img style=\"margin-left:45%;margin-top:20%;\" src='{{asset('imag
 	});
 </script>
 @show
-@include('credit')
 </body>
 </html>
