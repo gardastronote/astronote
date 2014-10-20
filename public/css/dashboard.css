@@ -27,7 +27,7 @@ body::-webkit-scrollbar-thumb:active{
 	background-color: #ddd;
 }
 .margin-top{
-	margin-top: 50px;
+	margin-top: -30px;
 }
 .navbar-brand img{
 	max-width: 50px;
@@ -93,6 +93,19 @@ body::-webkit-scrollbar-thumb:active{
 	padding-left: 225px;
 }
 
+.top{
+	position: fixed;
+	top:0px;
+	left:0px;
+}
+.black a{
+	color: black;
+	text-decoration: underline;
+}
+.black a:hover{
+	text-decoration: none;
+}
+
 /*
 |-------------------------------------------------------------------------
 | Dashboard
@@ -118,32 +131,37 @@ body::-webkit-scrollbar-thumb:active{
 	background-color: #ddd;
 }
 .panel-orange{
-	background-color: #FF9626;
-	color:white;
+	background-color: #FA8100;
 }
 .panel-orange a{
-	color: #FF9626;
+	color: white;
 }
-.panel-orange a:hover{
-	color: #C46500;
+.panel-orange:hover{
+	background-color: #E37500 !important;
+}
+.panel-orange .panel-footer{
+	color: #FA8100 !important;
 }
 .panel-orange .panel-footer:hover{
+	color: #FA8100;
 	background-color: #ddd;
 }
 .panel-red{
-	background-color: #FF4040;
-	color:white;
+	background-color: #F01111;
 }
 .panel-red a{
-	color: #FF4040;
+	color: white;
 }
-.panel-red a:hover{
-	color: #C42F2F;
+.panel-red:hover{
+	background-color: #D62B2B !important;
+}
+.panel-red .panel-footer{
+	color: #F01111 !important;
 }
 .panel-red .panel-footer:hover{
+	color: #F01111;
 	background-color: #ddd;
 }
-
 .huge {
     font-size: 40px;
 }
@@ -265,7 +283,9 @@ body::-webkit-scrollbar-thumb:active{
 }
 
 .welcome-avatar{
-	max-height: 160px;
+	height: 100px;
+	width: 100px;
+	border-radius: 65px;
 }
 
 /*

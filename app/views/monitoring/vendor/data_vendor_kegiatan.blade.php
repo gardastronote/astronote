@@ -2,7 +2,7 @@
 @section('content')
 @include('notif')
 <div class="fixed-btn btn-right">
-	<a class="btn btn-success btn-flat btn-lg loadContent" href="/vendor/data/{{$id}}/add"><span class="glyphicon glyphicon-plus"></span></a>
+	<a class="btn btn-success btn-lg loadContent" href="/vendor/data/{{$id}}/add"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="dropdown btn-top-left">
 	<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>

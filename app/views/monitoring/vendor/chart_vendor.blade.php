@@ -1,6 +1,13 @@
 @extends('layout.dashboard')
 @section('content')
 <div class="row">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a>
+		<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i> Vendors</a></li>
+		<li class="active"><i class="fa fa-line-chart"></i> Chart</li>
+	</ol>
+</div>
+<div class="row">
 	<div class="col-md-12 text-center">
 		<h3>Total Rata-rata penilaian vendor dalam 12 Bulan terakhir</h3>
 		<canvas height="120" width="760" id="lineVendor"></canvas>

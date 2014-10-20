@@ -23,7 +23,7 @@
 	<ul class="nav navbar-nav pull-right">
 		@if(Auth::user()->access == ADMIN)
 		<li class="dropdown">
-			<a data-toggle="dropdown" href="#"><b class="caret"></b> User <i class="fa fa-users"></i></a>
+			<a data-toggle="dropdown" href="#"><i class="caret"></i> User <i class="fa fa-users"></i></a>
 			<ul class="dropdown-menu">
 				<li><a class="dropdown-success loadContent" href="{{url('/user/add')}}"><i class="fa fa-user"></i> Tambah User</a></li>
 				<li class="divider"></li>
@@ -32,7 +32,7 @@
 		</li>
 		@endif
 		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong class="caret"></strong> {{Auth::user()->full_name}} <img class="avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}"></a>
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="caret"></i> {{Auth::user()->full_name}} <img class="avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}"></a>
 			<ul class="dropdown-menu pull-right">
 				<li><a class="dropdown-update loadContent" href="{{url('/user/setting')}}"><span class="glyphicon glyphicon-cog"></span> Pengaturan</a></li>
 				<li><a class="dropdown-delete" href="{{action('AppController@logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
@@ -40,6 +40,7 @@
 		</li>
 	</ul>
 </nav>
+<!--SIDEBAR-->
 <aside class="navbar-inverse collapse navbar-collapse navbar-ex1-collapse">
 	<ul class="nav navbar-nav side-nav">
 		<li><a id="home" href="/dashboard" class="loadContent"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
@@ -48,7 +49,7 @@
 			<ul id="vendor-menu" class="dropdown-side collapse">
 				<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i>  Vendor</a></li>
 				<li><a href="/vendor/pelatihan" class="loadContent"><i class="fa fa-book"></i> Pelatihan</a></li>
-				<li><a href="/vendor/catering" class="loadContent"><i class="fa fa-spoon"></i> Catering</a></li>
+				<li><a href="/vendor/catering" class="loadContent"><i class="glyphicon glyphicon-cutlery"></i> Catering</a></li>
 				<li><a href="/vendor/hotel" class="loadContent"><i class="fa fa-building"></i> Hotel</a></li>
 				<li><a href="/vendor/chart" class="loadContent"><i class="fa fa-line-chart"></i> Chart</a></li>
 			</ul>
@@ -58,7 +59,7 @@
 		<li>
 			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><i class="caret"></i> <i class="fa fa-users"></i> Daftar Pegawai</a>
 			<ul id="data_pegawai" class="dropdown-side collapse">
-				<li><a class="loadContent" id="pegawai" href="/data_pegawai"><i class="fa fa-user"></i> Data Pegawai</a></li>
+				<li><a class="loadContent" id="pegawai" href="/data_pegawai"><i class="fa fa-user"></i> Daftar Pegawai</a></li>
 				<li><a class="loadContent" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
 			</ul>
 		</li> 
@@ -74,6 +75,7 @@
 		@endif
 	</ul>
 </aside>
+<!--SIDEBAR OVER-->
 	<div class="content-wrapper">
 		<div class="container-fluid" id="content">
 			@yield('content')
