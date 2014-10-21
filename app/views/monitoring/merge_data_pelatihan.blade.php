@@ -1,6 +1,13 @@
-
 @extends('layout.dashboard')
 @section('content')
+<div class="row margin-top-breadcrumb>
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li><a href="/data_pegawai" class="loadContent"><i class="fa fa-users"></i> Daftar Pegawai</a></li>
+		<li><a href="{{url('/data_pelatihan/'.$pegawai->id)}}" class="loadContent"><i class="fa fa-user"></i> {{$pegawai->nama}}</a></li>
+		<li class="active"><i class="fa fa-plus"></i> Alter Pelatihan</li>
+	</ol>
+</div>
 <div class="row">
 	<div class="col-md-12"> 
 		{{Form::open(['url'=>$url,'class'=>'form-horizontal dataSubmit','onsubmit'=>'return false'])}}

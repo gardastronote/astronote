@@ -1,11 +1,17 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
-
 <div class="fixed-btn btn-right">
 	<a class="btn btn-success loadContent" href="/vendor/data/{{$id}}/add"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
-
+<div class="row margin-top-breadcrumb">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i> Vendors</a></li>
+		<li><a href="{{url('/vendor/'.$vendor->jenis)}}" class="loadContent"><i class="{{$jenis}}"></i> {{ucfirst($vendor->jenis)}}</a></li>
+		<li><i class="{{$jenis}}"></i> {{$vendor->nama}}</li>
+	</ol>
+</div>
 <div class="dropdown btn-top-left">
 	<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
 	<ul class="dropdown-menu">
@@ -24,14 +30,7 @@
 			<?php $jenis = 'warning'; ?>
 			<?php $glyph = '<i class="fa fa-building"></i>'; ?>
 		@endif
-<div class="row margin-top-breadcrumb">
-	<ol class="breadcrumb">
-		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-		<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i> Vendors</a></li>
-		<li><a href="#">{{$glyph}} {{ucfirst($vendor->jenis)}}</a></li>
-		<li class="active"><i class="fa fa-book"></i> {{$vendor->nama}}</li>
-	</ol>
-</div>
+
 <div class="row">
 	<div class="col-md-6">
 		<h1>{{$vendor->nama}}</h1>
