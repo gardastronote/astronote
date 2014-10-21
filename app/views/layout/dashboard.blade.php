@@ -43,7 +43,7 @@
 <!--SIDEBAR-->
 <aside class="navbar-inverse collapse navbar-collapse navbar-ex1-collapse">
 	<ul class="nav navbar-nav side-nav">
-		<li><a id="home" href="/dashboard" class="loadContent"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+		<li><a id="home" href="/dashboard"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 		<li>
 			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="caret"></i> <i class="fa fa-link"></i> Daftar Vendor</a>
 			<ul id="vendor-menu" class="dropdown-side collapse">

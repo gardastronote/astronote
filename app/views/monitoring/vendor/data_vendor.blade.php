@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="fixed-btn btn-right">
-	<a data-content="Tambah Vendor" class="btn btn-success btn-lg loadContent" href="/vendor/add"><span class="glyphicon glyphicon-plus"></span> </a>
+	<a data-content="Tambah Vendor" class="btn btn-success loadContent" href="/vendor/add"><span class="glyphicon glyphicon-plus"></span> </a>
 </div>
 <div class="row">
 	<ol class="breadcrumb">

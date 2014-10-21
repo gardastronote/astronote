@@ -14,7 +14,7 @@
 </div>
 @endif
 <div class="fixed-btn btn-right">
-	<a class="btn btn-success btn-lg loadContent" onclick="return false" href="{{url('/add_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-plus"></span></a>
+	<a class="btn btn-success loadContent" onclick="return false" href="{{url('/add_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row">
 	<div class="col-md-12 text-center">
