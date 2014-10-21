@@ -203,6 +203,7 @@ body::-webkit-scrollbar-thumb:active{
 	position: absolute;
 	top: 0;
 	left: 0;
+	margin: 15px;
 }
 .btn-top-right{
 	position: absolute;

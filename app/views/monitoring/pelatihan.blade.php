@@ -1,6 +1,12 @@
 @extends('layout.dashboard')
 @section('content')
 <div class="row">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li class="active"><i class="glyphicon glyphicon-tasks"></i> Data Pelatihan</li>
+	</ol>
+</div>
+<div class="row">
 	<div class="col-md-12">
 		<div class="text-center">
 			{{Form::open(['url'=>'/search_pelatihan','class'=>'form-inline dataGet center-form','method'=>'get','onsubmit'=>'return false'])}}
@@ -28,6 +34,7 @@
 					<th>Nama</th>
 					<th>Pelatihan</th>
 					<th class="text-center"><span class="glyphicon glyphicon-calendar"></span></th>
+					<th class="text-center"><span class="glyphicon glyphicon-tasks"></span></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,6 +43,13 @@
 					<td>{{$pelatihan->pegawai->nama}}</td>
 					<td>{{$pelatihan->pelatihan->pelatihan}}</td>
 					<td class="text-center">{{$pelatihan->tanggal}}</td>
+					<td class="dropdown">
+						<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
+						<ul class="dropdown-menu pull-right">
+							<li><a class="dropdown-update loadContent" href="{{url('/edit_data_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
+							<li><a class="dropdown-delete loadContent" href="{{url('/delete_data_pelatihan/'.$pelatihan->id_pegawai,$pelatihan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+						</ul>
+					</td>
 				</tr>
 				@endforeach
 			</tbody>

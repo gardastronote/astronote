@@ -14,6 +14,7 @@ header("Content-Disposition: attachment; filename=$pegawai->nama.xls");
 			<th>Lama (Hari)</th>
 			<th>Tahun</th>
 			<th>Tempat</th>
+			<th>Nomor Surat Tugas</th>
 			<th>Lulus/Tidak</th>
 			<th>Score</th>
 		</tr>
@@ -25,6 +26,8 @@ header("Content-Disposition: attachment; filename=$pegawai->nama.xls");
 			<td>{{$pelatihan->tanggal}}</td>
 			<td>{{$pelatihan->lama}}</td>
 			<td>{{$pelatihan->tahun}}</td>
+			<td>{{$pelatihan->tempat}}</td>
+			<td>{{$pelatihan->no_surat_penugasan}}</td>
 			<td>{{$pelatihan->lulus}}</td>
 			<td>{{$pelatihan->score}}</td>
 		</tr>

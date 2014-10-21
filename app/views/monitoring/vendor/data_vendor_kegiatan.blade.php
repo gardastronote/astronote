@@ -12,7 +12,7 @@
 		<li><i class="{{$jenis}}"></i> {{$vendor->nama}}</li>
 	</ol>
 </div>
-<div class="dropdown btn-top-left">
+<div class="dropdown">
 	<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
 	<ul class="dropdown-menu">
 		<li><a class="dropdown-update loadContent" href="{{url('/vendor/edit/'.$vendor->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
