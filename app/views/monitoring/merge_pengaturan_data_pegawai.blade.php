@@ -1,6 +1,13 @@
 @extends('layout.dashboard')
 @section('content')
 <div class="row">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li><a href="/pengaturan_data_pelatihan" class="loadContent"><i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
+		<li class="active"><i class="fa fa-plus"></i> Alter data pegawai</li>
+	</ol>
+</div>
+<div class="row">
 	<div class="col-md-12 text-center"> 
 		{{Form::open(['url'=>$url,'method'=>'post','class'=>'form-inline dataSubmit','onsubmit'=>'return false'])}}
 		<div class="form-group @if($errors->has($type)) has-error @endif">
