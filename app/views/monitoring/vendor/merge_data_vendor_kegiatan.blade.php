@@ -1,6 +1,15 @@
 @extends('layout.dashboard')
 @section('content')
 <div class="row">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a>
+		<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i> Vendors</a></li>
+		<li><a href="{{url('/vendor/'.$vendor->jenis)}}" class="loadContent"><i class="{{$jenis}}"></i> {{ucfirst($vendor->jenis)}}</a></li>
+		<li><a href="{{url('/vendor/data/'.$vendor->id)}}" class="loadContent"><i class="{{$jenis}}"></i> {{$vendor->nama}}</a></li>
+		<li><i class="fa fa-plus"></i> Alter Kegiatan </li>
+	</ol>
+</div>
+<div class="row">
 	<div class="col-md-12">
 		{{Form::open(['url'=>$url,'class'=>'form-horizontal dataSubmit'])}}
 		<div class="form-group @if($errors->has('kegiatan')) has-error @endif">

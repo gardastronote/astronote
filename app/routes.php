@@ -665,11 +665,19 @@ Route::group(array('before'=>'auth'),function(){
 			}
 			$average = Vendor_kegiatan::where('id_vendor','=',$id)->avg('nilai');
 			$kegiatans = Vendor_kegiatan::where('id_vendor','=',$id)->paginate(11);
+			if($vendor->jenis == 'pelatihan'){
+				$jenis =  'fa fa-book';
+			}elseif($vendor->jenis == 'catering'){
+				$jenis = 'glyphicon glyphicon-cutlery';
+			}else{
+				$jenis = 'fa fa-building';
+			}
 			$view = View::make('monitoring.vendor.data_vendor_kegiatan',array(
 				'id'=>$id,
 				'back'=>Session::get('back'),
 				'vendor'=>$vendor,
 				'average'=>$average,
+				'jenis'=>$jenis,
 				'kegiatans'=>$kegiatans
 				));
 			if(Request::ajax()){
@@ -679,13 +687,22 @@ Route::group(array('before'=>'auth'),function(){
 			return $view;
 		});
 		Route::get('/vendor/data/{id_vendor}/add',function($id_vendor){
-			$vendor = Vendor_data::where('id','=',$id_vendor)->count();
-			if(!($vendor > 0)){
+			$vendor = Vendor_data::where('id','=',$id_vendor)->first();
+			if(!count($vendor)>0){
 				App::abort(404,'Halaman tidak di temukan');
+			}
+			if($vendor->jenis == 'pelatihan'){
+				$jenis =  'fa fa-book';
+			}elseif($vendor->jenis == 'catering'){
+				$jenis = 'glyphicon glyphicon-cutlery';
+			}else{
+				$jenis = 'fa fa-building';
 			}
 			$view = View::make('monitoring.vendor.merge_data_vendor_kegiatan',array(
 				'url'=>'/vendor/data/add',
 				'id_vendor'=>$id_vendor,
+				'jenis'=>$jenis,
+				'vendor'=>$vendor,
 				'button'=>'Tambah'
 				));
 			if(Request::ajax()){
@@ -696,15 +713,24 @@ Route::group(array('before'=>'auth'),function(){
 		});
 		Route::post('/vendor/data/add','VendorController@add_kegiatan');
 		Route::get('/vendor/data/{id_vendor}/edit/{id}',function($id_vendor,$id){
-			$vendor = Vendor_data::where('id','=',$id_vendor)->count();
+			$vendor = Vendor_data::where('id','=',$id_vendor)->first();
 			$kegiatan = Vendor_kegiatan::find($id);
-			if(!($vendor > 0) || !(count($kegiatan) > 0)){
+			if(!count($vendor) > 0 || !(count($kegiatan) > 0)){
 				App::abort(404,'Halaman tidak di temukan');
+			}
+			if($vendor->jenis == 'pelatihan'){
+				$jenis =  'fa fa-book';
+			}elseif($vendor->jenis == 'catering'){
+				$jenis = 'glyphicon glyphicon-cutlery';
+			}else{
+				$jenis = 'fa fa-building';
 			}
 			$view = View::make('monitoring.vendor.merge_data_vendor_kegiatan',array(
 				'url'=>'/vendor/data/edit',
 				'id_vendor'=>$id_vendor,
 				'data'=>$kegiatan,
+				'jenis'=>$jenis,
+				'vendor'=>$vendor,
 				'button'=>'Ubah'
 				));
 			if(Request::ajax()){

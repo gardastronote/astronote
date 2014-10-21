@@ -1,6 +1,14 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
+<div class="row">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a>
+		<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i> Vendors</a></li>
+		<li><a href="{{url('/vendor/'.$vendor->jenis)}}" class="loadContent"><i class="{{$jenis}}"></i> {{ucfirst($vendor->jenis)}}</a></li>
+		<li><i class="{{$jenis}}"></i> {{$vendor->nama}}</li>
+	</ol>
+</div>
 <div class="fixed-btn btn-right">
 	<a class="btn btn-success btn-lg loadContent" href="/vendor/data/{{$id}}/add"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
