@@ -1,5 +1,11 @@
 @extends('layout.dashboard')
 @section('content')
+<div class="row" style="margin-top:-18px;">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li class="active"><i class="fa fa-users"></i> User</li>
+	</ol>
+</div>
 <div class="row">
 	<div class="col-md-9 paginate-default">
 		{{$users->links()}}

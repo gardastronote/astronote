@@ -1,7 +1,14 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
-<div class="row margin-top">
+<div class="row">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li><a href="/pengaturan_data_pegawai" class="loadContent"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
+		<li class="active"><i class="fa fa-cogs"></i> Pengaturan {{ucfirst($type)}}</li>
+	</ol>
+</div>
+<div class="row margin-top-plus">
 	<div class="col-md-8 paginate-default">
 		{{$datas->links()}}
 	</div>

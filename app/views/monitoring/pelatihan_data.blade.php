@@ -2,7 +2,7 @@
 @section('content')
 @if(count($pelatihans)>0)
 <div class="fixed-btn btn-right">
-	<a class="btn btn-success btn-lg btn-flat" href="{{url('/excel_pelatihan_data',$id)}}"><span class="glyphicon glyphicon-download-alt"></span></a>
+	<a class="btn btn-success btn-flat" href="{{url('/excel_pelatihan_data',$id)}}"><span class="glyphicon glyphicon-download-alt"></span></a>
 </div>
 @endif
 <div class="row">
