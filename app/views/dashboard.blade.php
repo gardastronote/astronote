@@ -3,26 +3,23 @@
 
 <div class="row ">
  <div class="col-md-12">
- 	<div class="row" style="background-color:rgba(12,132,41,0.6);margin-top:5px;">
- 	 <div class="col-md-12">
- 	 	<div class="col-md-6 pull-left">
-	    	<img class="welcome-avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}">
-	        <br> <h2>Hi, {{Auth::user()->full_name}}</h2>
+ 	<div class="row">
+ 		<div class="col-md-6 pull-left">
+	 		<h1 class="page-header">
+	    		Dashboard <small>Overview</small>
+	        </h1>
     	</div>
-        <div class="col-md-6 pul-right">
+ 		<div class="col-md-6 pull-right">
 			<ul class="list-group">
-				<li class="list-group-item"><span class="glyphicon glyphicon-time"></span></li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-user"></span> Hi, <i>{{Auth::user()->full_name}}</i></li>
 				<li class="list-group-item">@   {{Auth::user()->email}}</li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-time"></span></li>
 			</ul>
 		</div>
-	 </div>
 	</div>
 
-   <div class="row margin-top">
+   <div class="row ">
     <div class="col-lg-12">
-        <h2 class="page-header">
-    		Dashboard <small>Overview</small>
-        </h2>
         <ol class="breadcrumb">
         	<li class="active">
         		<a href="/vendor" class="loadContent">
@@ -45,7 +42,7 @@
 					</div>
 					<div class="col-xs-9 text-right">
 						<div class="huge">{{$count_pelatihan}}</div>
-						<div><span class="glyphicon glyphicon-thumbs-up"></span> <u>{{round($pelatihan,2)}}</u></div>
+						<div><span class="glyphicon glyphicon-thumbs-up"></span> {{round($pelatihan,2)}}</div>
 						<div>Vendor Pelatihan</div>
 					</div>
 				</div>	
@@ -72,7 +69,7 @@
 					</div>
 					<div class="col-xs-9 text-right">
 						<div class="huge">{{$count_catering}}</div>
-						<div><span class="glyphicon glyphicon-thumbs-up"></span> <u>{{round($catering,2)}}</u></div>
+						<div><span class="glyphicon glyphicon-thumbs-up"></span> {{round($catering,2)}}</div>
 						<div>Vendor Catering</div>
 					</div>
 				</div>	
@@ -99,7 +96,7 @@
 					</div>
 					<div class="col-xs-9 text-right">
 						<div class="huge">{{$count_hotel}}</div>
-						<div><span class="glyphicon glyphicon-thumbs-up"></span> <u>{{round($hotel,2)}}</u></div>
+						<div><span class="glyphicon glyphicon-thumbs-up"></span> {{round($hotel,2)}}</div>
 						<div>Vendor Hotel</div>
 					</div>
 				</div>	

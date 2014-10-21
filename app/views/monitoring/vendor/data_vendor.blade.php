@@ -4,7 +4,7 @@
 <div class="fixed-btn btn-right">
 	<a data-content="Tambah Vendor" class="btn btn-success loadContent" href="/vendor/add"><span class="glyphicon glyphicon-plus"></span> </a>
 </div>
-<div class="row">
+<div class="row margin-top-breadcrumb">
 	<ol class="breadcrumb">
 		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a>
 		<li><i class="fa fa-link"></i> Vendors</li>
