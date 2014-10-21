@@ -14,9 +14,16 @@
 </div>
 @endif
 <div class="fixed-btn btn-right">
-	<a class="btn btn-success loadContent" onclick="return false" href="{{url('/add_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-plus"></span></a>
+	<a class="btn btn-success loadContent" href="{{url('/add_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row">
+	<div class="dropdown">
+		<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span>
+			<ul class="dropdown-menu">
+				<li><a class="dropdown-update loadContent" href="{{action('MonitoringController@edit_data_pegawai',$pegawai->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
+				<li><a class="dropdown-delete loadContent" href="{{action('MonitoringController@delete_data_pegawai',$pegawai->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+			</ul>
+	</div>
 	<div class="col-md-12 text-center">
 		<h1>{{$pegawai->nama}}</h1>
 		<h1><small>{{$pegawai->nip}}</small>
@@ -45,12 +52,12 @@
 		</div>
 		<table class="table table-condensed table-striped">
 			<thead  class="text-center">
-				<th>Pelatihan</th>
+				<th><i class="fa fa-book"></i> Pelatihan</th>
 				<th class="text-center"><span class="glyphicon glyphicon-calendar"></span></th>
 				<th class="text-center">Lama (Hari)</th>
 				<th class="text-center">Tahun</th>
-				<th>Tempat</th>
-				<th>Surat Tugas</th>
+				<th class="text-center"><span class="glyphicon glyphicon-home"></span></th>
+				<th>No Surat Tugas</th>
 				<th class="text-center">Lulus/Tidak</th>
 				<th class="text-center">Score</th>
 				<th><span class="glyphicon glyphicon-tasks"></span></th>
@@ -61,8 +68,8 @@
 				<td class="text-center">{{$pelatihan->tanggal}}</td>
 				<td class="text-center">{{$pelatihan->lama}}</td>
 				<td class="text-center">{{$pelatihan->tahun}}</td>
-				<td>{{$pelatihan->tempat}}</td>
-				<td>{{$pelatihan->no_surat_tugas}}</td>
+				<td class="text-center">{{$pelatihan->tempat}}</td>
+				<td>{{$pelatihan->no_surat_penugasan}}</td>
 				<td class="text-center">{{$pelatihan->lulus}}</td>
 				<td class="text-center">{{$pelatihan->score}}</td>
 				<td class="dropdown">

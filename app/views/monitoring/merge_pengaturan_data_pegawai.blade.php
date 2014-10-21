@@ -4,7 +4,8 @@
 	<ol class="breadcrumb">
 		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="/pengaturan_data_pegawai" class="loadContent"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
-		<li class="active"><i class="fa fa-plus"></i> Alter data pegawai</li>
+		<li><a href="{{url('/pengaturan_data/'.$type)}}" class="loadContent"><i class="fa fa-cogs"></i> Pengaturan {{ucfirst($type)}}</a></li>
+		<li class="active"><i class="fa fa-plus"></i> Alter Pengaturan {{ucfirst($type)}}</li>
 	</ol>
 </div>
 <div class="row">

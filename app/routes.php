@@ -555,16 +555,12 @@ Route::group(array('before'=>'auth'),function(){
 		});
 		Route::post('/vendor/add','VendorController@add');
 		Route::get('/vendor/edit/{id}',function($id){
-			if(strstr(URL::previous(), '/pelatihan') || strstr(URL::previous(), '/catering') || strstr(URL::previous(), '/hotel') || strstr(URL::previous(), '/search')){
-				Session::put('back',URL::previous());
-			}
 			$data = Vendor_data::find($id);
 			if(!count($data)>0){
 				App::abort(404,'Halaman tidak di temukan');
 			}
 			$view = View::make('monitoring.vendor.merge_data_vendor',array(
 				'url'=>'/vendor/edit',
-				'back'=>Session::get('back'),
 				'data'=>$data,
 				'button'=>'Ubah'
 				));
@@ -664,9 +660,6 @@ Route::group(array('before'=>'auth'),function(){
 			if(!count($vendor)>0){
 				App::abort(404,'Halaman tidak di temukan');
 			}
-			if(strstr(URL::previous(), '/pelatihan') || strstr(URL::previous(), '/catering') || strstr(URL::previous(), '/hotel') || strstr(URL::previous(), '/search')){
-				Session::put('back',URL::previous());
-			}
 			$average = Vendor_kegiatan::where('id_vendor','=',$id)->avg('nilai');
 			$kegiatans = Vendor_kegiatan::where('id_vendor','=',$id)->paginate(11);
 			if($vendor->jenis == 'pelatihan'){
@@ -678,7 +671,6 @@ Route::group(array('before'=>'auth'),function(){
 			}
 			$view = View::make('monitoring.vendor.data_vendor_kegiatan',array(
 				'id'=>$id,
-				'back'=>Session::get('back'),
 				'vendor'=>$vendor,
 				'average'=>$average,
 				'jenis'=>$jenis,
