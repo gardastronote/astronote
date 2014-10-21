@@ -1,5 +1,12 @@
 @extends('layout.dashboard')
 @section('content')
+@include('notif')
+<div class="row">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li class="active"><i class="fa fa-institution"></i> Daftar Pelatihan</li>
+	</ol>
+</div>
 <div class="fixed-btn btn-right">
 	<a href="/add_pengaturan_data_pelatihan" class="btn btn-success loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>

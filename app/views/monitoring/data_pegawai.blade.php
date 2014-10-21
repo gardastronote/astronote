@@ -3,7 +3,7 @@
 @include('notif')
 <div class="row">
 	<ol class="breadcrumb">
-		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a>
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li class="active"><i class="fa fa-users"></i> Daftar Pegawai</li>
 	</ol>
 </div>

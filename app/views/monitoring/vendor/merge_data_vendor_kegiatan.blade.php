@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
 	<ol class="breadcrumb">
-		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a>
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i> Vendors</a></li>
 		<li><a href="{{url('/vendor/'.$vendor->jenis)}}" class="loadContent"><i class="{{$jenis}}"></i> {{ucfirst($vendor->jenis)}}</a></li>
 		<li><a href="{{url('/vendor/data/'.$vendor->id)}}" class="loadContent"><i class="{{$jenis}}"></i> {{$vendor->nama}}</a></li>

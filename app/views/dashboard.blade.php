@@ -11,8 +11,8 @@
     	</div>
         <div class="col-md-6 pul-right">
 			<ul class="list-group">
-				<li class="list-group-item"><span class="glyphicon glyphicon-time"></span></li>
-				<li class="list-group-item">@   {{Auth::user()->email}}</li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-calendar"></span> {{date('l d F Y')}}</li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span>   {{Auth::user()->email}}</li>
 			</ul>
 		</div>
 	 </div>

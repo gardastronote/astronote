@@ -1,5 +1,21 @@
 @extends('layout.dashboard')
 @section('content')
+@include('notif')
+<div class="row">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li><a href="/pengaturan_data_pelatihan" class="loadContent"><i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
+		<li class="active"><i class="fa fa-institution"></i>
+			@if(strlen($pelatihan->pelatihan)>10)
+			<?php $nama = substr_replace($pelatihan->pelatihan,'...', 10); ?>
+			@else
+			<?php $nama = $pelatihan->pelatihan ?>
+			@endif
+			{{$nama}}
+		</li>
+	</ol>
+</div>
+
 @if(count($pelatihans)>0)
 <div class="fixed-btn btn-right">
 	<a class="btn btn-success btn-flat" href="{{url('/excel_pelatihan_data',$id)}}"><span class="glyphicon glyphicon-download-alt"></span></a>

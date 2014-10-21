@@ -415,13 +415,15 @@ Route::group(array('before'=>'auth'),function(){
 			return $view;
 		});
 		Route::get('/add_data_pelatihan/{id_pegawai}',function($id_pegawai){
-			if(!count(Pegawai_data::find($id_pegawai))>0){
+			$pegawai = Pegawai_data::find($id_pegawai);
+			if(!count($pegawai)>0){
 				App::abort(404,'Halaman tidak di temukan');
 			}
 			$pelatihans = Pelatihan_pelatihan::lists('pelatihan','id');
 			$view = View::make('monitoring.merge_data_pelatihan',array(
 				'url'=>'/add_data_pelatihan',
 				'id_pegawai'=>$id_pegawai,
+				'pegawai'=>$pegawai,
 				'pelatihans'=>$pelatihans,
 				'button'=>'Tambah'
 				));
@@ -437,10 +439,12 @@ Route::group(array('before'=>'auth'),function(){
 			if(!count($data)>0){
 				App::abort(404,'Halaman tidak di temukan');
 			}
+			$pegawai = Pegawai_data::find($data->id_pegawai);
 			$pelatihans = Pelatihan_pelatihan::lists('pelatihan','id');
 			$view = View::make('monitoring.merge_data_pelatihan',array(
 				'pelatihans'=>$pelatihans,
 				'data'=>$data,
+				'pegawai'=>$pegawai,
 				'url'=>'/edit_data_pelatihan',
 				'button'=>'ubah'
 				));
