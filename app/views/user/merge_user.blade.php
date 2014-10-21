@@ -1,10 +1,27 @@
 @extends('layout.dashboard')
 @section('content')
 @if($update)
+<div class="row" style="margin-top:-18px;">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li class="active"><i class="fa fa-wrench"></i> Pengaturan User</li>
+	</ol>
+</div>
 <div style="margin-bottom:10px" class="row">
 	<div class="col-md-12 text-center">
-		<h5><span class="glyphicon glyphicon-exclamation-sign"></span> Jika password tidak di ubah, Password tidak perlu di isi</h5>
+		<div class="col-lg-12 alert alert-warning">
+			<h5><span class="glyphicon glyphicon-exclamation-sign"></span> Jika password tidak di ubah, Password tidak perlu di isi</h5>
+		</div>
 	</div>
+</div>
+@endif
+@if(!$update)
+	<div class="row" style="margin-top:-18px;">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li><a href="{{url('/user')}}" class="loadContent"><i class="fa fa-users"></i> Daftar Users</a></li>
+		<li class="active"><i class="fa fa-plus"></i> Tambah User</li>
+	</ol>
 </div>
 @endif
 <div class="row">

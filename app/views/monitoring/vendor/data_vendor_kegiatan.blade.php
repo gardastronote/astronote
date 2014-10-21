@@ -10,14 +10,34 @@
 	</ol>
 </div>
 <div class="fixed-btn btn-right">
-	<a class="btn btn-success btn-lg loadContent" href="/vendor/data/{{$id}}/add"><span class="glyphicon glyphicon-plus"></span></a>
+	<a class="btn btn-success loadContent" href="/vendor/data/{{$id}}/add"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
+
 <div class="dropdown btn-top-left">
 	<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
 	<ul class="dropdown-menu">
 		<li><a class="dropdown-update loadContent" href="{{url('/vendor/edit/'.$vendor->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
 		<li><a class="dropdown-delete loadContent" href="{{url('/vendor/delete/'.$vendor->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 	</ul>
+</div>
+
+		@if($vendor->jenis == 'pelatihan')
+			<?php $jenis = 'success'; ?>
+			<?php $glyph = '<i class="fa fa-book"></i>'; ?>
+		@elseif($vendor->jenis == 'catering')
+			<?php $jenis = 'danger'; ?>
+			<?php $glyph = '<i class="glyphicon glyphicon-cutlery"></i>'; ?>
+		@else
+			<?php $jenis = 'warning'; ?>
+			<?php $glyph = '<i class="fa fa-building"></i>'; ?>
+		@endif
+<div class="row">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i> Vendors</a></li>
+		<li><a href="#">{{$glyph}} {{ucfirst($vendor->jenis)}}</a></li>
+		<li class="active"><i class="fa fa-book"></i> {{$vendor->nama}}</li>
+	</ol>
 </div>
 <div class="row">
 	<div class="col-md-6">

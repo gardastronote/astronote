@@ -8,7 +8,7 @@
 	</ol>
 </div>
 <div class="fixed-btn btn-right">
-	<a href="/add_data_pegawai" class=" btn btn-lg btn-success loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
+	<a href="/add_data_pegawai" class=" btn btn-success loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row">
 	<div class="col-md-12 text-center">

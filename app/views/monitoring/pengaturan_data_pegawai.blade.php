@@ -4,6 +4,7 @@
 	<div class="col-md-12">
 		<div class="row">
 			<ol class="breadcrumb">
+				<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 				<li class="active"><i class="fa fa-cog"></i> Atur Data Pegawai</li>
 			</ol>
 		</div>

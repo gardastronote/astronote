@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
 <div class="fixed-btn btn-right">
-	<a href="/add_pengaturan_data_pelatihan" class="btn btn-success btn-lg loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
+	<a href="/add_pengaturan_data_pelatihan" class="btn btn-success loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row">
 	<div class="col-md-12">

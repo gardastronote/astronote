@@ -64,7 +64,7 @@ class UserController extends BaseController
 		if($input['type'] == 'admin'){
 			return Redirect::to('/user');
 		}else{
-			return Redirect::to('/');
+			return Redirect::to('/dashboard');
 		}
 	}
 

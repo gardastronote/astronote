@@ -29,6 +29,9 @@ body::-webkit-scrollbar-thumb:active{
 .margin-top{
 	margin-top: -30px;
 }
+.margin-top-plus{
+	margin-top: 30px;
+}
 .navbar-brand img{
 	max-width: 50px;
 }
@@ -39,9 +42,6 @@ body::-webkit-scrollbar-thumb:active{
 	display: inline-block;
 	float: left;
 }
-.side-nav li a:hover{
-	background-color: #000 !important;
-}
 .side-nav{
 	background-color: #222;
 	position: fixed;
@@ -51,6 +51,17 @@ body::-webkit-scrollbar-thumb:active{
 	margin-left: -225px;
 	overflow: auto;
 	height: 100%;
+}
+.side-nav li{
+	width: 225px;
+}
+.side-nav li a{
+    padding: 15px 15px 15px;
+	color: #999;
+}
+.side-nav li a:hover{
+	background-color: #111 !important;
+	color: white;
 }
 .side-nav::-webkit-scrollbar{
 	width: 12px;
@@ -75,18 +86,7 @@ body::-webkit-scrollbar-thumb:active{
 	background-color: #ddd;
 }
 
-.side-nav li{
-	width: 225px;
-}
-.side-nav li a{
-    padding: 15px 15px 15px;
-	color: #999;
-}
-.side-nav li a:hover{
-	background-color: #000 !important;
-	color: white;
 
-}
 
 .content-wrapper{
 	width: 100%;
@@ -283,9 +283,8 @@ body::-webkit-scrollbar-thumb:active{
 }
 
 .welcome-avatar{
-	height: 100px;
-	width: 100px;
-	border-radius: 65px;
+	max-height: 150px;
+	margin-bottom:-5px;
 }
 
 /*
