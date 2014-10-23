@@ -1,12 +1,6 @@
 @extends('layout.dashboard')
 @section('content')
-<div class="row margin-top-breadcrumb">
-	<ol class="breadcrumb">
-		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-		<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i> Vendors</a></li>
-		<li class="active"><i class="fa fa-line-chart"></i> Chart</li>
-	</ol>
-</div>
+
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
@@ -14,13 +8,13 @@
 				<div class="panel-title">Total Rata-rata penilaian vendor dalam 12 Bulan terakhir</div >
 			</div>
 			<div class="panel-body">
-				<canvas height="120" width="760" id="lineVendor"></canvas>
+				<canvas height="120" width="760" id="lineChart"></canvas>
 			</div>	
 		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="col-lg-12">
+	<div class=" col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="panel-title">Total Rata-rata penilaian vendor berdasarkan jenis</div >

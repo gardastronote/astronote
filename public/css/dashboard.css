@@ -288,9 +288,9 @@ body::-webkit-scrollbar-thumb:active{
 }
 
 .welcome-avatar{
-	height: 120px;
-	width:120px;
-	border-radius: 60px;
+	height: 90px;
+	width:90px;
+	border-radius: 45px;
 }
 
 /*
