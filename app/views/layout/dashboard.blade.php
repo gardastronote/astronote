@@ -55,8 +55,6 @@
 				<li><a href="/vendor/chart" class="loadContent"><i class="fa fa-line-chart"></i> Chart</a></li>
 			</ul>
 		</li>
-		
-		@if(Auth::user()->access == MTR || Auth::user()->access == ADMIN)
 		<li>
 			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><i class="fa fa-users"></i> Daftar Pegawai<i class="caret"></i></a>
 			<ul id="data_pegawai" class="dropdown-side collapse">
@@ -64,8 +62,6 @@
 				<li><a class="loadContent" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
 			</ul>
 		</li> 
-		@endif
-		@if(Auth::user()->access == MTR || Auth::user()->access == ADMIN)
 		<li>
 			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="fa fa-institution"></i> Daftar Pelatihan<i class="caret"></i> </a>
 			<ul id="data_pelatihan" class="dropdown-side collapse">
@@ -73,7 +69,6 @@
 				<li><a class="loadContent" id="pegawai" href="/pelatihan"> <span class="glyphicon glyphicon-tasks"></span> Data Pelatihan</a></li>
 			</ul>
 		</li> 
-		@endif
 	</ul>
 </aside>
 <!--SIDEBAR OVER-->

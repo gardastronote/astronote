@@ -26,9 +26,6 @@ body::-webkit-scrollbar-thumb:hover{
 body::-webkit-scrollbar-thumb:active{
 	background-color: #ddd;
 }
-.margin-top{
-	margin-top: -30px;
-}
 .margin-top-plus{
 	margin-top: 30px;
 }

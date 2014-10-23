@@ -54,6 +54,7 @@
 				<td class="text-center">{{$data->grade->grade}}</td>
 				<td>{{$data->job->job}}</td>
 				<td class="text-center"><a class="loadContent" onclick="return false" href="{{url('/data_pelatihan',$data->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
+				
 				<td class="text-center dropdown">
 					<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
 					<ul class="dropdown-menu pull-right">

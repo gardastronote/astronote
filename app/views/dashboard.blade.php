@@ -4,12 +4,12 @@
 <div class="row ">
  <div class="col-md-12">
  	<div class="row">
- 		<div class="col-md-6 pull-left">
+		<div class="col-md-6 pull-left">
 	 		<h1 class="page-header">
 	    		Dashboard <small>Overview</small>
 	        </h1>
     	</div>
- 		<div class="col-md-6 pull-right">
+   		<div class="col-md-6 pull-right">
 			<ul class="list-group">
 				<li class="list-group-item"><h3><img class="welcome-avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}"> Hi, {{Auth::user()->full_name}}</h3></li>
 				<li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span> {{Auth::user()->email}}</li>
@@ -17,7 +17,7 @@
 			</ul>
 		</div>
 	</div>
-
+   <hr>
    <div class="row ">
     <div class="col-lg-12">
         <ol class="breadcrumb">
@@ -163,7 +163,7 @@
 							var donutVendor = document.getElementById('donutVendor').getContext('2d');
 							function loadChart(){
 								window.donutVendorChart = new Chart(donutVendor).Doughnut(dataDonut,{
-									animationSteps : 120,
+									animationSteps : 130,
 								});
 							}
 					</script>

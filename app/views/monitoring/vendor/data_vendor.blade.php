@@ -6,7 +6,7 @@
 		<li><i class="fa fa-link"></i> Vendors</li>
 	</ol>
 </div>
-<div class="fixed-btn btn-right">
+<div class="fixed-btn btn-right margin-top-plus">
 	<a data-content="Tambah Vendor" class="btn btn-success loadContent" href="/vendor/add"><span class="glyphicon glyphicon-plus"></span> </a>
 </div>
 @include('monitoring.vendor.chart_data_vendor')
