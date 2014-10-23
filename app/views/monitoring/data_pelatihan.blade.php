@@ -17,16 +17,42 @@
 	<a class="btn btn-success loadContent" href="{{url('/add_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row">
-	<div class="dropdown">
+	<ol class="breadcrumb">
+		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+		<li><a href="/data_pegawai" class="loadContent"><i class="fa fa-users"></i> Daftar Pegawai</a></li>
+		<li class="active"><i class="fa fa-user"></i> {{$pegawai->nama}}</li>
+	</ol>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="dropdown">
 		<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span>
 			<ul class="dropdown-menu">
 				<li><a class="dropdown-update loadContent" href="{{action('MonitoringController@edit_data_pegawai',$pegawai->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
 				<li><a class="dropdown-delete loadContent" href="{{action('MonitoringController@delete_data_pegawai',$pegawai->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 			</ul>
+		</div>
+		<h1 class="text-center">{{$pegawai->nama}}</h1>
+		<h1 class="text-center"><small>{{$pegawai->nip}}</small>
 	</div>
-	<div class="col-md-12 text-center">
-		<h1>{{$pegawai->nama}}</h1>
-		<h1><small>{{$pegawai->nip}}</small>
+	<div class="col-md-6">
+		<ul class="list-group">
+			<li class="list-group-item">
+				<strong>Grade:</strong> {{$pegawai->grade->grade}}
+			</li>
+			<li class="list-group-item">
+				<strong>Title:</strong> {{$pegawai->title->title}}
+			</li>
+			<li class="list-group-item">
+				<strong>Job:</strong> {{$pegawai->job->job}}
+			</li>
+			<li class="list-group-item">
+				<strong>Unit:</strong> {{$pegawai->unit->unit}}
+			</li>
+			<li class="list-group-item">
+				<strong>Penempatan:</strong> {{$pegawai->penempatan->penempatan}}
+			</li>
+		</ul>
 	</div>
 </div>
 <div class="row">

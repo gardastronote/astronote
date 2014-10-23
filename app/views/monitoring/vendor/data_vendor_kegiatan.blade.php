@@ -12,14 +12,6 @@
 		<li><i class="{{$jenis}}"></i> {{$vendor->nama}}</li>
 	</ol>
 </div>
-<div class="dropdown">
-	<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
-	<ul class="dropdown-menu">
-		<li><a class="dropdown-update loadContent" href="{{url('/vendor/edit/'.$vendor->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
-		<li><a class="dropdown-delete loadContent" href="{{url('/vendor/delete/'.$vendor->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
-	</ul>
-</div>
-
 		@if($vendor->jenis == 'pelatihan')
 			<?php $jenis = 'success'; ?>
 			<?php $glyph = '<i class="fa fa-book"></i>'; ?>
@@ -33,6 +25,13 @@
 
 <div class="row">
 	<div class="col-md-6">
+		<div class="dropdown">
+		<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
+		<ul class="dropdown-menu">
+			<li><a class="dropdown-update loadContent" href="{{url('/vendor/edit/'.$vendor->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
+			<li><a class="dropdown-delete loadContent" href="{{url('/vendor/delete/'.$vendor->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+		</ul>
+		</div>
 		<h1>{{$vendor->nama}}</h1>
 	</div>
 	<div class="col-md-6">

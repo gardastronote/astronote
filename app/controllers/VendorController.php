@@ -6,14 +6,9 @@ class VendorController extends BaseController
 		if($input['jenis'] != 'pelatihan' && $input['jenis'] != 'hotel' && $input['jenis'] != 'catering'){
 			return Redirect::to('/vendor')->with('alert.error','Halaman yang di minta salah');
 		}
-		$back = '/vendor'; 
-		if(strstr(URL::previous(), '/pelatihan') || strstr(URL::previous(), '/catering') || strstr(URL::previous(), '/hotel') && strstr(URL::previous(), '/search')){
-			Session::put('back',URL::previous());
-		}
-		$vendors = Vendor_data::where('jenis','=',$input['jenis'])->where('nama','LIKE','%'.$input['nama'].'%')->get();
+		$vendors = Vendor_data::where('jenis','=',$input['jenis'])->where('nama','LIKE','%'.$input['nama'].'%')->paginate(17);
 		$view = View::make('monitoring.vendor.search_vendor_data',array(
 			'choose'=>true,
-			'back'=>Session::get('back'),
 			'vendors'=>$vendors
 			));
 		if(Request::ajax()){
@@ -67,17 +62,22 @@ class VendorController extends BaseController
 
 	public function search_kegiatan($id){
 		$input = Input::all();
-		$vendor = Vendor_data::where('id','=',$id)->count();
-		if(!($vendor > 0)){
+		$vendor = Vendor_data::find($id);
+		if(!count($vendor) > 0){
 			App::abort(404,'Halaman tidak di temukan');
 		}
-		if(strstr(URL::previous(), '/vendor/data') && !strstr(URL::previous(), '/search?')){
-			Session::put('back',URL::previous());
-		}
 		$kegiatans = Vendor_kegiatan::where('kegiatan','LIKE','%'.$input['kegiatan'].'%')->where('id_vendor','=',$id)->paginate(17);
+		if($vendor->jenis == 'pelatihan'){
+				$jenis =  'fa fa-book';
+			}elseif($vendor->jenis == 'catering'){
+				$jenis = 'glyphicon glyphicon-cutlery';
+			}else{
+				$jenis = 'fa fa-building';
+			}
 		$view = View::make('monitoring.vendor.search_kegiatan_data_vendor',array(
 			'id'=>$id,
-			'back'=>Session::get('back'),
+			'vendor'=>$vendor,
+			'jenis'=>$jenis,
 			'kegiatans'=>$kegiatans
 			));
 		if(Request::ajax()){
