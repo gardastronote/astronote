@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Diklat BJB</title>
+	<link rel="icon" type="icon/ico" href="{{asset('images/favicon.ico')}}">
 	@section('style')
 	<link rel="stylesheet" type="text/css" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/dashboard.css')}}">
@@ -12,7 +13,7 @@
 </head>
 <body onload="loadChart()">
 <nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="nabar-header">
+	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
