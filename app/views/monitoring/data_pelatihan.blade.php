@@ -52,7 +52,7 @@
 	<div class="col-md-12 center-form text-center">
 		{{Form::open(['url'=>'/search_data_pelatihan','method'=>'GET','class'=>'form-inline dataGet','onsubmit'=>'return false'])}}
 		<div class="form-group input-group">
-			{{Form::text('pelatihan','',['class'=>'form-control input-lg'])}}
+			{{Form::text('pelatihan','',['class'=>'form-control input-lg','placeholder'=>'Cari Pelatihan'])}}
 			<div class="input-group-btn">
 				{{Form::hidden('p',$id_pegawai)}}
 				<button type="submit" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span></button>

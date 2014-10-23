@@ -573,6 +573,64 @@ Route::group(array('before'=>'auth'),function(){
 		Route::post('/vendor/edit','VendorController@edit');
 		Route::get('/vendor/delete/{id}','VendorController@delete');
 			/*--------------------------------------------------------------------
+			| Top Vendor
+			|---------------------------------------------------------------------
+			*/
+			Route::get('/vendor/top',function(){
+				$input = Input::all();
+				$datas = Vendor_kegiatan::whereHas('vendor_data',function($q){
+					$q->where('jenis','=',Input::get('jenis'));	
+				})
+				->where(DB::raw('MONTH(tanggal)'),'=',$input['bulan'])
+				->where(DB::raw('YEAR(tanggal)'),'=',$input['tahun'])
+				->take(10)
+				->orderBy('nilai','DESC')
+				->with('vendor_data')
+				->get();
+				if($input['jenis'] == 'pelatihan'){
+					$glyph = 'fa fa-book';
+				}else if($input['jenis'] == 'catering'){
+					$glyph = 'glyphicon glyphicon-cutlery';
+				}else{
+					$glyph = 'fa fa-building';
+				}
+				$bulan = DateTime::createFromFormat('!m',$input['bulan']);
+				$view = View::make('vendor.top',array(
+					'datas'=>$datas,
+					'glyph'=>$glyph,
+					'top'=>'Vendor '.ucfirst($input['jenis']).' Terbaik '.$bulan->format('F').' '.$input['tahun']
+					));
+				if(Request::ajax()){
+					$section = $view->renderSections();
+					return $section['content'];
+				}
+				return $view;
+			});
+
+			/*--------------------------------------------------------------------
+			| Top Vendor Excel
+			|---------------------------------------------------------------------
+			*/
+			Route::get('/vendor/top/excel',function(){
+				$input = Input::all();
+				$datas = Vendor_kegiatan::whereHas('vendor_data',function($q){
+					$q->where('jenis','=',Input::get('jenis'));	
+				})
+				->where(DB::raw('MONTH(tanggal)'),'=',$input['bulan'])
+				->where(DB::raw('YEAR(tanggal)'),'=',$input['tahun'])
+				->take(10)
+				->orderBy('nilai','DESC')
+				->with('vendor_data')
+				->get();
+				$bulan = DateTime::createFromFormat('!m',$input['bulan']);
+				return View::make('vendor.top_excel',array(
+					'datas'=>$datas,
+					'top'=>'Vendor '.ucfirst($input['jenis']).' Terbaik '.$bulan->format('F').' '.$input['tahun']
+					));
+				});
+			
+
+			/*--------------------------------------------------------------------
 			| Vendor Pelatihan
 			|---------------------------------------------------------------------
 			*/

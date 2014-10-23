@@ -51,6 +51,7 @@ body::-webkit-scrollbar-thumb:active{
 	margin-left: -225px;
 	overflow: auto;
 	height: 100%;
+	padding-bottom: 50px;
 }
 .side-nav li{
 	width: 225px;

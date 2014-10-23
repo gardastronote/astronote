@@ -13,14 +13,7 @@
 </head>
 <body onload="loadChart()">
 <nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<a href="{{url('/')}}" class="brand-logo navbar-brand"><img src="{{asset('images/logo_bjb/logo_diklat(putih).png')}}"></a>
-	</div>
+	<a href="{{url('/')}}" class="brand-logo navbar-brand"><img src="{{asset('images/logo_bjb/logo_diklat(putih).png')}}"></a>
 	<ul class="nav navbar-nav pull-right">
 		@if(Auth::user()->access == ADMIN)
 		<li class="dropdown">
@@ -56,12 +49,20 @@
 			</ul>
 		</li>
 		<li>
+			<a href="#" data-toggle="collapse" data-target="#top-vendor"><i class="caret"></i> <i class="fa fa-star"></i> Vendor Terbaik</a>
+			<ul id="top-vendor" class="dropdown-side collapse">
+				<li><a href="/vendor/top?jenis=pelatihan&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent"><i class="fa fa-book"></i> Top Pelatihan</a></li>
+				<li><a href="/vendor/top?jenis=catering&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent"><i class="glyphicon glyphicon-cutlery"></i> Top Catering</a></li>
+				<li><a href="/vendor/top?jenis=hotel&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent"><i class="fa fa-building"></i> Top Hotel</a></li>
+			</ul>
+		</li>
+		<li>
 			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><i class="fa fa-users"></i> Daftar Pegawai<i class="caret"></i></a>
 			<ul id="data_pegawai" class="dropdown-side collapse">
 				<li><a class="loadContent" id="pegawai" href="/data_pegawai"><i class="fa fa-user"></i> Daftar Pegawai</a></li>
 				<li><a class="loadContent" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
 			</ul>
-		</li> 
+		</li>
 		<li>
 			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="fa fa-institution"></i> Daftar Pelatihan<i class="caret"></i> </a>
 			<ul id="data_pelatihan" class="dropdown-side collapse">
