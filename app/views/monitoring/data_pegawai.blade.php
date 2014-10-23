@@ -1,14 +1,14 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
+<div class="fixed-btn btn-right">
+	<a href="/add_data_pegawai" class=" btn btn-success loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
+</div>
 <div class="row">
 	<ol class="breadcrumb">
 		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li class="active"><i class="fa fa-users"></i> Daftar Pegawai</li>
 	</ol>
-</div>
-<div class="fixed-btn btn-right">
-	<a href="/add_data_pegawai" class=" btn btn-success loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row">
 	<div class="col-md-12 text-center">
@@ -22,7 +22,7 @@
 			],'',['class'=>'form-control input-lg'])}}
 		</div>
 		<div class="form-group input-group">
-			{{Form::text('q','',['class'=>'form-control input-lg'])}}
+			{{Form::text('q','',['class'=>'form-control input-lg','placeholder'=>'Cari'])}}
 			<div class="input-group-btn">
 				<button type="submit" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span></button>
 			</div>

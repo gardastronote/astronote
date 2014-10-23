@@ -57,6 +57,7 @@
 			format:'yyyy-mm-dd',
 			autoclose:true,
 			todayHighlight:true,
+			orientation: "top right"
 			});
 	});
 </script>
