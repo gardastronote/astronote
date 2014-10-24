@@ -8,6 +8,7 @@
 	 		<h1 class="page-header">
 	    		Dashboard <small>Overview</small>
 	        </h1>
+	        <img style="margin-left:85px;margin-right:20px;width:225px;height:125px;" src="{{asset('images/logo_bjb/logo_bjb(warna).png')}}">
     	</div>
    		<div class="col-md-6 pull-right">
 			<ul class="list-group">
@@ -182,7 +183,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<div class="panel-title"><i class="fa fa-users"></i> Data Pegawai</div>
+					<div class="panel-title"><i class="fa fa-star-half-full"></i> Top Vendors</div>
 				</div>
 				<div class="panel-body">
 					<!--Data Pegawai-->

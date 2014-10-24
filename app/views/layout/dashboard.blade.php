@@ -39,7 +39,7 @@
 	<ul class="nav navbar-nav side-nav">
 		<li><a id="home" href="/dashboard" class="loadContent"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 		<li>
-			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="fa fa-link"></i> Daftar Vendor<i class="caret"></i></a>
+			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="caret"></i> <i class="fa fa-link"></i> Daftar Vendor</a>
 			<ul id="vendor-menu" class="dropdown-side collapse">
 				<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i>  Vendor</a></li>
 				<li><a href="/vendor/pelatihan" class="loadContent"><i class="fa fa-book"></i> Pelatihan</a></li>
@@ -57,14 +57,14 @@
 			</ul>
 		</li>
 		<li>
-			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><i class="fa fa-users"></i> Daftar Pegawai<i class="caret"></i></a>
+			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><i class="caret"></i> <i class="fa fa-users"></i> Daftar Pegawai</a>
 			<ul id="data_pegawai" class="dropdown-side collapse">
 				<li><a class="loadContent" id="pegawai" href="/data_pegawai"><i class="fa fa-user"></i> Daftar Pegawai</a></li>
 				<li><a class="loadContent" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
 			</ul>
 		</li>
 		<li>
-			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="fa fa-institution"></i> Daftar Pelatihan<i class="caret"></i> </a>
+			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="caret"></i> <i class="fa fa-institution"></i> Daftar Pelatihan </a>
 			<ul id="data_pelatihan" class="dropdown-side collapse">
 				<li><a class="loadContent" href="/pengaturan_data_pelatihan"> <i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
 				<li><a class="loadContent" id="pegawai" href="/pelatihan"> <span class="glyphicon glyphicon-tasks"></span> Data Pelatihan</a></li>

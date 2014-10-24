@@ -177,6 +177,7 @@ body::-webkit-scrollbar-thumb:active{
 }
 .dropdown-side li{
 	padding: 15px;
+	padding-left: 35px;
 }
 .dropdown-side li:hover{
 	background-color: #111 !important;
