@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
-<div class="fixed-btn btn-right margin-top-plus">
+<div class="fixed-btn btn-right">
 	<a class="btn btn-success loadContent" href="/vendor/data/{{$id}}/add"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 @if(count($kegiatans)>0)
@@ -62,6 +62,7 @@
 				{{$vendor->keterangan}}
 				@endif
 			</li>
+			<li class="list-group-item">{{$glyph}} {{$total}} Kegiatan {{ucfirst($vendor->jenis)}}</li>
 		</ul>
 	</div>
 </div> 

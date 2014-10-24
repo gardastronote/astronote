@@ -4,7 +4,7 @@ header("Content-type: application/vnd-ms-excel");
 // Mendefinisikan nama file ekspor "hasil-export.xls"
 header("Content-Disposition: attachment; filename=$vendor->nama.xls");
 ?>
-<table>
+<table class="table table-striped">
 	<h1>{{$vendor->nama}}</h1>
 	<thead>
 		<tr>
@@ -20,7 +20,7 @@ header("Content-Disposition: attachment; filename=$vendor->nama.xls");
 			<td>{{$kegiatan->kegiatan}}</td>
 			<td>{{$kegiatan->tanggal}}</td>
 			<td>{{$kegiatan->tempat}}</td>
-			<td>{{$kegiatan->nilai}}</td>
+			<td>{{round($kegiatan->nilai,2)}}</td>
 		</tr>
 		@endforeach
 	</tbody>

@@ -4,19 +4,43 @@
 <div class="row ">
  <div class="col-md-12">
  	<div class="row">
-		<div class="col-md-6 pull-left">
-	 		<h1 class="page-header">
-	    		Dashboard <small>Overview</small>
-	        </h1>
-	        <img style="margin-left:85px;margin-right:20px;width:225px;height:125px;" src="{{asset('images/logo_bjb/logo_bjb(warna).png')}}">
-    	</div>
-   		<div class="col-md-6 pull-right">
+   		<div class="col-md-6 pull-left">
 			<ul class="list-group">
-				<li class="list-group-item"><h3><img class="welcome-avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}"> Hi, {{Auth::user()->full_name}}</h3></li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span> {{Auth::user()->email}}</li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-calendar"></span> {{date('l d F Y')}}</li>
+				<li class="list-group-item">
+					<div class="dropdown btn-top-right">
+					<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span><i class="caret"></i></a>
+					<ul class="dropdown-menu pull-right">
+						<li><a class="dropdown-update loadContent" href="{{url('/user/setting')}}"><span class="glyphicon glyphicon-cog"></span> Pengaturan</a></li>
+						<li><a class="dropdown-delete" href="{{action('AppController@logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+					</ul>
+					</div>
+					<h3><img class="welcome-avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}"> {{Auth::user()->full_name}}</h3>
+				</li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span> <strong>Email:</strong>  {{Auth::user()->email}}</li>
 			</ul>
 		</div>
+		<div class="col-md-6 pull-right text-center">
+			<h2><span class="glyphicon glyphicon-calendar"></span> {{date('l d F Y')}}</h2>
+			<h1 style="font-size:4em"><span class="glyphicon glyphicon-time"></span> <span id="time"></span></h1>
+    	</div>
+    	<script>
+		function startTime() {
+		    var today=new Date();
+		    var h=today.getHours();
+		    var m=today.getMinutes();
+		    var s=today.getSeconds();
+		    m = checkTime(m);
+		    s = checkTime(s);
+		    document.getElementById('time').innerHTML = h+":"+m+":"+s;
+		    var t = setTimeout(function(){startTime()},500);
+		}
+
+		function checkTime(i) {
+		    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+		    return i;
+		}
+		window.onload = startTime();
+		</script>
 	</div>
    <hr>
    <div class="row ">

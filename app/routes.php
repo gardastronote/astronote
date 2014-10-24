@@ -717,7 +717,8 @@ Route::group(array('before'=>'auth'),function(){
 				App::abort(404,'Halaman tidak di temukan');
 			}
 			$average = Vendor_kegiatan::where('id_vendor','=',$id)->avg('nilai');
-			$kegiatans = Vendor_kegiatan::where('id_vendor','=',$id)->paginate(11);
+			$kegiatans = Vendor_kegiatan::where('id_vendor','=',$id)->orderBy('tanggal','DESC')->paginate(11);
+			$total = Vendor_kegiatan::where('id_vendor','=',$id)->count();
 			if($vendor->jenis == 'pelatihan'){
 				$jenis =  'fa fa-book';
 			}elseif($vendor->jenis == 'catering'){
@@ -730,6 +731,7 @@ Route::group(array('before'=>'auth'),function(){
 				'vendor'=>$vendor,
 				'average'=>$average,
 				'jenis'=>$jenis,
+				'total'=>$total,
 				'kegiatans'=>$kegiatans
 				));
 			if(Request::ajax()){
