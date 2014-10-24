@@ -4,6 +4,11 @@
 <div class="fixed-btn btn-right">
 	<a class="btn btn-success loadContent" href="/vendor/data/{{$id}}/add"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
+@if(count($kegiatans)>0)
+<div style="margin-top:50px" class="fixed-btn btn-right">
+	<a class="btn btn-primary" href="{{url('/vendor/data/'.$id.'/excel')}}"><span class="glyphicon glyphicon-download-alt"></span></a>
+</div>
+@endif
 <div class="row">
 	<ol class="breadcrumb">
 		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>

@@ -37,7 +37,7 @@
 <div class="row">
 	<div class="col-md-12">
 		@if(!count($datas) > 0)
-		<h2 class="text-center">Belum ada kegiatan Vendor Bulan ini</h2>
+		<h2 class="text-center">Tidak ada kegiatan Vendor Bulan ini</h2>
 		@else
 		@if(Input::get('jenis') == 'pelatihan')
 		<?php $color = 'green' ?>
@@ -106,7 +106,7 @@
 			autoclose:true,
 			minViewMode: "months",
 			format:"mm",
-			orientation: "top right",
+			orientation: "top right"
 			});
 		$('.datepickerYear').datepicker({
 			autoclose:true,

@@ -583,7 +583,6 @@ Route::group(array('before'=>'auth'),function(){
 				})
 				->where(DB::raw('MONTH(tanggal)'),'=',$input['bulan'])
 				->where(DB::raw('YEAR(tanggal)'),'=',$input['tahun'])
-				->take(10)
 				->orderBy('nilai','DESC')
 				->with('vendor_data')
 				->get();
@@ -598,7 +597,7 @@ Route::group(array('before'=>'auth'),function(){
 				$view = View::make('vendor.top',array(
 					'datas'=>$datas,
 					'glyph'=>$glyph,
-					'top'=>'Vendor '.ucfirst($input['jenis']).' Terbaik '.$bulan->format('F').' '.$input['tahun']
+					'top'=>'Daftar kegiatan Vendor '.ucfirst($input['jenis']).' bulan '.$bulan->format('F').' '.$input['tahun']
 					));
 				if(Request::ajax()){
 					$section = $view->renderSections();
@@ -618,7 +617,6 @@ Route::group(array('before'=>'auth'),function(){
 				})
 				->where(DB::raw('MONTH(tanggal)'),'=',$input['bulan'])
 				->where(DB::raw('YEAR(tanggal)'),'=',$input['tahun'])
-				->take(10)
 				->orderBy('nilai','DESC')
 				->with('vendor_data')
 				->get();
@@ -739,6 +737,14 @@ Route::group(array('before'=>'auth'),function(){
 				return $section['content'];
 			}
 			return $view;
+		});
+		Route::get('/vendor/data/{id_vendor}/excel',function($id_vendor){
+			$vendor = Vendor_data::find($id_vendor);
+			$kegiatans = Vendor_kegiatan::where('id_vendor','=',$id_vendor)->get();
+			return View::make('vendor.excel_kegiatan',array(
+				'vendor'=>$vendor,
+				'kegiatans'=>$kegiatans
+				));
 		});
 		Route::get('/vendor/data/{id_vendor}/add',function($id_vendor){
 			$vendor = Vendor_data::where('id','=',$id_vendor)->first();
