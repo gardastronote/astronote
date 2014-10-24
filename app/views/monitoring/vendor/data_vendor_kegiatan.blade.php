@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
-<div class="fixed-btn btn-right">
+<div class="fixed-btn btn-right margin-top-plus">
 	<a class="btn btn-success loadContent" href="/vendor/data/{{$id}}/add"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 @if(count($kegiatans)>0)
@@ -9,7 +9,7 @@
 	<a class="btn btn-primary" href="{{url('/vendor/data/'.$id.'/excel')}}"><span class="glyphicon glyphicon-download-alt"></span></a>
 </div>
 @endif
-<div class="row">
+<div class="row margin-top-breadcrumb">
 	<ol class="breadcrumb">
 		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i> Vendors</a></li>
@@ -27,10 +27,11 @@
 			<?php $jenis = 'warning'; ?>
 			<?php $glyph = '<i class="fa fa-building"></i>'; ?>
 		@endif
+
 <div class="row">
 	<div class="col-md-6">
 		<div class="dropdown">
-		<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
+		<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span><i class="caret"></i></a>
 		<ul class="dropdown-menu">
 			<li><a class="dropdown-update loadContent" href="{{url('/vendor/edit/'.$vendor->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
 			<li><a class="dropdown-delete loadContent" href="{{url('/vendor/delete/'.$vendor->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>

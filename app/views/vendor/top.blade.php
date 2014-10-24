@@ -5,7 +5,7 @@
 	<a class="btn btn-primary" href="{{url('/vendor/top/excel?jenis='.Input::get('jenis').'&&bulan='.Input::get('bulan').'&&tahun='.Input::get('tahun'))}}"><span class="glyphicon glyphicon-download-alt"></span></a>
 </div>
 @endif
-<div class="row">
+<div class="row margin-top-breadcrumb">
 	<ol class="breadcrumb">
 		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li class="active"><i class="fa fa-star"></i> Top {{ ucfirst(Input::get('jenis')) }} Vendors</li>

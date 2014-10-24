@@ -1,6 +1,6 @@
 @extends('layout.dashboard')
 @section('content')
-<div class="row">
+<div class="row margin-top-breadcrumb">
 	<ol class="breadcrumb">
 		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="/pengaturan_data_pegawai" class="loadContent"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>

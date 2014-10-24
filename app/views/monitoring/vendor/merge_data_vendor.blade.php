@@ -1,10 +1,10 @@
 @extends('layout.dashboard')
 @section('content')
-<div class="row">
+<div class="row margin-top-breadcrumb">
 	<ol class="breadcrumb">
 		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i> Vendors</a></li>
-		<li class="active"><i class="fa fa-plus"></i> Merge Vendor</li>
+		<li class="active"><i class="fa fa-plus"></i> Alter Vendor</li>
 	</ol>
 </div>
 <div class="row">
