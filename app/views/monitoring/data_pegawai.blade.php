@@ -1,10 +1,10 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
-<div class="fixed-btn btn-right">
+<div class="fixed-btn btn-right margin-top-plus">
 	<a href="/add_data_pegawai" class=" btn btn-success loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
-<div class="row">
+<div class="row margin-top-breadcrumb">
 	<ol class="breadcrumb">
 		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li class="active"><i class="fa fa-users"></i> Daftar Pegawai</li>
@@ -54,6 +54,7 @@
 				<td class="text-center">{{$data->grade->grade}}</td>
 				<td>{{$data->job->job}}</td>
 				<td class="text-center"><a class="loadContent" onclick="return false" href="{{url('/data_pelatihan',$data->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
+				
 				<td class="text-center dropdown">
 					<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
 					<ul class="dropdown-menu pull-right">

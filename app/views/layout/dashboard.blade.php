@@ -64,7 +64,7 @@
 			</ul>
 		</li>
 		<li>
-			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="caret"></i> <i class="fa fa-institution"></i> Daftar Pelatihan</a>
+			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="caret"></i> <i class="fa fa-institution"></i> Daftar Pelatihan </a>
 			<ul id="data_pelatihan" class="dropdown-side collapse">
 				<li><a class="loadContent" href="/pengaturan_data_pelatihan"> <i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
 				<li><a class="loadContent" id="pegawai" href="/pelatihan"> <span class="glyphicon glyphicon-tasks"></span> Data Pelatihan</a></li>

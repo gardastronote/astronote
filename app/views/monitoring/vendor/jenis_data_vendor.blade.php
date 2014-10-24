@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
-<div class="fixed-btn btn-right">
+<div class="fixed-btn btn-right margin-top-plus">
 	<a class="btn btn-success loadContent" href="/vendor/add"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 	@foreach($vendors as $vendor)
@@ -16,7 +16,7 @@
 			<?php $glyph = '<i class="fa fa-building"></i>'; ?>
 		@endif
 	@endforeach
-<div class="row">
+<div class="row margin-top-breadcrumb">
 	<ol class="breadcrumb">
 		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i> Vendors</a></li>
