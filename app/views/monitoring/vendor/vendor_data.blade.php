@@ -13,8 +13,9 @@
 				<tr>
 					<th><i class="fa fa-link"></i> Jenis Vendor</th>
 					<th>Nama</th>
+					<th class="text-center"><span class="glyphicon glyphicon-list"></th>
 					<th class="text-center"><span class="glyphicon glyphicon-thumbs-up"></th>
-					<th class="text-center"><span class="glyphicon glyphicon-list"></span></th>
+					<th class="text-center"><span class="glyphicon glyphicon-search"></span></th>
 					<th class="text-center"><span class="glyphicon glyphicon-tasks"></span></th>
 				</tr>
 			</thead>
@@ -33,6 +34,7 @@
 				<tr class="{{$jenis}}">
 					<td>{{$glyph}} {{ucfirst($vendor->jenis)}}</td>
 					<td>{{$vendor->nama}}</td>
+					<td class="text-center">{{Vendor_kegiatan::where('id_vendor','=',$vendor->id)->count()}} Kegiatan</td>
 					<td class="text-center">{{round(Vendor_kegiatan::where('id_vendor','=',$vendor->id)->avg('nilai'),2)}}</td>
 					<td class="text-center"><a class="loadContent" href="{{url('/vendor/data/'.$vendor->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
 					<td class="dropdown text-center">

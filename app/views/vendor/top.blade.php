@@ -8,7 +8,7 @@
 <div class="row margin-top-breadcrumb">
 	<ol class="breadcrumb">
 		<li><a href="/dashboard" class="loadContent"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-		<li class="active"><i class="fa fa-star"></i> Top {{ ucfirst(Input::get('jenis')) }} Vendors</li>
+		<li class="active"><i class="fa fa-tasks"></i> Kegiatan {{ ucfirst(Input::get('jenis')) }} Vendors</li>
 	</ol>
 </div>
 <div class="row">
@@ -37,7 +37,7 @@
 <div class="row">
 	<div class="col-md-12">
 		@if(!count($datas) > 0)
-		<h2 class="text-center">Belum ada kegiatan Vendor Bulan ini</h2>
+		<h2 class="text-center">Tidak ada kegiatan Vendor Bulan ini</h2>
 		@else
 		@if(Input::get('jenis') == 'pelatihan')
 		<?php $color = 'green' ?>
@@ -54,7 +54,7 @@
 		<table class="table">
 			<thead>
 				<th><span class="glyphicon glyphicon-link"></span> Nama Vendor</th>
-				<th>Kegiatan</th>
+				<th><span class="glyphicon glyphicon-list"></span> Kegiatan</th>
 				<th class="text-center"><span class="glyphicon glyphicon-calendar"></span></th>
 				<th class="text-center"><span class="glyphicon glyphicon-thumbs-up"></span></th>
 				<th class="text-center"><i class="fa fa-star-o"></i></th>
@@ -93,20 +93,11 @@
 		$(".star-top tr:nth-child(3) .nilai").append(
 			"<i class=\"fa fa-star\"></i>"
 			);
-		$(".star-top tr:nth-child(4) .nilai").append(
-			"<i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i>"
-			);
-		$(".star-top tr:nth-child(5) .nilai").append(
-			"<i class=\"fa fa-star-o\"></i><i class=\"fa fa-star-o\"></i>"
-			);
-		$(".star-top tr:nth-child(6) .nilai").append(
-			"<i class=\"fa fa-star-o\"></i>"
-			);
 		$('.datepickerMonth').datepicker({
 			autoclose:true,
 			minViewMode: "months",
 			format:"mm",
-			orientation: "top right",
+			orientation: "top right"
 			});
 		$('.datepickerYear').datepicker({
 			autoclose:true,
