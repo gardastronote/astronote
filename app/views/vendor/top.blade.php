@@ -18,12 +18,12 @@
 			<div class="form-group">
 				{{Form::text('bulan','',['class'=>'form-control input-lg datepickerMonth','placeholder'=>'Bulan'])}}
 			</div>
-			<div class="form-group">
+			<div class="form-group input-group">
 				{{Form::text('tahun',date('Y'),['class'=>'form-control input-lg datepickerYear','placeholder'=>'Tahun'])}}
-			</div>
-			<div class="form-group">
-				{{Form::hidden('jenis',Input::get('jenis'))}}
-				<button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+				<div class="input-group-btn">
+					{{Form::hidden('jenis',Input::get('jenis'))}}
+					<button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+				</div>
 			</div>
 			{{Form::close()}}
 		</div>
