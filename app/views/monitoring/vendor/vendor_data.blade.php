@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-12 text-center">
-		{{$vendors->links()}}
+		{{$vendors->appends(Input::all())->links()}}
 	</div>
 </div>
 <div class="row">
@@ -41,7 +41,7 @@
 						<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
 						<ul class="dropdown-menu pull-right">
 							<li><a class="dropdown-update loadContent" href="{{url('/vendor/edit/'.$vendor->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
-							<li><a class="dropdown-delete loadContent" href="{{url('/vendor/delete/'.$vendor->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+							<li><a class="dropdown-delete loadDelete" href="{{url('/vendor/delete/'.$vendor->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 						</ul>
 					</td>
 				</tr>

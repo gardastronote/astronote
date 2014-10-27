@@ -1,12 +1,18 @@
 <div class="row">
 	<div class="text-center col-md-12">
 		<h1><small>Total Rata-Rata {{ucfirst($vendor->jenis)}} : {{round($average,2)}}</small></h1>
-		<canvas height="210" width="760" id="bar"></canvas>
+		<canvas height="150" width="760" id="bar"></canvas>
+		<style type="text/css">
+		body{
+			overflow-x:hidden;
+		}
+		</style>
 	</div>
 </div>
 <script type="text/javascript" src="{{asset('js/Chart.js')}}"></script>
 <script type="text/javascript">
 var chartData = {
+	<?php $kegiatans = $kegiatans->reverse() ?>
 	labels : [
 		@foreach($kegiatans as $kegiatan)
 		@if(strlen($kegiatan->kegiatan) > 10)
@@ -44,7 +50,7 @@ var chartData = {
 	function loadChart(){
 	var ctx = document.getElementById('bar').getContext('2d');
 	window.myBar = new Chart(ctx).Bar(chartData,{
-		responsive: false
+		responsive: true
 	});
 }
 </script>

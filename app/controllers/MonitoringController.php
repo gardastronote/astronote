@@ -16,7 +16,7 @@ class MonitoringController extends BaseController
 		if(!$insert){
 			return Redirect::to('/add_pengaturan_data_pegawai/')->with('alert.error',ERR_DEV);
 		}
-		return Redirect::to('/pengaturan_data/'.$input['type'])->with('alert.success','Data berhasil di tambahkan');
+		return Redirect::to('/pengaturan_data_pegawai/')->with('alert.success','Data berhasil di tambahkan');
 	}
 
 	public function post_edit_pengaturan_data_pegawai(){
@@ -33,7 +33,7 @@ class MonitoringController extends BaseController
 		if(!$update){
 			Redirect::to('/pengaturan_data_pegawai')->with('alert.error',ERR_DEV);
 		}
-		return Redirect::to('/pengaturan_data/'.$input['type'])->with('alert.success','Data berhasil di ubah');
+		return Redirect::to('/pengaturan_data_pegawai')->with('alert.success','Data berhasil di ubah');
 	}
 
 	public function delete_pengaturan_data_pegawai($type,$id){
@@ -45,7 +45,7 @@ class MonitoringController extends BaseController
 		if(!$delete){
 			return Redirect::to('pengaturan_data_pegawai/')->with('alert.error',ERR_DEV);
 		}
-		return Redirect::to('pengaturan_data/'.str_replace('Pegawai_',"",$type))->with('alert.success','Data berhasil di hapus');
+		return Redirect::to('pengaturan_data_pegawai')->with('alert.success','Data berhasil di hapus');
 	}
 	/*--------------------------------------------------------------------
 	| Merge Data pegawai
@@ -80,12 +80,12 @@ class MonitoringController extends BaseController
 		if(!count($data)>0){
 			App::abort(404,'Halaman tidak di temukan');
 		}
-		$grades = Pegawai_grade::lists('grade','id');
-		$titles = Pegawai_title::lists('title','id');
-		$jobs = Pegawai_job::lists('job','id');
-		$units = Pegawai_unit::lists('unit','id');
-		$penempatans = Pegawai_penempatan::lists('penempatan','id');
-		$jeniss = Pegawai_jenis::lists('jenis','id');
+		$grades = Pegawai_grade::orderBy('grade','ASC')->lists('grade','id');
+		$titles = Pegawai_title::orderBy('title','ASC')->lists('title','id');
+		$jobs = Pegawai_job::orderBy('job','ASC')->lists('job','id');
+		$units = Pegawai_unit::orderBy('unit','ASC')->lists('unit','id');
+		$penempatans = Pegawai_penempatan::orderBy('penempatan','ASC')->lists('penempatan','id');
+		$jeniss = Pegawai_jenis::orderBy('jenis','ASC')->lists('jenis','id');
 		$view = View::make('monitoring.merge_data_pegawai',array(
 			'data'=>$data,
 			'grades'=>$grades,

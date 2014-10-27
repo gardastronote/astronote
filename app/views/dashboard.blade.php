@@ -6,7 +6,7 @@
  	<div class="row">
    		<div class="col-md-6 pull-left">
 			<ul class="list-group">
-				<li class="list-group-item">
+				<li class="list-group-item text-center">
 					<div class="dropdown btn-top-right">
 					<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span><i class="caret"></i></a>
 					<ul class="dropdown-menu pull-right">
@@ -16,7 +16,13 @@
 					</div>
 					<h3><img class="welcome-avatar" src="{{asset('avatar/'.Auth::user()->avatar)}}"> {{Auth::user()->full_name}}</h3>
 				</li>
-				<li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span> <strong>Email:</strong>  {{Auth::user()->email}}</li>
+				<li class="list-group-item"><span class="glyphicon glyphicon-envelope"></span> <strong>Email:</strong>
+					@if(empty(Auth::user()->email))
+					Belum di tentukan
+					@else
+					{{Auth::user()->email}}
+					@endif
+				</li>
 			</ul>
 		</div>
 		<div class="col-md-6 pull-right text-center">
@@ -191,6 +197,7 @@
 									animationSteps : 130,
 								});
 							}
+							window.onload = loadChart();
 					</script>
 					<!--CHART SPACE OVER-->
 					<a href="/vendor/chart" class="loadContent">
@@ -204,26 +211,69 @@
 	</div><!--Row over-->
 
 	<div class="row">
-		<div class="col-lg-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<div class="panel-title"><i class="fa fa-star-half-full"></i> Top Vendors</div>
-				</div>
-				<div class="panel-body">
-					<!--Data Pegawai-->
-
-
-
-
-					<!--Data Pegawai Over-->
-						<a href="/data_pegawai" class="loadContent">
-							<div class="pull-right">
-								Lihat Selengkapnya <i class="fa fa-arrow-circle-right"></i>
-							</div>
-						</a>
-				</div>
-
-			</div>	
+		<h2 class="text-center">Kegiatan Vendor Terbaik Bulan Ini</h2>
+		<div class="col-md-4">
+			<h3 class="text-center">Pelatihan</h3>
+			@if(!count($top_pelatihan)>0)
+			<h3 class="text-center">Belum ada Kegiatan</h3>
+			@else
+			<table class="table">
+				<thead>
+					<th><i class="fa fa-book"></i> Vendor</th>
+					<th class="text-center"><span class="glyphicon glyphicon-thumbs-up"></span></th>
+				</thead>
+				<tbody>
+					@foreach($top_pelatihan as $pelatihan_top)
+					<tr>
+						<td>{{$pelatihan_top->vendor_data->nama}}</td>
+						<td class="text-center">{{round($pelatihan_top->nilai,2)}}</td>
+					</tr>
+					@endforeach
+				</tbody>
+			</table>
+			@endif
+		</div>
+		<div class="col-md-4">
+			<h3 class="text-center">Catering</h3>
+			@if(!count($top_catering)>0)
+			<h3 class="text-center">Belum ada Kegiatan</h3>
+			@else
+			<table class="table">
+				<thead>
+					<th><span class="glyphicon glyphicon-cutlery"></span> Catering</th>
+					<th class="text-center"><span class="glyphicon glyphicon-thumbs-up"></span></th>
+				</thead>
+				<tbody>
+					@foreach($top_catering as $catering_top)
+					<tr>
+						<td>{{$catering_top->vendor_data->nama}}</td>
+						<td class="text-center">{{round($catering_top->nilai,2)}}</td>
+					</tr>
+					@endforeach
+				</tbody>
+			</table>
+			@endif
+		</div>
+		<div class="col-md-4">
+			<h3 class="text-center">Hotel</h3>
+			@if(!count($top_hotel)>0)
+			<h3 class="text-center">Belum ada Kegiatan</h3>
+			@else
+			<table class="table">
+				<thead>
+					<th><span class="fa fa-building"></span> Vendor</th>
+					<th class="text-center"><span class="glyphicon glyphicon-thumbs-up"></span></th>
+				</thead>
+				<tbody>
+					@foreach($top_hotel as $hotel_top)
+					<tr>
+						<td>{{$hotel_top->vendor_data->nama}}</td>
+						<td class="text-center">{{round($hotel_top->nilai,2)}}</td>
+					</tr>
+					@endforeach
+				</tbody>
+			</table>
+			@endif
 		</div>
 	</div><!--Row over-->
 

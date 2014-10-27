@@ -2,7 +2,7 @@
 class Vendor_kegiatan extends Eloquent
 {
 	protected $table = 'vendor_kegiatan';
-	protected $fillable = array('id_vendor','kegiatan','nilai','tanggal');
+	protected $fillable = array('id_vendor','kegiatan','nilai','tempat','tanggal');
 
 	public static function rules(){
 		return array(

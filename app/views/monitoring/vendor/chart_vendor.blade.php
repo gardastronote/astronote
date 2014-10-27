@@ -2,10 +2,10 @@
 @section('content')
 
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-md-12 text-center">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div class="panel-title">Total Rata-rata penilaian vendor dalam 12 Bulan terakhir</div >
+				<div class="panel-title"><h3>Total Rata-rata penilaian vendor dalam 12 Bulan terakhir</h3></div >
 			</div>
 			<div class="panel-body">
 				<canvas height="120" width="760" id="lineChart"></canvas>
@@ -14,10 +14,10 @@
 	</div>
 </div>
 <div class="row">
-	<div class=" col-lg-12">
+	<div class=" col-md-12">
 		<div class="panel panel-default">
-			<div class="panel-heading">
-				<div class="panel-title">Total Rata-rata penilaian vendor berdasarkan jenis</div >
+			<div class="panel-heading text-center">
+				<div class="panel-title"><h3>Total Rata-rata penilaian vendor berdasarkan jenis</h3></div >
 			</div>
 			<div class="panel-body">
 				<div style="width:50%" class="text-center pull-left">
@@ -41,6 +41,20 @@
 					</div>
 					<script type="text/javascript" src="{{asset('js/Chart.js')}}"></script>
 					<script type="text/javascript">
+					var lineData = {
+								labels : [
+								@if(count($dates) == 1) 0, @endif
+								@foreach ($dates as $date) {{'"'.$date->bulan.'"'}}, @endforeach
+								],
+								datasets : [{
+											strokeColor: "rgba(0,0,0,1)",
+											pointColor: "rgba(0,0,0,1)",
+											data : [
+											@if(count($dates) == 1) 0, @endif
+											@foreach ($dates as $date) {{round($date->average,2)}}, @endforeach
+											]
+										}]
+							}
 						var dataDonut = [
 							{
 								value : {{round($pelatihan,2)}},
@@ -59,7 +73,13 @@
 							}
 							];
 							var donutVendor = document.getElementById('donutVendor').getContext('2d');
+							var ctx = document.getElementById("lineChart").getContext('2d');
 							function loadChart(){
+								window.myLine = new Chart(ctx).Line(lineData,{
+									bezierCurve : false,
+									datasetFill : false,
+									responsive : true
+								});
 								window.donutVendorChart = new Chart(donutVendor).Doughnut(dataDonut,{
 									animationSteps : 130,
 								});

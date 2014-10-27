@@ -16,7 +16,6 @@ class Pelatihan_pelatihan extends Eloquent
 			'required'=>':attribute harus di isi'
 			);
 	}
-
 	public function data(){
 		return $this->belongsTo('pelatihan_data','id_pelatihan','id');
 	}

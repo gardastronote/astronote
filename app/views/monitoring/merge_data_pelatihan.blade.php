@@ -38,15 +38,6 @@
 				@if($errors->has('lama'))<p class="help-block">{{$errors->first('lama')}}</p>@endif
 			</div>
 		</div>
-		<div class="form-group @if($errors->has('tahun')) has-error @endif">
-			{{Form::label('tahun','Tahun',['class'=>'control-label col-sm-4'])}}
-			<div class="col-sm-4"> 
-				{{Form::text('tahun',isset($data->tahun)?$data->tahun:'',['class'=>'form-control'])}}
-			</div>
-			<div class="col-sm-4"> 
-				@if($errors->has('tahun'))<p class="help-block">{{$errors->first('tahun')}}</p>@endif
-			</div>
-		</div>
 		<div class="form-group @if($errors->has('tempat')) has-error @endif">
 			{{Form::label('tempat','Tempat',['class'=>'control-label col-sm-4'])}}
 			<div class="col-sm-4"> 

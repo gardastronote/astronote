@@ -18,11 +18,11 @@
 			'nama'=>'Nama',
 			'nip'=>'NIP',
 			'grade'=>'Grade',
-			'job'=>'Job',
-			],'',['class'=>'form-control input-lg'])}}
+			'unit'=>'Unit'
+			],Input::get('type'),['class'=>'form-control input-lg'])}}
 		</div>
 		<div class="form-group input-group">
-			{{Form::text('q','',['class'=>'form-control input-lg','placeholder'=>'Cari'])}}
+			{{Form::text('q',Input::get('q'),['class'=>'form-control input-lg','placeholder'=>'Cari'])}}
 			<div class="input-group-btn">
 				<button type="submit" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-search"></span></button>
 			</div>
@@ -43,7 +43,7 @@
 				<th class="text-center">NIP</th>
 				<th>Nama</th>
 				<th class="text-center">Grade</th>
-				<th>Job</th>
+				<th>Unit</th>
 				<th class="text-center"><span class="glyphicon glyphicon-list"></span></th>
 				<th class="text-center"><span class="glyphicon glyphicon-tasks"></span></th>
 			</thead>
@@ -52,14 +52,14 @@
 				<td class="text-center">{{$data->nip}}</td>
 				<td>{{$data->nama}}</td>
 				<td class="text-center">{{$data->grade->grade}}</td>
-				<td>{{$data->job->job}}</td>
+				<td>{{$data->unit->unit}}</td>
 				<td class="text-center"><a class="loadContent" onclick="return false" href="{{url('/data_pelatihan',$data->id)}}"><span class="glyphicon glyphicon-search"></span></a></td>
 				
 				<td class="text-center dropdown">
 					<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
 					<ul class="dropdown-menu pull-right">
 						<li><a class="dropdown-update loadContent" onclick="return false" href="{{action('MonitoringController@edit_data_pegawai',$data->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
-						<li><a class="dropdown-delete loadContent" href="{{action('MonitoringController@delete_data_pegawai',$data->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+						<li><a class="dropdown-delete loadDelete" href="{{action('MonitoringController@delete_data_pegawai',$data->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 					</ul>
 				</td>
 			@endforeach

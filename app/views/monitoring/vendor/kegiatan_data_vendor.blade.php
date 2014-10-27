@@ -3,6 +3,9 @@
 		<div class="text-center"> 
 			{{$kegiatans->appends(Input::all())->links()}}
 		</div>
+		@if(!count($kegiatans)>0)
+		<h2 class="text-center">Tidak ada Kegiatan</h2>
+		@else
 		<table class="table">
 			<thead>
 				<tr>
@@ -24,12 +27,13 @@
 						<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
 						<ul class="dropdown-menu pull-right">
 							<li><a class="dropdown-update loadContent" href="{{url('/vendor/data/'.$kegiatan->id_vendor.'/edit/'.$kegiatan->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
-							<li><a class="dropdown-delete loadContent" href="{{url('/vendor/data/'.$kegiatan->id_vendor.'/delete/'.$kegiatan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+							<li><a class="dropdown-delete loadDelete" href="{{url('/vendor/data/'.$kegiatan->id_vendor.'/delete/'.$kegiatan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 						</ul>
 					</td>
 				</tr>
 				@endforeach
 			</tbody>
 		</table>
+		@endif
 	</div>
 </div>

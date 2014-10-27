@@ -30,6 +30,15 @@
 			@if($errors->has('nilai'))<p class="help-block">{{$errors->first('nilai')}}</p>@endif
 			</div>
 		</div>
+		<div class="form-group @if($errors->has('kegiatan')) has-error @endif">
+			{{Form::label('tempat','Tempat',['class'=>'control-label col-md-4'])}}
+			<div class="col-md-4"> 
+				{{Form::text('tempat',isset($data->tempat)?$data->tempat:'',['class'=>'form-control input-lg'])}}
+			</div>
+			<div class="col-md-4"> 
+			@if($errors->has('tempat'))<p class="help-block">{{$errors->first('tempat')}}</p>@endif
+			</div>
+		</div>
 		<div class="form-group @if($errors->has('tanggal')) has-error @endif">
 			{{Form::label('tanggal','Tanggal',['class'=>'control-label col-md-4'])}}
 			<div class="col-md-4"> 
