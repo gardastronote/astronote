@@ -38,7 +38,11 @@ class UserController extends BaseController
 		}
 		$validated = Validator::make($input,User::update_rules($input['id'],$pass),User::messages());
 		if($validated->fails()){
-			return Redirect::to('/user/setting/'.$input['id'])->withInput()->withErrors($validated);
+			if(Auth::user()->access == ADMIN){
+				return Redirect::to('/user/setting/'.$input['id'])->withInput()->withErrors($validated);
+			}else{
+				return Redirect::to('/user/setting')->withErrors($validated)->withInput();
+			}
 		}
 		if(!empty($input['password'])){
 			$input['password'] = Hash::make($input['password']);

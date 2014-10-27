@@ -1,5 +1,6 @@
 @extends('layout.dashboard')
 @section('content')
+@include('notif')
 <div class="row">
 	<div class="col-md-12">
 		<div class="row margin-top-breadcrumb">
@@ -24,7 +25,7 @@
 					</a>
 					<ul class="pull-right dropdown-menu">
 						<li><a class="dropdown-update loadContent" href="{{route('edit_pengaturan_data_pegawai','Pegawai_grade/grade/'.$grade->id)}}" onclick="return false"><span class="glyphicon glyphicon-pencil"></span> Ubah</a></li>
-						<li><a class="dropdown-delete loadContent" href="{{route('delete_pengaturan_data_pegawai','Pegawai_grade/'.$grade->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+						<li><a class="dropdown-delete loadDelete" href="{{route('delete_pengaturan_data_pegawai','Pegawai_grade/'.$grade->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 					</ul>
 				</div>
 				@endforeach
@@ -54,7 +55,7 @@
 					</a>
 					<ul class="pull-right dropdown-menu">
 						<li><a class="dropdown-update loadContent" href="{{route('edit_pengaturan_data_pegawai','Pegawai_jenis/jenis/'.$jenis->id)}}" onclick="return false"><span class="glyphicon glyphicon-pencil"></span> Ubah</a></li>
-						<li><a class="dropdown-delete loadContent" href="{{route('delete_pengaturan_data_pegawai','Pegawai_jenis/'.$jenis->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+						<li><a class="dropdown-delete loadDelete" href="{{route('delete_pengaturan_data_pegawai','Pegawai_jenis/'.$jenis->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 					</ul>
 				</div>
 				@endforeach
@@ -86,7 +87,7 @@
 					</a>
 					<ul class="pull-right dropdown-menu">
 						<li><a class="dropdown-update loadContent" href="{{route('edit_pengaturan_data_pegawai','Pegawai_job/job/'.$job->id)}}" onclick="return false"><span class="glyphicon glyphicon-pencil"></span> Ubah</a></li>
-						<li><a class="dropdown-delete loadContent" href="{{route('delete_pengaturan_data_pegawai','Pegawai_job/'.$job->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+						<li><a class="dropdown-delete loadDelete" href="{{route('delete_pengaturan_data_pegawai','Pegawai_job/'.$job->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 					</ul>
 				</div>
 				@endforeach
@@ -116,7 +117,7 @@
 					</a>
 					<ul class="pull-right dropdown-menu">
 						<li><a class="dropdown-update loadContent" href="{{route('edit_pengaturan_data_pegawai','Pegawai_penempatan/penempatan/'.$penempatan->id)}}" onclick="return false"><span class="glyphicon glyphicon-pencil"></span> Ubah</a></li>
-						<li><a class="dropdown-delete loadContent" href="{{route('delete_pengaturan_data_pegawai','Pegawai_penempatan/'.$penempatan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+						<li><a class="dropdown-delete loadDelete" href="{{route('delete_pengaturan_data_pegawai','Pegawai_penempatan/'.$penempatan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 					</ul>
 				</div>
 				@endforeach
@@ -148,7 +149,7 @@
 					</a>
 					<ul class="pull-right dropdown-menu">
 						<li><a class="dropdown-update loadContent" href="{{route('edit_pengaturan_data_pegawai','Pegawai_title/title/'.$title->id)}}" onclick="return false"><span class="glyphicon glyphicon-pencil"></span> Ubah</a></li>
-						<li><a class="dropdown-delete loadContent" href="{{route('delete_pengaturan_data_pegawai','Pegawai_title/'.$title->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+						<li><a class="dropdown-delete loadDelete" href="{{route('delete_pengaturan_data_pegawai','Pegawai_title/'.$title->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 					</ul>
 				</div>
 				@endforeach
@@ -178,7 +179,7 @@
 					</a>
 					<ul class="pull-right dropdown-menu">
 						<li><a class="dropdown-update loadContent" href="{{route('edit_pengaturan_data_pegawai','Pegawai_unit/unit/'.$unit->id)}}" onclick="return false"><span class="glyphicon glyphicon-pencil"></span> Ubah</a></li>
-						<li><a class="dropdown-delete loadContent" href="{{route('delete_pengaturan_data_pegawai','Pegawai_unit/'.$unit->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+						<li><a class="dropdown-delete loadDelete" href="{{route('delete_pengaturan_data_pegawai','Pegawai_unit/'.$unit->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 					</ul>
 				</div>
 				@endforeach

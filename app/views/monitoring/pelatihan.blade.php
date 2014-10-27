@@ -34,6 +34,7 @@
 					<th>Nama</th>
 					<th>Pelatihan</th>
 					<th class="text-center"><span class="glyphicon glyphicon-calendar"></span></th>
+					<th class="text-center"><span class="glyphicon glyphicon-list"></span></th>
 					<th class="text-center"><span class="glyphicon glyphicon-tasks"></span></th>
 				</tr>
 			</thead>
@@ -42,12 +43,13 @@
 				<tr>
 					<td>{{$pelatihan->pegawai->nama}}</td>
 					<td>{{$pelatihan->pelatihan->pelatihan}}</td>
-					<td class="text-center">{{$pelatihan->tanggal}}</td>
+					<td class="text-center">{{$pelatihan->tanggal}}</td>					
+					<td class="text-center"><a href="{{url('/data_pelatihan/'.$pelatihan->pegawai->id)}}" class="loadContent"><span class="glyphicon glyphicon-search"></span></a></td>
 					<td class="dropdown">
 						<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
 						<ul class="dropdown-menu pull-right">
 							<li><a class="dropdown-update loadContent" href="{{url('/edit_data_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
-							<li><a class="dropdown-delete loadContent" href="{{url('/delete_data_pelatihan/'.$pelatihan->id_pegawai,$pelatihan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+							<li><a class="dropdown-delete loadDelete" href="{{url('/delete_data_pelatihan/'.$pelatihan->id_pegawai,$pelatihan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 						</ul>
 					</td>
 				</tr>

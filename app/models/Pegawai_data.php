@@ -35,6 +35,9 @@ class Pegawai_data extends Eloquent
 			'in'=>'input data terjadi masalah'
 			);
 	}
+	public function pelatihans(){
+		return $this->hasMany('Pelatihan_data','id_pegawai','id');
+	}
 
 	public function grade(){
 		return $this->belongsTo('Pegawai_grade','id_grade','id')->orderBy('id','DESC');

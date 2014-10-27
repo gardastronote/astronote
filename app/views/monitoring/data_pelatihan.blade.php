@@ -22,7 +22,7 @@
 		<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-cog "></span><i class="caret fa-2x"></i>
 			<ul class="dropdown-menu">
 				<li><a class="dropdown-update loadContent" href="{{action('MonitoringController@edit_data_pegawai',$pegawai->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
-				<li><a class="dropdown-delete loadContent" href="{{action('MonitoringController@delete_data_pegawai',$pegawai->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+				<li><a class="dropdown-delete loadDelete" href="{{action('MonitoringController@delete_data_pegawai',$pegawai->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 			</ul>
 		</div>
 		<h1 class="text-center">{{$pegawai->nama}}</h1>
@@ -74,7 +74,6 @@
 				<th><i class="fa fa-book"></i> Pelatihan</th>
 				<th class="text-center"><span class="glyphicon glyphicon-calendar"></span></th>
 				<th class="text-center">Lama (Hari)</th>
-				<th class="text-center">Tahun</th>
 				<th class="text-center"><span class="glyphicon glyphicon-home"></span></th>
 				<th>No Surat Tugas</th>
 				<th class="text-center">Lulus/Tidak</th>
@@ -86,7 +85,6 @@
 				<td>{{$pelatihan->pelatihan->pelatihan}}</td>
 				<td class="text-center">{{$pelatihan->tanggal}}</td>
 				<td class="text-center">{{$pelatihan->lama}}</td>
-				<td class="text-center">{{$pelatihan->tahun}}</td>
 				<td class="text-center">{{$pelatihan->tempat}}</td>
 				<td>{{$pelatihan->no_surat_penugasan}}</td>
 				<td class="text-center">{{$pelatihan->lulus}}</td>
@@ -95,7 +93,7 @@
 					<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
 					<ul class="dropdown-menu pull-right">
 						<li><a class="dropdown-update loadContent" href="{{url('/edit_data_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
-						<li><a class="dropdown-delete loadContent" href="{{url('/delete_data_pelatihan/'.$pelatihan->id_pegawai,$pelatihan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+						<li><a class="dropdown-delete loadDelete" href="{{url('/delete_data_pelatihan/'.$pelatihan->id_pegawai,$pelatihan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 					</ul>
 				</td>
 			</tr>

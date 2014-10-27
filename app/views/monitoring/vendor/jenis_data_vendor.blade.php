@@ -6,13 +6,13 @@
 </div>
 	@foreach($vendors as $vendor)
 		@if($vendor->jenis == 'pelatihan')
-			<?php $jenis = 'success'; ?>
+			<?php $type = 'success'; ?>
 			<?php $glyph = '<i class="fa fa-book"></i>'; ?>
 		@elseif($vendor->jenis == 'catering')
-			<?php $jenis = 'danger'; ?>
+			<?php $type = 'danger'; ?>
 			<?php $glyph = '<i class="glyphicon glyphicon-cutlery"></i>'; ?>
 		@else
-			<?php $jenis = 'warning'; ?>
+			<?php $type = 'warning'; ?>
 			<?php $glyph = '<i class="fa fa-building"></i>'; ?>
 		@endif
 	@endforeach

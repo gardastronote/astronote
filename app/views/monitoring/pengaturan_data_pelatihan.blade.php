@@ -42,8 +42,8 @@
 					<td class="dropdown text-center">
 						<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
 						<ul class="dropdown-menu pull-right">
-							<li><a class="dropdown-update loadContent" onclick="return false" href="{{url('/edit_pengaturan_data_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
-							<li><a class="dropdown-delete loadContent" onclick="return false" href="{{url('/delete_pengaturan_data_pelatihan/Pelatihan_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+							<li><a class="dropdown-update loadContent" href="{{url('/edit_pengaturan_data_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
+							<li><a class="dropdown-delete loadDelete" href="{{url('/delete_pengaturan_data_pelatihan/Pelatihan_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 						</ul>
 					</td>
 				</tr>

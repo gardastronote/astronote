@@ -27,7 +27,12 @@
 		window.myLine = new Chart(ctx).Line(lineData,{
 			bezierCurve : false,
 			datasetFill : false,
+			responsive : true
 		});
 	}
-
 </script>
+<style>
+	body{
+		overflow-x : hidden;
+	}
+</style>

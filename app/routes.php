@@ -128,6 +128,35 @@ Route::group(array('before'=>'auth'),function(){
 		$count_catering = Vendor_data::where('jenis','=','catering')->count();
 		//count hotel
 		$count_hotel = Vendor_data::where('jenis','=','hotel')->count();
+
+		// top vendor
+		$top_pelatihan = Vendor_kegiatan::whereHas('vendor_data',function($q){
+					$q->where('jenis','=','pelatihan');	
+				})
+				->where(DB::raw('MONTH(tanggal)'),'=',date('n'))
+				->where(DB::raw('YEAR(tanggal)'),'=',date('Y'))
+				->orderBy('nilai','DESC')
+				->with('vendor_data')
+				->take(5)
+				->get();
+		$top_catering = Vendor_kegiatan::whereHas('vendor_data',function($q){
+					$q->where('jenis','=','catering');	
+				})
+				->where(DB::raw('MONTH(tanggal)'),'=',date('n'))
+				->where(DB::raw('YEAR(tanggal)'),'=',date('Y'))
+				->orderBy('nilai','DESC')
+				->with('vendor_data')
+				->take(5)
+				->get();
+		$top_hotel = Vendor_kegiatan::whereHas('vendor_data',function($q){
+					$q->where('jenis','=','hotel');	
+				})
+				->where(DB::raw('MONTH(tanggal)'),'=',date('n'))
+				->where(DB::raw('YEAR(tanggal)'),'=',date('Y'))
+				->orderBy('nilai','DESC')
+				->with('vendor_data')
+				->take(5)
+				->get();
 		$view = View::make('dashboard',array(
 			//donut chart
 			'pelatihan'=>$pelatihan,
@@ -136,7 +165,11 @@ Route::group(array('before'=>'auth'),function(){
 			//count
 			'count_pelatihan'=>$count_pelatihan,
 			'count_catering'=>$count_catering,
-			'count_hotel'=>$count_hotel
+			'count_hotel'=>$count_hotel,
+			//top vendor
+			'top_pelatihan'=>$top_pelatihan,
+			'top_catering'=>$top_catering,
+			'top_hotel'=>$top_hotel
 			));
 
 		if(Request::ajax()){
@@ -216,7 +249,7 @@ Route::group(array('before'=>'auth'),function(){
 				$model = 'Pegawai_unit';
 				break;
 			}
-			$datas = $model::orderBy('id','DESC')->paginate(10);
+			$datas = $model::orderBy($type,'ASC')->paginate(33);
 			$view = View::make('monitoring.pengaturan_data',array(
 				'datas'=>$datas,
 				'type'=>$type,
@@ -312,7 +345,7 @@ Route::group(array('before'=>'auth'),function(){
 		|---------------------------------------------------------------------
 		*/
 		Route::get('/pelatihan',function(){
-			$pelatihans = Pelatihan_data::orderBy('updated_at')->paginate(21);
+			$pelatihans = Pelatihan_data::orderBy('updated_at','DESC')->paginate(21);
 			$view = View::make('monitoring.pelatihan',array(
 				'pelatihans'=>$pelatihans
 				));
@@ -325,7 +358,7 @@ Route::group(array('before'=>'auth'),function(){
 		Route::get('/pelatihan/{id}',function($id){
 			$pelatihan = Pelatihan_pelatihan::find($id);
 			$count = Pelatihan_data::where('id_pelatihan','=',$id)->count();
-			$pelatihans = Pelatihan_data::where('id_pelatihan','=',$id)->paginate(21);
+			$pelatihans = Pelatihan_data::where('id_pelatihan','=',$id)->orderBy('updated_at','DESC')->paginate(21);
 			$view = View::make('monitoring.pelatihan_data',array(
 				'count'=>$count,
 				'id'=>$id,
@@ -402,7 +435,7 @@ Route::group(array('before'=>'auth'),function(){
 		Route::get('/search_pengaturan_data_pelatihan','MonitoringController@search_pengaturan_data_pelatihan');
 		Route::get('/data_pelatihan/{id_pegawai}',function($id_pegawai){
 			$pegawai = Pegawai_data::find($id_pegawai);
-			$pelatihans = Pelatihan_data::where('id_pegawai','=',$id_pegawai)->paginate(21);
+			$pelatihans = Pelatihan_data::where('id_pegawai','=',$id_pegawai)->orderBy('updated_at','DESC')->paginate(21);
 			$view = View::make('monitoring.data_pelatihan',array(
 				'id_pegawai'=>$id_pegawai,
 				'pegawai'=>$pegawai,
@@ -475,6 +508,61 @@ Route::group(array('before'=>'auth'),function(){
 				));
 		});
 		Route::get('/search_data_pelatihan','MonitoringController@search_data_pelatihan');
+		/*--------------------------------------------------------------------
+		| Data pelatihan belum mengikuti
+		|---------------------------------------------------------------------
+		*/
+		Route::get('/belum_pelatihan/{id_pelatihan}/data',function($id_pelatihan){
+			$pelatihan = Pelatihan_pelatihan::find($id_pelatihan);
+			$GLOBALS['pelatihan'] = $pelatihan;
+			if(!count($pelatihan)>0){
+				App::abort(404,'Halaman tidak di temukan');
+			}
+			$pegawais = Pegawai_data::whereHas('pelatihans',function($q){
+				$q->where('id_pelatihan','=',659)->where('id','=',14758);
+			})->paginate(10);
+			$view = View::make('pelatihan.belum',array(
+				'pelatihan'=>$pelatihan,
+				'pegawais'=>$pegawais
+				));
+			if(Request::ajax()){
+				$section = $view->renderSections();
+				return $section['content'];
+			}
+			return $view;
+		});
+		Route::get('/belum_pelatihan/{id_pelatihan}/search',function($id_pelatihan){
+			$pelatihan = Pelatihan_pelatihan::find($id_pelatihan);
+			if(!count($pelatihan)>0){
+				App::abort(404,'Halaman tidak di temukan');
+			}
+			if(Input::get('type') == 'nama' || Input::get('type') == 'nip'){
+				$pegawais = Pelatihan_data::whereHas('pegawai',function($q){
+					$q->where(Input::get('type'),'LIKE','%'.Input::get('q').'%');
+				})
+				->groupBy('id_pegawai')
+				->where('id_pelatihan','!=',$id_pelatihan)
+				->paginate(10);
+			}else{
+				$pegawais = Pelatihan_data::whereHas('pegawai',function($q){
+					$q->whereHas(Input::get('type'),function($q){
+						$q->where(Input::get('type'),'LIKE','%'.Input::get('q').'%');
+					});
+				})
+				->groupBy('id_pegawai')
+				->where('id_pelatihan','!=',$id_pelatihan)
+				->paginate(10);
+			}
+			$view = View::make('pelatihan.belum',array(
+				'pelatihan'=>$pelatihan,
+				'pegawais'=>$pegawais
+				));
+			if(Request::ajax()){
+				$section = $view->renderSections();
+				return $section['content'];
+			}
+			return $view;
+		});
 
 		/*--------------------------------------------------------------------
 		| Data Vendor

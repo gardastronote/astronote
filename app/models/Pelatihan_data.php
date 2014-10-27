@@ -7,7 +7,6 @@ class Pelatihan_data extends Eloquent
 		'id_pelatihan',
 		'tanggal',
 		'lama',
-		'tahun',
 		'tempat',
 		'no_surat_penugasan',
 		'lulus',
@@ -20,7 +19,6 @@ class Pelatihan_data extends Eloquent
 			'id_pelatihan'=>'required|numeric',
 			'tanggal'=>'required',
 			'lama'=>'required|numeric',
-			'tahun'=>'required|numeric',
 			);
 	}
 

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8" />
 	<title>Diklat BJB</title>
 	<link rel="icon" type="icon/ico" href="{{asset('images/favicon.ico')}}">
 	@section('style')
@@ -84,9 +87,25 @@
 var content = $('#content');
 var loading = "<img style=\"margin-left:45%;margin-top:20%;\" src='{{asset('images/loading.gif')}}'>";
 	
-	$(document).ready(function(){	
+	$(document).ready(function(){
 
 		$(document).on('click','.loadContent',function(e){
+			e.preventDefault();
+			var  url = $(this).attr('href');
+		
+			content.html(loading);
+			content.load(url,null,function(){
+				content.hide();
+				content.fadeIn(400);
+				window.load = loadChart();
+			});
+		});	
+
+		$(document).on('click','.loadDelete',function(e){
+			var ask = confirm('Anda yakin ingin menghapus data ini?');
+			if(!ask){
+				return false;
+			}
 			e.preventDefault();
 			var  url = $(this).attr('href');
 		

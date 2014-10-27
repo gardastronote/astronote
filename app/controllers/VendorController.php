@@ -6,7 +6,7 @@ class VendorController extends BaseController
 		if($input['jenis'] != 'pelatihan' && $input['jenis'] != 'hotel' && $input['jenis'] != 'catering'){
 			return Redirect::to('/vendor')->with('alert.error','Halaman yang di minta salah');
 		}
-		$vendors = Vendor_data::where('jenis','=',$input['jenis'])->where('nama','LIKE','%'.$input['nama'].'%')->paginate(17);
+		$vendors = Vendor_data::where('jenis','=',$input['jenis'])->where('nama','LIKE','%'.$input['nama'].'%')->orderBy('nama','ASC')->paginate(17);
 		$view = View::make('monitoring.vendor.search_vendor_data',array(
 			'choose'=>true,
 			'vendors'=>$vendors
@@ -66,7 +66,7 @@ class VendorController extends BaseController
 		if(!count($vendor) > 0){
 			App::abort(404,'Halaman tidak di temukan');
 		}
-		$kegiatans = Vendor_kegiatan::where('kegiatan','LIKE','%'.$input['kegiatan'].'%')->where('id_vendor','=',$id)->paginate(17);
+		$kegiatans = Vendor_kegiatan::where('kegiatan','LIKE','%'.$input['kegiatan'].'%')->where('id_vendor','=',$id)->orderBy('kegiatan','ASC')->paginate(17);
 		if($vendor->jenis == 'pelatihan'){
 				$jenis =  'fa fa-book';
 			}elseif($vendor->jenis == 'catering'){
