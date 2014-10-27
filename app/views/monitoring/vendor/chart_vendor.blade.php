@@ -21,8 +21,8 @@
 			</div>
 			<div class="panel-body">
 				<div style="width:50%" class="text-center pull-left">
-						<canvas height="200" width="200" id="donutVendor"></canvas>
-					</div>
+					<canvas height="200" width="200" id="donutVendor"></canvas>
+				</div>
 					<div style="width:50%" class="pull-left">
 						<style type="text/css">
 						.list-color{
@@ -61,8 +61,13 @@
 							var donutVendor = document.getElementById('donutVendor').getContext('2d');
 							function loadChart(){
 								window.donutVendorChart = new Chart(donutVendor).Doughnut(dataDonut,{
-									animationSteps : 130,
+									animationSteps : 120,
 								});
 							}
 					</script>
+				</div>
+			</div>	
+		</div>
+	</div><!--Row over-->
+
 @stop

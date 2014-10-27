@@ -39,7 +39,7 @@
 	<ul class="nav navbar-nav side-nav">
 		<li><a id="home" href="/dashboard" class="loadContent"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 		<li>
-			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="caret"></i> <i class="fa fa-link"></i> Daftar Vendor</a>
+			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="caret"> </i> <i class="fa fa-link"></i> Daftar Vendor</a>
 			<ul id="vendor-menu" class="dropdown-side collapse">
 				<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i>  Vendor</a></li>
 				<li><a href="/vendor/pelatihan" class="loadContent"><i class="fa fa-book"></i> Pelatihan</a></li>
@@ -49,11 +49,11 @@
 			</ul>
 		</li>
 		<li>
-			<a href="#" data-toggle="collapse" data-target="#top-vendor"><i class="caret"></i> <i class="fa fa-tasks"></i> Kegiatan Vendor </a>
+			<a href="#" data-toggle="collapse" data-target="#top-vendor"><i class="caret"></i> <i class="fa fa-star"></i> Vendor Terbaik</a>
 			<ul id="top-vendor" class="dropdown-side collapse">
-				<li><a href="/vendor/top?jenis=pelatihan&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent"><i class="fa fa-book"></i> Kegiatan Pelatihan</a></li>
-				<li><a href="/vendor/top?jenis=catering&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent"><i class="glyphicon glyphicon-cutlery"></i> Kegiatan Catering</a></li>
-				<li><a href="/vendor/top?jenis=hotel&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent"><i class="fa fa-building"></i> Kegiatan Hotel</a></li>
+				<li><a href="/vendor/top?jenis=pelatihan&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent"><i class="fa fa-book"></i> Top Pelatihan</a></li>
+				<li><a href="/vendor/top?jenis=catering&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent"><i class="glyphicon glyphicon-cutlery"></i> Top Catering</a></li>
+				<li><a href="/vendor/top?jenis=hotel&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent"><i class="fa fa-building"></i> Top Hotel</a></li>
 			</ul>
 		</li>
 		<li>

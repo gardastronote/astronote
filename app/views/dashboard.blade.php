@@ -188,7 +188,7 @@
 							var donutVendor = document.getElementById('donutVendor').getContext('2d');
 							function loadChart(){
 								window.donutVendorChart = new Chart(donutVendor).Doughnut(dataDonut,{
-									animationSteps : 130,
+									animationSteps : 120,
 								});
 							}
 					</script>
