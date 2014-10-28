@@ -181,6 +181,7 @@ body::-webkit-scrollbar-thumb:active{
 	padding: 15px 15px 15px 45px;
 }
 .dropdown-active{
+	color: #FFF !important;
 	border-left: 5px solid #FFF;
 }
 .dropdown-side li a:hover{

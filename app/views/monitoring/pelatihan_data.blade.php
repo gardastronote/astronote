@@ -29,7 +29,7 @@
 		<h1 class="text-center">Belum ada yang mengikuti pelatihan ini</h1>
 		@else
 		<div class="col-md-10 col-md-offset-1 text-center">
-			<h4>{{$pelatihan->pelatihan}}</h4>
+			<h3>{{$pelatihan->pelatihan}}</h3>
 			<h1><small>{{$count}} Orang mengikuti pelatihan ini</small></h1>
 			{{$pelatihans->appends(Input::all())->links()}}
 		</div>
@@ -46,19 +46,19 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($pelatihans as $pelatihan)
+				@foreach($pelatihans as $pel)
 				<tr>
-					<td class="text-center">{{$pelatihan->pegawai->nip}}</td>
-					<td>{{$pelatihan->pegawai->nama}}</td>
-					<td class="text-center">{{$pelatihan->pegawai->grade->grade}}</td>
-					<td>{{$pelatihan->pegawai->unit->unit}}</td>
-					<td class="text-center">{{$pelatihan->tanggal}}</td>
-					<td class="text-center"><a href="{{url('/data_pelatihan/'.$pelatihan->pegawai->id)}}" class="loadContent"><span class="glyphicon glyphicon-search"></span></a></td>
+					<td class="text-center">{{$pel->pegawai->nip}}</td>
+					<td>{{$pel->pegawai->nama}}</td>
+					<td class="text-center">{{$pel->pegawai->grade->grade}}</td>
+					<td>{{$pel->pegawai->unit->unit}}</td>
+					<td class="text-center">{{$pel->tanggal}}</td>
+					<td class="text-center"><a href="{{url('/data_pelatihan/'.$pel->pegawai->id)}}" class="loadContent"><span class="glyphicon glyphicon-search"></span></a></td>
 					<td class="dropdown">
 						<a href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></a>
 						<ul class="dropdown-menu pull-right">
-							<li><a class="dropdown-update loadContent" href="{{url('/edit_data_pelatihan',$pelatihan->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
-							<li><a class="dropdown-delete loadDelete" href="{{url('/delete_data_pelatihan/'.$pelatihan->id_pegawai,$pelatihan->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+							<li><a class="dropdown-update loadContent" href="{{url('/edit_data_pelatihan',$pel->id)}}"><span class="glyphicon glyphicon-edit"></span> Ubah</a></li>
+							<li><a class="dropdown-delete loadDelete" href="/delete_data_pelatihan/{{$pel->id_pegawai}}/{{$pel->id}}?id_pelatihan={{$pelatihan->id}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 						</ul>
 					</td>
 				</tr>

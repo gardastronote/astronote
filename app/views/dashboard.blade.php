@@ -1,8 +1,5 @@
 @extends('layout.dashboard')
 @section('content')
-
-<div class="row ">
- <div class="col-md-12">
  	<div class="row">
    		<div class="col-md-6 pull-left">
 			<ul class="list-group">
@@ -48,24 +45,20 @@
 		window.onload = startTime();
 		</script>
 	</div>
-   <hr>
-   <div class="row ">
-    <div class="col-lg-12">
-        <ol class="breadcrumb">
-        	<li class="active">
-        		<a href="/vendor" class="loadContent">
-                	<i class="fa fa-link"></i> Vendors
-            	</a>
-            </li>
-        </ol>
-    </div>
-   </div>	
+   <hr/>
+   <div class="row">
+		<div class="col-md-12">
+	        <ol class="breadcrumb">
+	        	<li><h4><i class="fa fa-link"></i> Daftar Vendor</h4></li>
+	        </ol>
+	    </div>
+	</div>	
   <div class="row">
 
   	<!--Pelatihan-->
 	<div class="col-lg-4 col-md-4">
 		<div class="panel panel-green">
-			<a href="/vendor/pelatihan" class="loadContent">
+			<a href="/vendor/pelatihan" to-active="pelatihan" to-side="vendor" class="linkClick loadContent">
 		 	<div class="panel-heading">
 				<div class="row">
 					<div class="col-xs-3">
@@ -79,7 +72,7 @@
 				</div>	
 			</div>
 		</a>
-			<a href="/vendor/pelatihan" class="loadContent">
+			<a href="/vendor/pelatihan" to-active="pelatihan" to-side="vendor" class="linkClick loadContent">
 			<div class="panel-footer">
 				<span class="pull-left">Lihat Selengkapnya</span>
 				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -92,7 +85,7 @@
 	<!--Catering-->
 	<div class="col-lg-4 col-md-4">
 		<div class="panel panel-red">
-			<a href="/vendor/catering" class="loadContent">
+			<a href="/vendor/catering" to-active="catering" to-side="vendor" class="loadContent linkClick">
 		 	<div class="panel-heading">
 				<div class="row">
 					<div class="col-xs-3">
@@ -106,7 +99,7 @@
 				</div>	
 			</div>
 		</a>
-			<a href="/vendor/catering" class="loadContent">
+			<a href="/vendor/catering" to-active="catering" to-side="vendor" class="linkClick loadContent">
 			<div class="panel-footer">
 				<span class="pull-left">Lihat Selengkapnya</span>
 				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -119,7 +112,7 @@
    	<!--Hotel-->
 	<div class="col-lg-4 col-md-4">
 		<div class="panel panel-orange">
-			<a href="/vendor/hotel" class="loadContent">
+			<a href="/vendor/hotel" to-active="hotel" to-side="vendor" class="loadContent linkClick">
 		 	<div class="panel-heading">
 				<div class="row">
 					<div class="col-xs-3">
@@ -133,7 +126,7 @@
 				</div>	
 			</div>
 		</a>
-			<a href="/vendor/hotel" class="loadContent">
+			<a href="/vendor/hotel" to-active="hotel" to-side="vendor" class="linkClick loadContent">
 			<div class="panel-footer">
 				<span class="pull-left">Lihat Selengkapnya</span>
 				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -146,76 +139,63 @@
 	
 	<!--Row-->
 	<div class="row">
+		<div class="row">
+			<div class="col-md-12">
+		        <ol class="breadcrumb">
+		        	<li><h4><i class="fa fa-bar-chart-o fa-fw"></i> Chart Penilaian Vendor dalam 12 Bulan</h4></li>
+		        </ol>
+		    </div>
+		</div>
 		<div class="col-lg-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<div class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Chart Area</div>
-				</div>
-				<div class="panel-body">
 					<!--CHART SPACE-->
-					<div style="width:50%" class="text-center pull-left">
-						<canvas height="200" width="200" id="donutVendor"></canvas>
-					</div>
-					<div style="width:50%" class="pull-left">
-						<style type="text/css">
-						.list-color{
-							list-style-type: none;
-							margin: 0;
-							padding: 0;
-						}
-						.list-color li{
-						}
-						</style>
-						<ul class="list-color">
-							<li><h4><span style="width:20px;height:20px;border-radius:10px;display:inline-block;background-color:rgba(255,0,0,1)"></span> Catering : {{round($catering,2)}}</h4></li>
-							<li><h4><span style="width:20px;height:20px;border-radius:10px;display:inline-block;background-color:rgba(0,255,0,1)"></span> Pelatihan : {{round($pelatihan,2)}}</h4></li>
-							<li><h4><span style="width:20px;height:20px;border-radius:10px;display:inline-block;background-color:rgba(255,128,0,1)"></span> Hotel : {{round($hotel,2)}}</h4></li>
-						</ul>
-					</div>
+					<canvas height="120" width="760" id="lineChart"></canvas>
 					<script type="text/javascript" src="{{asset('js/Chart.js')}}"></script>
 					<script type="text/javascript">
-						var dataDonut = [
-							{
-								value : {{round($pelatihan,2)}},
-								color : "rgba(0,255,0,1)",
-								label : "Pelatihan"
-							},
-							{
-								value : {{round($catering,2)}},
-								color : "rgba(255,0,0,1)",
-								label : "Catering"
-							},
-							{
-								value : {{round($hotel,2)}},
-								color : "rgba(255,128,0,1)",
-								label : "Hotel"
-							}
-							];
-							var donutVendor = document.getElementById('donutVendor').getContext('2d');
-							function loadChart(){
-								window.donutVendorChart = new Chart(donutVendor).Doughnut(dataDonut,{
-									animationSteps : 130,
-								});
-							}
-							window.onload = loadChart();
+						//line chart
+						var lineData = {
+							labels : [
+							@if(count($dates) == 1) 0, @endif
+							@foreach ($dates as $date) {{'"'.$date->bulan.'"'}}, @endforeach
+							],
+							datasets : [{
+										strokeColor: "rgba(0,0,0,1)",
+										pointColor: "rgba(0,0,0,1)",
+										data : [
+										@if(count($dates) == 1) 0, @endif
+										@foreach ($dates as $date) {{round($date->average,2)}}, @endforeach
+										]
+									}]
+						}
+						function loadChart(){
+							var ctx = document.getElementById("lineChart").getContext('2d');
+							window.myLine = new Chart(ctx).Line(lineData,{
+								bezierCurve : false,
+								datasetFill : false,
+								responsive : true
+							});
+						}
+						window.load = loadChart();
 					</script>
-					<!--CHART SPACE OVER-->
-					<a href="/vendor/chart" class="loadContent">
-						<div style="clear:both" class="pull-right">
-							Lihat Selengkapnya <i class="fa fa-arrow-circle-right"></i>
-						</div>
-					</a>
-				</div>
-			</div>	
+					<style type="text/css">
+					body{
+						overflow-x:hidden;
+					}
+					</style>
 		</div>
 	</div><!--Row over-->
-
+	<hr/>
 	<div class="row">
-		<h2 class="text-center">Kegiatan Vendor Terbaik Bulan Ini</h2>
+		<div class="col-md-12">
+	        <ol class="breadcrumb">
+	        	<li><h4><i class="fa fa-star"></i> Vendor Terbaik Bulan Ini</h4></li>
+	        </ol>
+	    </div>
+	</div>
+	<div class="row">
 		<div class="col-md-4">
 			<h3 class="text-center">Pelatihan</h3>
 			@if(!count($top_pelatihan)>0)
-			<h3 class="text-center">Belum ada Kegiatan</h3>
+			<h4 style="margin-top:50px" class="text-center">Belum ada Kegiatan</h4>
 			@else
 			<table class="table">
 				<thead>
@@ -236,7 +216,7 @@
 		<div class="col-md-4">
 			<h3 class="text-center">Catering</h3>
 			@if(!count($top_catering)>0)
-			<h3 class="text-center">Belum ada Kegiatan</h3>
+			<h4 style="margin-top:50px" class="text-center">Belum ada Kegiatan</h4>
 			@else
 			<table class="table">
 				<thead>
@@ -257,7 +237,7 @@
 		<div class="col-md-4">
 			<h3 class="text-center">Hotel</h3>
 			@if(!count($top_hotel)>0)
-			<h3 class="text-center">Belum ada Kegiatan</h3>
+			<h4 style="margin-top:50px" class="text-center">Belum ada Kegiatan</h4>
 			@else
 			<table class="table">
 				<thead>
@@ -276,12 +256,39 @@
 			@endif
 		</div>
 	</div><!--Row over-->
-
-
-
-
- </div><!--col md 12 over-->
-</div>
-
+	<hr/>
+	<div class="row">
+		<div class="col-md-12">
+	        <ol class="breadcrumb">
+	        	<li><h4><i class="fa fa-institution"></i> Data Pelatihan Bulan Ini</h4></li>
+	        </ol>
+	    </div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			@if(!count($pelatihans)>0)
+			<h2 class="text-center">Belum ada pelatihan Bulan ini</h2>
+			@else
+			<table class="table">
+				<thead>
+					<th>Nama</th>
+					<th>Grade</th>
+					<th>Unit</th>
+					<th>Pelatihan</th>
+				</thead>
+				<tbody>
+					@foreach($pelatihans as $pelatihan)
+					<tr>
+						<td>{{$pelatihan->pegawai->nama}}</td>
+						<td>{{$pelatihan->pegawai->grade->grade}}</td>
+						<td>{{$pelatihan->pegawai->unit->unit}}</td>
+						<td>{{$pelatihan->pelatihan->pelatihan}}</td>
+					</tr>
+					@endforeach
+				</tbody>
+			</table>
+			@endif
+		</div>
+	</div><!--Row over-->
 
 @stop

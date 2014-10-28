@@ -38,7 +38,7 @@
 			</div>
 		</div>
 		<div class="form-group @if($errors->has('title')) has-error @endif">
-			{{Form::label('title','Title',['class'=>'control-label col-sm-4'])}}
+			{{Form::label('title','Corporate Title',['class'=>'control-label col-sm-4'])}}
 			<div class="col-sm-4"> 
 				{{Form::select('id_title',$titles,isset($data->title)?$data->title:'',['class'=>'form-control'])}}
 			</div>

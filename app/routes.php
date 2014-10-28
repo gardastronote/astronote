@@ -112,16 +112,17 @@ Route::group(array('before'=>'auth'),function(){
 	|-------------------------------------------------------------------------
 	*/
 	Route::get('/dashboard',function(){
-		//donut chart
+		//line chart
+		$dates = Vendor_kegiatan::select(DB::raw('MONTHNAME(tanggal) bulan,YEAR(tanggal)tahun,AVG(nilai) as average'))->where('tanggal', '>=',(DB::raw('CURDATE() - INTERVAL 1 YEAR')))->groupBy('bulan')->groupBy('tahun')->orderBy('tanggal','ASC')->get();
 		$pelatihan = Vendor_kegiatan::whereHas('vendor_data',function($q){
-			$q->where('jenis','=','pelatihan');
-		})->avg('nilai');
-		$catering = Vendor_kegiatan::whereHas('vendor_data',function($q){
-			$q->where('jenis','=','catering');
-		})->avg('nilai');
-		$hotel = Vendor_kegiatan::whereHas('vendor_data',function($q){
-			$q->where('jenis','=','hotel');
-		})->avg('nilai');
+				$q->where('jenis','=','pelatihan');
+			})->avg('nilai');
+			$catering = Vendor_kegiatan::whereHas('vendor_data',function($q){
+				$q->where('jenis','=','catering');
+			})->avg('nilai');
+			$hotel = Vendor_kegiatan::whereHas('vendor_data',function($q){
+				$q->where('jenis','=','hotel');
+			})->avg('nilai');
 		//count pelatihan
 		$count_pelatihan = Vendor_data::where('jenis','=','pelatihan')->count();
 		//count catering
@@ -157,7 +158,17 @@ Route::group(array('before'=>'auth'),function(){
 				->with('vendor_data')
 				->take(5)
 				->get();
+
+		// data pelatihan
+		$pelatihans = Pelatihan_data
+					  ::where(DB::raw('MONTH(tanggal)'),'=',date('n'))
+					  ->where(DB::raw('YEAR(tanggal)'),'=',date('Y'))
+					  ->orderBy('updated_at','DESC')
+					  ->take(10)
+					  ->get();
 		$view = View::make('dashboard',array(
+			//line chart
+			'dates'=>$dates,
 			//donut chart
 			'pelatihan'=>$pelatihan,
 			'catering'=>$catering,
@@ -169,7 +180,9 @@ Route::group(array('before'=>'auth'),function(){
 			//top vendor
 			'top_pelatihan'=>$top_pelatihan,
 			'top_catering'=>$top_catering,
-			'top_hotel'=>$top_hotel
+			'top_hotel'=>$top_hotel,
+			//pelatihans
+			'pelatihans'=>$pelatihans
 			));
 
 		if(Request::ajax()){
@@ -312,12 +325,12 @@ Route::group(array('before'=>'auth'),function(){
 			return $view;
 		});
 		Route::get('/add_data_pegawai',function(){
-			$grades = Pegawai_grade::lists('grade','id');
-			$titles = Pegawai_title::lists('title','id');
-			$jobs = Pegawai_job::lists('job','id');
-			$units = Pegawai_unit::lists('unit','id');
-			$penempatans = Pegawai_penempatan::lists('penempatan','id');
-			$jeniss = Pegawai_jenis::lists('jenis','id');
+			$grades = Pegawai_grade::orderBy('grade','ASC')->lists('grade','id');
+			$titles = Pegawai_title::orderBy('title','ASC')->lists('title','id');
+			$jobs = Pegawai_job::orderBy('job','ASC')->lists('job','id');
+			$units = Pegawai_unit::orderBy('unit','ASC')->lists('unit','id');
+			$penempatans = Pegawai_penempatan::orderBy('penempatan','ASC')->lists('penempatan','id');
+			$jeniss = Pegawai_jenis::orderBy('jenis','ASC')->lists('jenis','id');
 			$view = View::make('monitoring.merge_data_pegawai',array(
 				'url'=>'/add_data_pegawai',
 				'grades'=>$grades,
@@ -344,7 +357,7 @@ Route::group(array('before'=>'auth'),function(){
 		| Data pelatihan
 		|---------------------------------------------------------------------
 		*/
-		Route::get('/pelatihan',function(){
+		Route::get('/kegiatan_pelatihan',function(){
 			$input = Input::all();
 			if(empty($input['bulan'])){
 				$input['bulan'] = date('n');
@@ -533,6 +546,10 @@ Route::group(array('before'=>'auth'),function(){
 			if(!$delete){
 				return Redirect::to('/data_pelatihan/'.$id_pegawai)->with('alert.error',ERR_DEV);
 			}
+			$input = Input::all();
+			if(isset($input['id_pelatihan'])){
+				return Redirect::to('/pelatihan/'.$input['id_pelatihan'])->with('alert.success','Data berhasil di hapus');
+			}
 			return Redirect::to('/data_pelatihan/'.$id_pegawai)->with('alert.success','Data berhasil di hapus');
 		});
 		Route::get('/excel_data_pelatihan/{id_pegawai}',function($id_pegawai){
@@ -553,9 +570,14 @@ Route::group(array('before'=>'auth'),function(){
 			if(!count($pelatihan)>0){
 				App::abort(404,'Halaman tidak di temukan');
 			}
-			$pegawais = Pegawai_data::whereNotIn('id',Pelatihan_data::where('id_pelatihan','=',$pelatihan->id)->lists('id_pegawai'))
-			->orderBy('nama','ASC')
-			->paginate(17);
+			$cek = Pelatihan_data::where('id_pelatihan','=',$pelatihan->id)->count();
+			if($cek > 0){
+				$pegawais = Pegawai_data::whereNotIn('id',Pelatihan_data::where('id_pelatihan','=',$pelatihan->id)->lists('id_pegawai'))
+				->orderBy('nama','ASC')
+				->paginate(17);
+			}else{
+				$pegawais = Pegawai_data::orderBy('nama','ASC')->paginate(17);
+			}
 			$view = View::make('pelatihan.belum',array(
 				'pelatihan'=>$pelatihan,
 				'pegawais'=>$pegawais
@@ -572,16 +594,31 @@ Route::group(array('before'=>'auth'),function(){
 				App::abort(404,'Halaman tidak di temukan');
 			}
 			if(Input::get('type') == 'nama' || Input::get('type') == 'nip'){
-				$pegawais = Pegawai_data::where(Input::get('type'),'LIKE','%'.Input::get('q').'%')
-				->whereNotIn('id',Pelatihan_data::where('id_pelatihan','=',$pelatihan->id)->lists('id_pegawai'))
-				->paginate(17);
+				$cek = Pelatihan_data::where('id_pelatihan','=',$pelatihan->id)->count();
+				if($cek > 0){
+					$pegawais = Pegawai_data::where(Input::get('type'),'LIKE','%'.Input::get('q').'%')
+					->whereNotIn('id',Pelatihan_data::where('id_pelatihan','=',$pelatihan->id)->lists('id_pegawai'))
+					->paginate(17);
+				}else{
+					$pegawais = Pegawai_data::where(Input::get('type'),'LIKE','%'.Input::get('q').'%')
+					->paginate(17);
+				}
 			}else{
-				$pegawais = Pegawai_data::whereHas(Input::get('type'),function($q){
+				$cek = Pelatihan_data::where('id_pelatihan','=',$pelatihan->id)->count();
+				if($cek > 0){
+					$pegawais = Pegawai_data::whereHas(Input::get('type'),function($q){
 						$q->where(Input::get('type'),'LIKE','%'.Input::get('q').'%');
 					})
-				->whereNotIn('id',Pelatihan_data::where('id_pelatihan','=',$pelatihan->id)->lists('id_pegawai'))
-				->orderBy('nama','ASC')
-				->paginate(17);
+					->whereNotIn('id',Pelatihan_data::where('id_pelatihan','=',$pelatihan->id)->lists('id_pegawai'))
+					->orderBy('nama','ASC')
+					->paginate(17);
+				}else{
+					$pegawais = Pegawai_data::whereHas(Input::get('type'),function($q){
+						$q->where(Input::get('type'),'LIKE','%'.Input::get('q').'%');
+					})
+					->orderBy('nama','ASC')
+					->paginate(17);
+				}
 			}
 			$view = View::make('pelatihan.belum',array(
 				'pelatihan'=>$pelatihan,

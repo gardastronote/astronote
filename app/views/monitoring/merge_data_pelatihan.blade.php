@@ -14,7 +14,7 @@
 		<div class="form-group @if($errors->has('id_pelatihan')) has-error @endif">
 			{{Form::label('id_pelatihan','Nama Pelatihan',['class'=>'control-label col-sm-4'])}}
 			<div class="col-sm-4"> 
-				{{Form::select('id_pelatihan',$pelatihans,isset($data->id_pelatihan)?$data->id_pelatihan:'',['class'=>'form-control'])}}
+				{{Form::select('id_pelatihan',$pelatihans,isset($data->id_pelatihan)?$data->id_pelatihan:Input::get('id_pelatihan'),['class'=>'form-control'])}}
 			</div>
 			<div class="col-sm-4"> 
 				@if($errors->has('id_pelatihan'))<p class="help-block">{{$errors->first('id_pelatihan')}}</p>@endif
@@ -78,6 +78,9 @@
 			<div class="col-sm-4 col-sm-offset-4"> 
 				@if(isset($data->id))
 				{{Form::hidden('id',$data->id)}}
+				@endif
+				@if(Input::get('id_pelatihan')>0)
+				{{Form::hidden('data_pelatihan',Input::get('id_pelatihan'))}}
 				@endif
 				{{Form::hidden('id_pegawai',isset($id_pegawai)?$id_pegawai:$data->id_pegawai)}}
 				{{Form::submit($button,['class'=>'btn btn-success'])}}

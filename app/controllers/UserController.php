@@ -105,7 +105,7 @@ class UserController extends BaseController
 		if(!$delete){
 			return Redirect::to('/user')->with('alert.error',ERR_DEV);
 		}
-		return Redirect::to('/user')->with('alert.success','Data berhasil di hapus');
+		return Redirect::to('/userdfdfd')->with('alert.success','Data berhasil di hapus');
 	}
 }
 ?>

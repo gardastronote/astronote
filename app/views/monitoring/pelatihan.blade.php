@@ -14,7 +14,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="text-center">
-			{{Form::open(['url'=>'/pelatihan','method'=>'get','class'=>'form-inline dataGet'])}}
+			{{Form::open(['url'=>'/kegiatan_pelatihan','method'=>'get','class'=>'form-inline dataGet'])}}
 			<div class="form-group">
 				{{Form::text('bulan',Input::get('bulan'),['class'=>'form-control input-lg datepickerMonth','placeholder'=>'Bulan'])}}
 			</div>
