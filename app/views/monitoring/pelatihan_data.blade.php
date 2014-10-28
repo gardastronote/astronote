@@ -17,7 +17,7 @@
 </div>
 
 @if(count($pelatihans)>0)
-<div class="fixed-btn btn-right">
+<div class="fixed-btn btn-right toolTip" data-placement="left" title="Download Excel">
 	<a class="btn btn-primary" href="{{url('/excel_pelatihan_data',$id)}}"><span class="glyphicon glyphicon-download-alt"></span></a>
 </div>
 @endif
@@ -67,4 +67,7 @@
 		@endif
 	</div>
 </div>
+<script type="text/javascript">
+$('.toolTip').tooltip();
+</script>
 @stop

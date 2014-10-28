@@ -26,7 +26,7 @@
 			</ul>
 		</div>
 		<div class="col-md-6 pull-right text-center">
-			<h2><span class="glyphicon glyphicon-calendar"></span> {{date('l d F Y')}}</h2>
+			<h2><span class="glyphicon glyphicon-calendar"></span> {{date('l, d F Y')}}</h2>
 			<h1 style="font-size:4em"><span class="glyphicon glyphicon-time"></span> <span id="time"></span></h1>
     	</div>
     	<script>

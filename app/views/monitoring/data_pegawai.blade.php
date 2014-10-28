@@ -1,8 +1,8 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
-<div class="fixed-btn btn-right margin-top-plus">
-	<a href="/add_data_pegawai" class=" btn btn-success loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
+<div class="fixed-btn btn-right margin-top-plus toolTip" title="Tambah Pegawai" data-placement="left">
+	<a href="/add_data_pegawai" class="btn btn-success loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row margin-top-breadcrumb">
 	<ol class="breadcrumb">
@@ -70,4 +70,7 @@
 		@endif
 	</div>
 </div>
+<script type="text/javascript">
+$('.toolTip').tooltip();
+</script>
 @stop

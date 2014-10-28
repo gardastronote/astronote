@@ -171,6 +171,9 @@ body::-webkit-scrollbar-thumb:active{
 | Data pegawai
 |-------------------------------------------------------------------------
 */
+.dropdown-side-margin-left{
+	padding-left: 15px;
+}
 .dropdown-side{
 	margin: 0;
 	padding: 0;

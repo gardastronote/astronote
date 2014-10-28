@@ -7,7 +7,7 @@
 		<li class="active"><i class="fa fa-institution"></i> Daftar Pelatihan</li>
 	</ol>
 </div>
-<div class="fixed-btn btn-right">
+<div class="fixed-btn btn-right toolTip" data-placement="left" title="Tambah Pelatihan">
 	<a href="/add_pengaturan_data_pelatihan" class="btn btn-success loadContent" onclick="return false;"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 <div class="row">
@@ -56,4 +56,7 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$('.toolTip').tooltip();
+</script>
 @stop
