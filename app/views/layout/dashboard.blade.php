@@ -40,45 +40,54 @@
 <!--SIDEBAR-->
 <aside class="navbar-inverse collapse navbar-collapse navbar-ex1-collapse">
 	<ul class="nav navbar-nav side-nav">
-		<li><a id="home" href="/dashboard" class="loadContent"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
-		<li>
+		<li class="side-link active"><a style="margin-left:10px;" id="home" href="/dashboard" class="loadContent drop-click dropdown-active"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+		<li class="side-link">
 			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="caret"></i> <i class="fa fa-link"></i> Daftar Vendor</a>
 			<ul id="vendor-menu" class="dropdown-side collapse">
-				<li><a href="/vendor" class="loadContent"><i class="fa fa-link"></i>  Vendor</a></li>
-				<li><a href="/vendor/pelatihan" class="loadContent"><i class="fa fa-book"></i> Pelatihan</a></li>
-				<li><a href="/vendor/catering" class="loadContent"><i class="glyphicon glyphicon-cutlery"></i> Catering</a></li>
-				<li><a href="/vendor/hotel" class="loadContent"><i class="fa fa-building"></i> Hotel</a></li>
-				<li><a href="/vendor/chart" class="loadContent"><i class="fa fa-line-chart"></i> Chart</a></li>
+				<li><a href="/vendor" class="loadContent drop-click"><i class="fa fa-link"></i>  Vendor</a></li>
+				<li><a href="/vendor/pelatihan" class="loadContent drop-click"><i class="fa fa-book"></i> Pelatihan</a></li>
+				<li><a href="/vendor/catering" class="loadContent drop-click"><i class="glyphicon glyphicon-cutlery"></i> Catering</a></li>
+				<li><a href="/vendor/hotel" class="loadContent drop-click"><i class="fa fa-building"></i> Hotel</a></li>
+				<li><a href="/vendor/chart" class="loadContent drop-click"><i class="fa fa-line-chart"></i> Chart</a></li>
 			</ul>
 		</li>
-		<li>
+		<li class="side-link">
 			<a href="#" data-toggle="collapse" data-target="#top-vendor"><i class="caret"></i> <i class="fa fa-tasks"></i> Kegiatan Vendor </a>
 			<ul id="top-vendor" class="dropdown-side collapse">
-				<li><a href="/vendor/top?jenis=pelatihan&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent"><i class="fa fa-book"></i> Kegiatan Pelatihan</a></li>
-				<li><a href="/vendor/top?jenis=catering&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent"><i class="glyphicon glyphicon-cutlery"></i> Kegiatan Catering</a></li>
-				<li><a href="/vendor/top?jenis=hotel&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent"><i class="fa fa-building"></i> Kegiatan Hotel</a></li>
+				<li><a href="/vendor/top?jenis=pelatihan&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent drop-click"><i class="fa fa-book"></i> Kegiatan Pelatihan</a></li>
+				<li><a href="/vendor/top?jenis=catering&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent drop-click"><i class="glyphicon glyphicon-cutlery"></i> Kegiatan Catering</a></li>
+				<li><a href="/vendor/top?jenis=hotel&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent drop-click"><i class="fa fa-building"></i> Kegiatan Hotel</a></li>
 			</ul>
 		</li>
-		<li>
-			<a href='#' data-toggle="collapse" data-target="#data_pegawai"><i class="caret"></i> <i class="fa fa-users"></i> Daftar Pegawai</a>
-			<ul id="data_pegawai" class="dropdown-side collapse">
-				<li><a class="loadContent" id="pegawai" href="/data_pegawai"><i class="fa fa-user"></i> Daftar Pegawai</a></li>
-				<li><a class="loadContent" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
-			</ul>
-		</li>
-		<li>
-			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="caret"></i> <i class="fa fa-institution"></i> Daftar Pelatihan </a>
+		<li class="side-link">
+			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="caret"></i> <i class="fa fa-list"></i> Pelatihan &amp; Pegawai </a>
 			<ul id="data_pelatihan" class="dropdown-side collapse">
-				<li><a class="loadContent" href="/pengaturan_data_pelatihan"> <i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
-				<li><a class="loadContent" id="pegawai" href="/pelatihan"> <span class="glyphicon glyphicon-tasks"></span> Data Pelatihan</a></li>
+				<li><a class="loadContent drop-click" href="/pengaturan_data_pelatihan"> <i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
+				<li><a class="loadContent drop-click" id="pegawai" href="/data_pegawai"><i class="fa fa-users"></i> Daftar Pegawai</a></li>
+				<li><a class="loadContent drop-click" id="pegawai" href="{{url('/pelatihan?bulan='.date('n').'&&'.'tahun='.date('Y'))}}"> <span class="glyphicon glyphicon-tasks"></span> Data Pelatihan</a></li>
+				<li><a class="loadContent drop-click" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
 			</ul>
-		</li> 
+		</li>
 	</ul>
 </aside>
 <!--SIDEBAR OVER-->
 	<div class="content-wrapper">
 		<div class="container-fluid" id="content">
 			@yield('content')
+		</div>
+	</div>
+	<div class="modal fade" id="ask">
+		<div class="modal-dialog">
+			<div class="modal-content text-center">
+				<div class="modal-body">
+					<h2>Anda yakin ingin menghapus data ini?</h2>
+					<p><span class="glyphicon glyphicon-warning-sign"></span> Jika di hapus data tidak akan kembali</p>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-danger hapus" data-dismiss="modal">Ya</button>
+					<button class="btn btn-default nohapus" data-dismiss="modal">Tidak</button>
+				</div>
+			</div>
 		</div>
 	</div>
 @section('script')
@@ -92,7 +101,6 @@ var loading = "<img style=\"margin-left:45%;margin-top:20%;\" src='{{asset('imag
 		$(document).on('click','.loadContent',function(e){
 			e.preventDefault();
 			var  url = $(this).attr('href');
-		
 			content.html(loading);
 			content.load(url,null,function(){
 				content.hide();
@@ -102,18 +110,19 @@ var loading = "<img style=\"margin-left:45%;margin-top:20%;\" src='{{asset('imag
 		});	
 
 		$(document).on('click','.loadDelete',function(e){
-			var ask = confirm('Anda yakin ingin menghapus data ini?');
-			if(!ask){
-				return false;
-			}
 			e.preventDefault();
-			var  url = $(this).attr('href');
-		
-			content.html(loading);
-			content.load(url,null,function(){
-				content.hide();
-				content.fadeIn(400);
-				window.load = loadChart();
+			$('#ask').modal('show');
+			var  url = $(this).attr('href');		
+			$('.hapus').click(function(){
+				content.html(loading);
+				content.load(url,null,function(){
+					content.hide();
+					content.fadeIn(400);
+					window.load = loadChart();
+				});
+			});
+			$('.nohapus').click(function(){
+				url = null;
 			});
 		});
 		$(document).on('click','.pagination li a',function(e){
@@ -143,6 +152,14 @@ var loading = "<img style=\"margin-left:45%;margin-top:20%;\" src='{{asset('imag
 		});
 		$(document).on('mouseover','body',function(){
 			$('.alert-float').delay(3000).slideUp('slow');
+		});
+		$('.side-link').click(function(){
+			$('.side-link').removeClass('active');
+			$(this).addClass('active');
+		});
+		$('.drop-click').click(function(){
+			$('.drop-click').removeClass('dropdown-active');
+			$(this).addClass('dropdown-active');
 		});
 	});
 </script>

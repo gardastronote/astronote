@@ -15,9 +15,11 @@
 		</li>
 	</ol>
 </div>
-
-@if(count($pelatihans)>0)
 <div class="fixed-btn btn-right">
+	<a class="btn btn-success loadContent" href="{{url('/belum_pelatihan/'.$id.'/data')}}"><span class="glyphicon glyphicon-user"></span></a>
+</div>
+@if(count($pelatihans)>0)
+<div style="margin-top:45px" class="fixed-btn btn-right">
 	<a class="btn btn-primary" href="{{url('/excel_pelatihan_data',$id)}}"><span class="glyphicon glyphicon-download-alt"></span></a>
 </div>
 @endif
@@ -34,6 +36,7 @@
 		<table class="table table-condensed table-striped">
 			<thead>
 				<tr>
+					<th class="text-center">NIP</th>
 					<th>Nama</th>
 					<th class="text-center">Grade</th>
 					<th>Unit</th>
@@ -45,6 +48,7 @@
 			<tbody>
 				@foreach($pelatihans as $pelatihan)
 				<tr>
+					<td class="text-center">{{$pelatihan->pegawai->nip}}</td>
 					<td>{{$pelatihan->pegawai->nama}}</td>
 					<td class="text-center">{{$pelatihan->pegawai->grade->grade}}</td>
 					<td>{{$pelatihan->pegawai->unit->unit}}</td>
