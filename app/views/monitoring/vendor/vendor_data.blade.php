@@ -51,3 +51,8 @@
 		@endif
 	</div>
 </div>
+<div class="row">
+	<div class="col-md-12 text-center">
+		{{$vendors->appends(Input::all())->links()}}
+	</div>
+</div>

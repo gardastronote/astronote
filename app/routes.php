@@ -345,7 +345,22 @@ Route::group(array('before'=>'auth'),function(){
 		|---------------------------------------------------------------------
 		*/
 		Route::get('/pelatihan',function(){
-			$pelatihans = Pelatihan_data::orderBy('updated_at','DESC')->paginate(21);
+			$input = Input::all();
+			if(empty($input['bulan'])){
+				$input['bulan'] = date('n');
+			}
+			if(empty($input['tahun'])){
+				$input['tahun'] = date('Y');
+			}
+			if(empty($input['tahun']) && empty($input['bulan'])){
+				$input['tahun'] = date('Y');
+				$input['bulan'] = date('n');
+			}
+			$pelatihans = Pelatihan_data::
+				where(DB::raw('MONTH(tanggal)'),'=',$input['bulan'])
+				->orderBy('id_pelatihan','ASC')
+				->where(DB::raw('YEAR(tanggal)'),'=',$input['tahun'])
+				->paginate(33);
 			$view = View::make('monitoring.pelatihan',array(
 				'pelatihans'=>$pelatihans
 				));
@@ -354,6 +369,27 @@ Route::group(array('before'=>'auth'),function(){
 				return $section['content'];
 			}
 			return $view;
+		});
+		Route::get('/download/pelatihan_data',function(){
+			$input = Input::all();
+			if(empty($input['bulan'])){
+				$input['bulan'] = date('n');
+			}
+			if(empty($input['tahun'])){
+				$input['tahun'] = date('Y');
+			}
+			if(empty($input['tahun']) && empty($input['bulan'])){
+				$input['tahun'] = date('Y');
+				$input['bulan'] = date('n');
+			}
+			$pelatihans = Pelatihan_data::
+				where(DB::raw('MONTH(tanggal)'),'=',$input['bulan'])
+				->orderBy('id_pelatihan','ASC')
+				->where(DB::raw('YEAR(tanggal)'),'=',$input['tahun'])
+				->get();
+			return View::make('download.data_pelatihan',array(
+				'pelatihans'=>$pelatihans
+				));
 		});
 		Route::get('/pelatihan/{id}',function($id){
 			$pelatihan = Pelatihan_pelatihan::find($id);
@@ -514,13 +550,12 @@ Route::group(array('before'=>'auth'),function(){
 		*/
 		Route::get('/belum_pelatihan/{id_pelatihan}/data',function($id_pelatihan){
 			$pelatihan = Pelatihan_pelatihan::find($id_pelatihan);
-			$GLOBALS['pelatihan'] = $pelatihan;
 			if(!count($pelatihan)>0){
 				App::abort(404,'Halaman tidak di temukan');
 			}
-			$pegawais = Pegawai_data::whereHas('pelatihans',function($q){
-				$q->where('id_pelatihan','=',659)->where('id','=',14758);
-			})->paginate(10);
+			$pegawais = Pegawai_data::whereNotIn('id',Pelatihan_data::where('id_pelatihan','=',$pelatihan->id)->lists('id_pegawai'))
+			->orderBy('nama','ASC')
+			->paginate(17);
 			$view = View::make('pelatihan.belum',array(
 				'pelatihan'=>$pelatihan,
 				'pegawais'=>$pegawais
@@ -537,21 +572,16 @@ Route::group(array('before'=>'auth'),function(){
 				App::abort(404,'Halaman tidak di temukan');
 			}
 			if(Input::get('type') == 'nama' || Input::get('type') == 'nip'){
-				$pegawais = Pelatihan_data::whereHas('pegawai',function($q){
-					$q->where(Input::get('type'),'LIKE','%'.Input::get('q').'%');
-				})
-				->groupBy('id_pegawai')
-				->where('id_pelatihan','!=',$id_pelatihan)
-				->paginate(10);
+				$pegawais = Pegawai_data::where(Input::get('type'),'LIKE','%'.Input::get('q').'%')
+				->whereNotIn('id',Pelatihan_data::where('id_pelatihan','=',$pelatihan->id)->lists('id_pegawai'))
+				->paginate(17);
 			}else{
-				$pegawais = Pelatihan_data::whereHas('pegawai',function($q){
-					$q->whereHas(Input::get('type'),function($q){
+				$pegawais = Pegawai_data::whereHas(Input::get('type'),function($q){
 						$q->where(Input::get('type'),'LIKE','%'.Input::get('q').'%');
-					});
-				})
-				->groupBy('id_pegawai')
-				->where('id_pelatihan','!=',$id_pelatihan)
-				->paginate(10);
+					})
+				->whereNotIn('id',Pelatihan_data::where('id_pelatihan','=',$pelatihan->id)->lists('id_pegawai'))
+				->orderBy('nama','ASC')
+				->paginate(17);
 			}
 			$view = View::make('pelatihan.belum',array(
 				'pelatihan'=>$pelatihan,
@@ -666,6 +696,17 @@ Route::group(array('before'=>'auth'),function(){
 			*/
 			Route::get('/vendor/top',function(){
 				$input = Input::all();
+				$input = Input::all();
+				if(empty($input['bulan'])){
+				$input['bulan'] = date('n');
+				}
+				if(empty($input['tahun'])){
+					$input['tahun'] = date('Y');
+				}
+				if(empty($input['tahun']) && empty($input['bulan'])){
+					$input['tahun'] = date('Y');
+					$input['bulan'] = date('n');
+				}
 				$datas = Vendor_kegiatan::whereHas('vendor_data',function($q){
 					$q->where('jenis','=',Input::get('jenis'));	
 				})

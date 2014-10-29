@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
 @if(count($datas)>0)
-<div style="margin-top:50px" class="fixed-btn btn-right">
+<div style="margin-top:50px" class="fixed-btn btn-right toolTip" data-placement="bottom" title="Download Excel">
 	<a class="btn btn-primary" href="{{url('/vendor/top/excel?jenis='.Input::get('jenis').'&&bulan='.Input::get('bulan').'&&tahun='.Input::get('tahun'))}}"><span class="glyphicon glyphicon-download-alt"></span></a>
 </div>
 @endif
@@ -84,6 +84,7 @@
 <script type="text/javascript" src="{{asset('bootstrap/datepicker/bootstrap-datepicker.js')}}"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$('.toolTip').tooltip();
 		$(".star-top tr:nth-child(1) .nilai").append(
 			"<i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i><i class=\"fa fa-star\"></i>"
 			);
