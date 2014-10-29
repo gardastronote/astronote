@@ -200,9 +200,12 @@ class MonitoringController extends BaseController
 		if($check > 0){
 			return Redirect::to('/data_pelatihan/'.$input['id_pegawai'])->with('alert.error','Pegawai sudah mengikuti pelatihan yg di Input');
 		}
-		$input = Pelatihan_data::create($input);
-		if(!$input){
+		$cek = Pelatihan_data::create($input);
+		if(!$cek){
 			return Redirect::to('/data_pelatihan/'.$input['id_pegawai'])->with('alert.error',ERR_DEV);
+		}
+		if(isset($input['data_pelatihan'])){
+			return Redirect::to('/pelatihan/'.$input['data_pelatihan'])->with('alert.success','Data berhasil di tambahkan');
 		}
 		return Redirect::to('/data_pelatihan/'.$input['id_pegawai'])->with('alert.success','Data berhasil di tambahkan');		
 	}

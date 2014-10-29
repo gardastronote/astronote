@@ -90,6 +90,8 @@
 					@if($user->avatar !== 'default.png')
 					<a class="pull-right" href="{{url('/user/deleteAvatar/'.$user->id.'/'.$type)}}">Hapus</a>
 					@endif
+				@else
+				<img class="avatar pull-right ava-form" src="{{asset('avatar/default.png')}}">
 				@endif
 			</div>
 			<div class="col-md-4"> 

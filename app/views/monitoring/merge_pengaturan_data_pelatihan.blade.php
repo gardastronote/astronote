@@ -12,7 +12,7 @@
 		<div class="text-center">
 			{{Form::open(['url'=>$url,'method'=>'post','class'=>'form-inline dataSubmit','onsubmit'=>'return false'])}}
 			<div class="form-group @if($errors->has('pelatihan')) has-error @endif">
-				{{Form::text('pelatihan',isset($data->pelatihan)?$data->pelatihan:'',['class'=>'form-control input-lg'])}}
+				{{Form::text('pelatihan',isset($data->pelatihan)?$data->pelatihan:'',['class'=>'form-control input-lg','placeholder'=>'Nama Pelatihan'])}}
 			</div>
 			<div class="form-group">
 				@if(isset($data))

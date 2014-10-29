@@ -9,6 +9,7 @@
 	@section('style')
 	<link rel="stylesheet" type="text/css" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/dashboard.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/credit.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('bootstrap/datepicker/datepicker3.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
 	@show
@@ -40,35 +41,31 @@
 <!--SIDEBAR-->
 <aside class="navbar-inverse collapse navbar-collapse navbar-ex1-collapse">
 	<ul class="nav navbar-nav side-nav">
-
 		<li class="side-link active"><a style="margin-left:10px;" id="home" href="/dashboard" class="loadContent drop-click dropdown-active"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 		<li class="side-link">
 			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="caret"></i> <i class="fa fa-link"></i> Daftar Vendor</a>
-
 			<ul id="vendor-menu" class="dropdown-side collapse">
-				<li><a href="/vendor" class="loadContent drop-click"><i class="fa fa-link"></i>  Vendor</a></li>
-				<li><a href="/vendor/pelatihan" class="loadContent drop-click"><i class="fa fa-book"></i> Pelatihan</a></li>
-				<li><a href="/vendor/catering" class="loadContent drop-click"><i class="glyphicon glyphicon-cutlery"></i> Catering</a></li>
-				<li><a href="/vendor/hotel" class="loadContent drop-click"><i class="fa fa-building"></i> Hotel</a></li>
-				<li><a href="/vendor/chart" class="loadContent drop-click"><i class="fa fa-line-chart"></i> Chart</a></li>
+				<li><a href="/vendor" class="target-vendor loadContent drop-click"><i class="fa fa-link"></i>  Vendor</a></li>
+				<li><a href="/vendor/pelatihan" class="target-pelatihan loadContent drop-click"><i class="fa fa-book"></i> Pelatihan</a></li>
+				<li><a href="/vendor/catering" class="target-catering loadContent drop-click"><i class="glyphicon glyphicon-cutlery"></i> Catering</a></li>
+				<li><a href="/vendor/hotel" class="target-hotel loadContent drop-click"><i class="fa fa-building"></i> Hotel</a></li>
+				<li><a href="/vendor/chart" class="target-chart loadContent drop-click"><i class="fa fa-line-chart"></i> Chart</a></li>
 			</ul>
 		</li>
-
-		<li class="side-link">
+		<li class="side-link side-kegiatan">
 			<a href="#" data-toggle="collapse" data-target="#top-vendor"><i class="caret"></i> <i class="fa fa-tasks"></i> Kegiatan Vendor </a>
 			<ul id="top-vendor" class="dropdown-side collapse">
-				<li><a href="/vendor/top?jenis=pelatihan&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent drop-click"><i class="fa fa-book"></i> Kegiatan Pelatihan</a></li>
-				<li><a href="/vendor/top?jenis=catering&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent drop-click"><i class="glyphicon glyphicon-cutlery"></i> Kegiatan Catering</a></li>
-				<li><a href="/vendor/top?jenis=hotel&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="loadContent drop-click"><i class="fa fa-building"></i> Kegiatan Hotel</a></li>
-
+				<li><a href="/vendor/top?jenis=pelatihan&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="target-kegiatan-pelatihan loadContent drop-click"><i class="fa fa-book"></i> Kegiatan Pelatihan</a></li>
+				<li><a href="/vendor/top?jenis=catering&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="target-kegiatan-catering loadContent drop-click"><i class="glyphicon glyphicon-cutlery"></i> Kegiatan Catering</a></li>
+				<li><a href="/vendor/top?jenis=hotel&&bulan={{date('n')}}&&tahun={{date('Y')}}" class="target-kegiatan-hotel loadContent drop-click"><i class="fa fa-building"></i> Kegiatan Hotel</a></li>
 			</ul>
 		</li>
-		<li class="side-link">
+		<li class="side-link side-pelatihan">
 			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="caret"></i> <i class="fa fa-list"></i> Pelatihan &amp; Pegawai </a>
 			<ul id="data_pelatihan" class="dropdown-side collapse">
 				<li><a class="loadContent drop-click" href="/pengaturan_data_pelatihan"> <i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
 				<li><a class="loadContent drop-click" id="pegawai" href="/data_pegawai"><i class="fa fa-users"></i> Daftar Pegawai</a></li>
-				<li><a class="loadContent drop-click" id="pegawai" href="{{url('/pelatihan?bulan='.date('n').'&&'.'tahun='.date('Y'))}}"> <span class="glyphicon glyphicon-tasks"></span> Data Pelatihan</a></li>
+				<li><a class="loadContent drop-click" id="pegawai" href="{{url('/kegiatan_pelatihan?bulan='.date('n').'&&'.'tahun='.date('Y'))}}"> <i class="fa fa-book"></i> Data Pelatihan</a></li>
 				<li><a class="loadContent drop-click" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
 			</ul>
 		</li>
@@ -94,19 +91,25 @@
 			</div>
 		</div>
 	</div>
+
+@include('credit')
 @section('script')
 <script type="text/javascript" src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript">
 var content = $('#content');
 var loading = "<img style=\"margin-left:45%;margin-top:20%;\" src='{{asset('images/loading.gif')}}'>";
-	
+var errorLoad =
+"<div style=\"margin-top:20%\" class=\"col-md-8 col-md-offset-2\"><div style=\"color:rgba(255,0,0,.7);border-radius:10px\" class=\"jumbotron\"><h2 class=\"text-center\">Terjadi Masalah pada server</h2><p class=\"text-center\">Hubungi Admin untuk Lebih lanjut</p><div class=\"text-center\"><a class=\"btn btn-success loadContent\" href=\"/dashboard\">Dashboard</a> <a data-toggle=\"modal\" data-target=\"#credit\" href=\"#\">Contact us</a></div></div></div>";	
 	$(document).ready(function(){
 
 		$(document).on('click','.loadContent',function(e){
 			e.preventDefault();
 			var  url = $(this).attr('href');
 			content.html(loading);
-			content.load(url,null,function(){
+			content.load(url,null,function(responseText,textStatus,XMLHttpRequest){
+				if(textStatus == 'error'){
+					content.html(errorLoad);
+				}
 				content.hide();
 				content.fadeIn(400);
 				window.load = loadChart();
@@ -119,7 +122,10 @@ var loading = "<img style=\"margin-left:45%;margin-top:20%;\" src='{{asset('imag
 			var  url = $(this).attr('href');		
 			$('.hapus').click(function(){
 				content.html(loading);
-				content.load(url,null,function(){
+				content.load(url,null,function(responseText,textStatus,XMLHttpRequest){
+					if(textStatus == 'error'){
+						content.html(errorLoad);
+					}
 					content.hide();
 					content.fadeIn(400);
 					window.load = loadChart();
@@ -164,6 +170,18 @@ var loading = "<img style=\"margin-left:45%;margin-top:20%;\" src='{{asset('imag
 		$('.drop-click').click(function(){
 			$('.drop-click').removeClass('dropdown-active');
 			$(this).addClass('dropdown-active');
+		});
+
+		$(document).on('click','.linkClick',function(){
+			var toActive = $(this).attr('to-active');
+			var side = $(this).attr('to-side');
+			side = '.side-'+side;
+			$('#vendor-menu').collapse('show');
+			$('.side-link').removeClass('active');
+			$(side).addClass('active');
+			toActive = '.target-'+toActive;
+			$('.drop-click').removeClass('dropdown-active');
+			$(toActive).addClass('dropdown-active');
 		});
 	});
 </script>

@@ -7,22 +7,22 @@
 	</ol>
 </div>
 @if(count($pelatihans)>0)
-<div class="fixed-btn btn-right">
+<div class="fixed-btn btn-right toolTip" data-placement="left" title="Download Excel">
 	<a class="btn btn-primary" href="{{url('/download/pelatihan_data?bulan='.Input::get('bulan').'&&tahun='.Input::get('tahun'))}}"><span class="glyphicon glyphicon-download-alt"></span></a>
 </div>
 @endif
 <div class="row">
 	<div class="col-md-12">
 		<div class="text-center">
-			{{Form::open(['url'=>'/pelatihan','method'=>'get','class'=>'form-inline dataGet'])}}
+			{{Form::open(['url'=>'/kegiatan_pelatihan','method'=>'get','class'=>'form-inline dataGet'])}}
 			<div class="form-group">
 				{{Form::text('bulan',Input::get('bulan'),['class'=>'form-control input-lg datepickerMonth','placeholder'=>'Bulan'])}}
 			</div>
-			<div class="form-group">
+			<div class="form-group input-group">
 				{{Form::text('tahun',Input::get('tahun'),['class'=>'form-control input-lg datepickerYear','placeholder'=>'Tahun'])}}
-			</div>
-			<div class="form-group">
-				<button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+				<div class="input-group-btn">
+					<button class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+				</div>
 			</div>
 			{{Form::close()}}
 		</div>
@@ -77,6 +77,7 @@
 <script type="text/javascript" src="{{asset('bootstrap/datepicker/bootstrap-datepicker.js')}}"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$('.toolTip').tooltip();
 		$('.datepickerMonth').datepicker({
 			autoclose:true,
 			minViewMode: "months",

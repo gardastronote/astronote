@@ -30,7 +30,7 @@
 				</a>
 				<ul class="pull-right dropdown-menu">
 					<li><a class="dropdown-update loadContent" href="{{route('edit_pengaturan_data_pegawai',"Pegawai_$type/$type/".$data->id)}}" onclick="return false"><span class="glyphicon glyphicon-pencil"></span> Ubah</a></li>
-					<li><a class="dropdown-delete loadContent" href="{{route('delete_pengaturan_data_pegawai',"Pegawai_$type/".$data->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
+					<li><a class="dropdown-delete loadDelete" href="{{route('delete_pengaturan_data_pegawai',"Pegawai_$type/".$data->id)}}"><span class="glyphicon glyphicon-trash"></span> Hapus</a></li>
 				</ul>
 			</div>
 			@endforeach

@@ -117,6 +117,17 @@ body::-webkit-scrollbar-thumb:active{
 .brand-logo{
 	margin-left: 63.75px;
 }
+
+.panel-primary{
+	background-color: rgb(255,255,255);
+}
+.panel-primary .panel-body:hover{
+	color: rgb(0,100,100);
+}
+.panel-primary .panel-heading:hover{
+	background-color: rgb(200,200,200);
+}
+
 .panel-green{
 	background-color: #46C246;
 }
@@ -187,6 +198,7 @@ body::-webkit-scrollbar-thumb:active{
 	padding: 15px 15px 15px 45px;
 }
 .dropdown-active{
+	color: #FFF !important;
 	border-left: 5px solid #FFF;
 }
 .dropdown-side li a:hover{

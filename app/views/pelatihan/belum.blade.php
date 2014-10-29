@@ -55,6 +55,7 @@
 				<th>Nama</th>
 				<th class="text-center">Grade</th>
 				<th>Unit</th>
+				<th class="text-center"><span class="glyphicon glyphicon-plus"></span></th>
 				<th class="text-center"><span class="glyphicon glyphicon-list"></span></th>
 			</thead>
 			<tbody>
@@ -64,6 +65,7 @@
 					<td>{{$pegawai->nama}}</td>
 					<td class="text-center">{{$pegawai->grade->grade}}</td>
 					<td>{{$pegawai->unit->unit}}</td>
+					<td class="text-center"><a class="loadContent" href="{{url('/add_data_pelatihan/'.$pegawai->id.'?id_pelatihan='.$pelatihan->id)}}"><span class="glyphicon glyphicon-plus"></span></a></td>
 					<td class="text-center"><a href="{{url('/data_pelatihan/'.$pegawai->id)}}" class="loadContent"><span class="glyphicon glyphicon-search"></span></a></td>
 				</tr>
 				@endforeach
