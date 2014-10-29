@@ -26,7 +26,7 @@ class VendorController extends BaseController
 		$add = Vendor_data::create($input);
 		if(!$add){
 			return Redirect::to('/vendor/add')->with('alert.error',ERR_DEV);
-		}
+		}		
 		return Redirect::to('/vendor/'.$input['jenis'])->with('alert.success','Data berhasil di tambahkan');
 	}
 

@@ -41,7 +41,7 @@
 <!--SIDEBAR-->
 <aside class="navbar-inverse collapse navbar-collapse navbar-ex1-collapse">
 	<ul class="nav navbar-nav side-nav">
-		<li class="side-link active"><a style="padding-left:25px;" id="home" href="/dashboardasd" class="loadContent drop-click dropdown-active"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+		<li class="side-link active"><a style="padding-left:25px;" id="home" href="/dashboard" class="loadContent drop-click dropdown-active"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 		<li class="side-link side-vendor">
 			<a href="#" data-toggle="collapse" data-target="#vendor-menu"><i class="caret"></i> <i class="fa fa-link"></i> Daftar Vendor</a>
 			<ul id="vendor-menu" class="dropdown-side collapse">
@@ -149,6 +149,8 @@ var errorLoad =
 			content.html(loading);
 			$.post(url,$(this).serialize(),function(data){
 				content.html(data);
+			}).fail(function(){
+				content.html(errorLoad);
 			});
 		});
 		$(document).on('submit','.dataGet',function(e){
@@ -158,7 +160,9 @@ var errorLoad =
 			content.html(loading);
 			$.get(url,$(this).serialize(),function(data){
 				content.html(data);
-			});
+			}).fail(function(){
+				content.html(errorLoad);
+			});;
 		});
 		$(document).on('mouseover','body',function(){
 			$('.alert-float').delay(3000).slideUp('slow');
