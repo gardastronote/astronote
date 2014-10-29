@@ -28,7 +28,7 @@
 										<td><span class="glyphicon glyphicon-envelope"></span> miksya@gmail.com</td>
 									</tr>
 									<tr>
-										<td><span class="glyphicon glyphicon-earphone"></span> asdfasfa</td>
+										<td><span class="glyphicon glyphicon-earphone"></span> 089694423754</td>
 									</tr>
 								</tr>
 							</table>
