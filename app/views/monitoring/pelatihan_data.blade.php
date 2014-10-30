@@ -15,11 +15,12 @@
 		</li>
 	</ol>
 </div>
-<div class="fixed-btn btn-right">
+
+<div class="fixed-btn btn-right toolTip" data-placement="left" title="Pegawai yang belum mengikuti pelatihan ini">
 	<a class="btn btn-success loadContent" href="{{url('/belum_pelatihan/'.$id.'/data')}}"><span class="glyphicon glyphicon-user"></span></a>
 </div>
 @if(count($pelatihans)>0)
-<div style="margin-top:45px" class="fixed-btn btn-right">
+<div style="margin-top:45px" class="fixed-btn btn-right toolTip" data-placement="left" title="Download excel"> 
 	<a class="btn btn-primary" href="{{url('/excel_pelatihan_data',$id)}}"><span class="glyphicon glyphicon-download-alt"></span></a>
 </div>
 @endif
@@ -70,4 +71,7 @@
 		@endif
 	</div>
 </div>
+<script type="text/javascript">
+$('.toolTip').tooltip();
+</script>
 @stop

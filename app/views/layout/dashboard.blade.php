@@ -17,7 +17,7 @@
 </head>
 <body onload="loadChart()">
 <nav class="navbar navbar-inverse navbar-fixed-top">
-	<a href="{{url('/')}}" class="brand-logo navbar-brand"><img src="{{asset('images/logo_bjb/logo_diklat(putih).png')}}"></a>
+	<a href="{{url('/dashboard')}}" class="brand-logo navbar-brand"><img src="{{asset('images/logo_bjb/logo_diklat(putih).png')}}"></a>
 	<ul class="nav navbar-nav pull-right">
 		@if(Auth::user()->access == ADMIN)
 		<li class="dropdown">
@@ -63,10 +63,10 @@
 		<li class="side-link side-pelatihan">
 			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="caret"></i> <i class="fa fa-list"></i> Pelatihan &amp; Pegawai </a>
 			<ul id="data_pelatihan" class="dropdown-side collapse">
-				<li><a class="loadContent drop-click" href="/pengaturan_data_pelatihan"> <i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
-				<li><a class="loadContent drop-click" id="pegawai" href="/data_pegawai"><i class="fa fa-users"></i> Daftar Pegawai</a></li>
-				<li><a class="loadContent drop-click" id="pegawai" href="{{url('/kegiatan_pelatihan?bulan='.date('n').'&&'.'tahun='.date('Y'))}}"> <i class="fa fa-book"></i> Data Pelatihan</a></li>
-				<li><a class="loadContent drop-click" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
+				<li><a class="target-data_pelatihan loadContent drop-click" href="/pengaturan_data_pelatihan"> <i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
+				<li><a class="target-data_pegawai loadContent drop-click" id="pegawai" href="/data_pegawai"><i class="fa fa-users"></i> Daftar Pegawai</a></li>
+				<li><a class="target-kegiatan_pelatihan loadContent drop-click" id="pegawai" href="{{url('/kegiatan_pelatihan?bulan='.date('n').'&&'.'tahun='.date('Y'))}}"> <i class="fa fa-book"></i> Data Pelatihan</a></li>
+				<li><a class="target-pengaturan_pegawai loadContent drop-click" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
 			</ul>
 		</li>
 	</ul>
@@ -82,7 +82,7 @@
 			<div class="modal-content text-center">
 				<div class="modal-body">
 					<h2>Anda yakin ingin menghapus data ini?</h2>
-					<p><span class="glyphicon glyphicon-warning-sign"></span> Jika di hapus data tidak akan kembali</p>
+					<p><span class="glyphicon glyphicon-warning-sign yellow"></span> Jika di hapus, data tidak akan kembali</p>
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-danger hapus" onclick="return true" data-dismiss="modal">Ya</button>
@@ -182,6 +182,18 @@ var errorLoad =
 			var side = $(this).attr('to-side');
 			side = '.side-'+side;
 			$('#vendor-menu').collapse('show');
+			$('.side-link').removeClass('active');
+			$(side).addClass('active');
+			toActive = '.target-'+toActive;
+			$('.drop-click').removeClass('dropdown-active');
+			$(toActive).addClass('dropdown-active');
+		});
+
+		$(document).on('click','.linkClick2',function(){
+			var toActive = $(this).attr('to-active');
+			var side = $(this).attr('to-side');
+			side = '.side-'+side;
+			$('#data_pelatihan').collapse('show');
 			$('.side-link').removeClass('active');
 			$(side).addClass('active');
 			toActive = '.target-'+toActive;

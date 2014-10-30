@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
-<div class="fixed-btn btn-right margin-top-plus">
+<div class="fixed-btn btn-right margin-top-plus toolTip" data-placement="left" title="Tambah Vendor" >
 	<a class="btn btn-success loadContent" href="/vendor/add"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 	@foreach($vendors as $vendor)
@@ -28,5 +28,6 @@
 @include('monitoring.vendor.vendor_data')
 <script type="text/javascript">
 	window.load = loadChart();
+	$('.toolTip').tooltip();
 </script>
 @stop
