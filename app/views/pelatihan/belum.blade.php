@@ -29,11 +29,11 @@
 			'unit'=>'Unit'
 			],Input::get('type'),['class'=>'form-control input-lg'])}}
 		</div>
-		<div class="form-group">
+		<div class="form-group input-group">
 			{{Form::text('q',Input::get('q'),['class'=>'form-control input-lg'])}}
-		</div>
-		<div class="form-group">
-			<button type="submit" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+			<div class="input-group-btn">
+				<button type="submit" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+			</div>
 		</div>
 		{{Form::close()}}
 	</div>
@@ -49,7 +49,7 @@
 		@if(!count($pegawais)>0)
 		<h1 class="text-center">Tidak ada pegawai</h1>
 		@else
-		<table class="table">
+		<table class="table table-striped">
 			<thead>
 				<th>NIP</th>
 				<th>Nama</th>
@@ -72,6 +72,9 @@
 			</tbody>
 		</table>
 		@endif
+	</div>
+	<div class="col-md-12 text-center">
+		{{$pegawais->appends(Input::all())->links()}}
 	</div>
 </div>
 @stop

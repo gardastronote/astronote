@@ -1,11 +1,11 @@
 @extends('layout.dashboard')
 @section('content')
 @include('notif')
-<div class="fixed-btn btn-right">
-	<a class="btn btn-success loadContent" href="/vendor/data/{{$id}}/add"><span class="glyphicon glyphicon-plus"></span></a>
+<div class="fixed-btn btn-right toolTip" data-placement="left" data-toggle="tooltip" data-placement="top" title="Tambah Kegiatan">
+	<a class="btn btn-success loadContent toolTip"  href="/vendor/data/{{$id}}/add"><span class="glyphicon glyphicon-plus"></span></a>
 </div>
 @if(count($kegiatans)>0)
-<div style="margin-top:50px" class="fixed-btn btn-right">
+<div style="margin-top:50px" class="fixed-btn btn-right toolTip" data-placement="left" title="Download Excel">
 	<a class="btn btn-primary" href="{{url('/vendor/data/'.$id.'/excel')}}"><span class="glyphicon glyphicon-download-alt"></span></a>
 </div>
 @endif
@@ -79,5 +79,7 @@
 @endif
 <script type="text/javascript">
 	window.load = loadChart();
+	$('.toolTip').tooltip();
 </script>
+
 @stop

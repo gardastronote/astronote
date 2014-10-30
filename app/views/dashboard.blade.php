@@ -24,7 +24,7 @@
 			</ul>
 		</div>
 		<div class="col-md-6 pull-right text-center">
-			<h2><span class="glyphicon glyphicon-calendar"></span> {{date('l d F Y')}}</h2>
+			<h2><span class="glyphicon glyphicon-calendar"></span> {{date('l, d F Y')}}</h2>
 			<h1 style="font-size:4em"><span class="glyphicon glyphicon-time"></span> <span id="time"></span></h1>
     	</div>
     	<script>
@@ -53,9 +53,8 @@
 	        	<li><h4><i class="fa fa-link"></i> Daftar Vendor</h4></li>
 	        </ol>
 	    </div>
-	</div>	
+	</div>
   <div class="row">
-
   	<!--Pelatihan-->
 	<div class="col-md-4">
 		<div class="panel panel-green">
@@ -137,7 +136,87 @@
 		</div>
 	</div><!--Kotak hotel over-->
 </div><!--Row over-->
-	
+
+<div class="row">
+	<!--Daftar Pegawai-->
+	<div class="col-lg-4 col-md-4">
+		<div class="panel panel-primary">
+			<a href="/data_pegawai" to-active="data_pegawai" to-side="data_pegawai" class="linkClick2 loadContent">
+		 	<div class="panel-heading">
+				<div class="row">
+					<div class="col-xs-3">
+						<i class="fa fa-users fa-5x"></i>	
+					</div>
+					<div class="col-xs-9 text-right">
+						<div class="huge">1200</div>
+						<div>Data Pegawai</div>
+					</div>
+				</div>	
+			</div>
+		</a>
+			<a href="/data_pegawai" to-active="data_pegawai" to-side="data_pegawai" class="linkClick2 loadContent">
+			<div class="panel-footer">
+				<span class="pull-left">Lihat Selengkapnya</span>
+				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+				<div class="clearfix"></div>	
+			</div>
+		 	</a>
+		</div>
+	</div><!--Daftar Pegawai Over-->
+
+	<!--Daftar Pelatihan-->
+	<div class="col-lg-4 col-md-4">
+		<div class="panel panel-primary">
+			<a href="/pengaturan_data_pelatihan" to-active="data_pelatihan" to-side="data_pegawai" class="linkClick2 loadContent">
+		 	<div class="panel-heading">
+				<div class="row">
+					<div class="col-xs-3">
+						<i class="fa fa-institution fa-5x"></i>	
+					</div>
+					<div class="col-xs-9 text-right">
+						<div class="huge">3000</div>
+						<div>Data Pelatihan</div>
+					</div>
+				</div>	
+			</div>
+		</a>
+			<a href="/pengaturan_data_pelatihan" to-active="data_pelatihan" to-side="data_pegawai" class="linkClick loadContent">
+			<div class="panel-footer">
+				<span class="pull-left">Lihat Selengkapnya</span>
+				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+				<div class="clearfix"></div>	
+			</div>
+		 	</a>
+		</div>
+	</div><!--Daftar Pelatihan Over-->
+
+	<!--Pelatihan Bulan Ini-->
+	<div class="col-lg-4 col-md-4">
+		<div class="panel panel-primary">
+			<a href="{{url('/kegiatan_pelatihan?bulan='.date('n').'&&'.'tahun='.date('Y'))}}" to-active="kegiatan_pelatihan" to-side="data_pelatihan" class="linkClick2 loadContent">
+		 	<div class="panel-heading">
+				<div class="row">
+					<div class="col-xs-3">
+						<i class="fa fa-book fa-5x"></i>	
+					</div>
+					<div class="col-xs-9 text-right">
+						<div class="huge">14</div>
+						<div>Pelatihan Bulan Ini</div>
+					</div>
+				</div>	
+			</div>
+		</a>
+			<a href="{{url('/kegiatan_pelatihan?bulan='.date('n').'&&'.'tahun='.date('Y'))}}" to-active="kegiatan_pelatihan" to-side="data_pelatihan" class="linkClick2 loadContent">
+			<div class="panel-footer">
+				<span class="pull-left">Lihat Selengkapnya</span>
+				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+				<div class="clearfix"></div>	
+			</div>
+		 	</a>
+		</div>
+	</div><!--Pelatihan Bulan Ini Over-->
+</div><!---Row Over-->
+
 	<!--Row-->
 	<div class="row">
 		<div class="row">
@@ -152,6 +231,7 @@
 					<canvas height="120" width="760" id="lineChart"></canvas>
 					<script type="text/javascript" src="{{asset('js/Chart.js')}}"></script>
 					<script type="text/javascript">
+
 						//line chart
 						var lineData = {
 							labels : [
@@ -176,6 +256,7 @@
 							});
 						}
 						window.load = loadChart();
+
 					</script>
 					<style type="text/css">
 					body{

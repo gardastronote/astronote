@@ -9,11 +9,11 @@
 	</ol>
 </div>
 @if(count($pelatihans)>0)
-<div style="margin-top:50px" class="fixed-btn btn-right">
+<div style="margin-top:50px" class="fixed-btn btn-right toolTip" data-placement="left" title="Download Excel">
 	<a class="btn btn-primary" href="{{url('/excel_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-download-alt"></span></a>
 </div>
 @endif
-<div class="fixed-btn btn-right">
+<div class="fixed-btn btn-right toolTip" title="Tambah Pelatihan" data-placement="left">
 	<a class="btn btn-success loadContent" href="{{url('/add_data_pelatihan',$id_pegawai)}}"><span class="glyphicon glyphicon-plus"></span></a>
 </div>	
 <div class="row">
@@ -105,4 +105,7 @@
 		@endif
 	</div>
 </div>
+<script type="text/javascript">
+$('.toolTip').tooltip();
+</script>
 @stop
