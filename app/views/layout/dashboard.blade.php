@@ -85,7 +85,7 @@
 					<p><span class="glyphicon glyphicon-warning-sign"></span> Jika di hapus data tidak akan kembali</p>
 				</div>
 				<div class="modal-footer">
-					<button class="btn btn-danger hapus" data-dismiss="modal">Ya</button>
+					<button class="btn btn-danger hapus" onclick="return true" data-dismiss="modal">Ya</button>
 					<button class="btn btn-default nohapus" data-dismiss="modal">Tidak</button>
 				</div>
 			</div>
@@ -109,18 +109,19 @@ var errorLoad =
 			content.load(url,null,function(responseText,textStatus,XMLHttpRequest){
 				if(textStatus == 'error'){
 					content.html(errorLoad);
+				}else{
+					content.hide();
+					content.fadeIn(400);
+					window.load = loadChart();
 				}
-				content.hide();
-				content.fadeIn(400);
-				window.load = loadChart();
 			});
 		});	
 
 		$(document).on('click','.loadDelete',function(e){
 			e.preventDefault();
-			$('#ask').modal('show');
-			var  url = $(this).attr('href');		
-			$('.hapus').click(function(){
+			var fixDel = confirm('Anda ingin menghapus data ini?');
+			if(fixDel){
+				var  url = $(this).attr('href');
 				content.html(loading);
 				content.load(url,null,function(responseText,textStatus,XMLHttpRequest){
 					if(textStatus == 'error'){
@@ -130,8 +131,8 @@ var errorLoad =
 					content.fadeIn(400);
 					window.load = loadChart();
 				});
-			});
-			$('.nohapus').click(function(){
+			}
+			$('button.nohapus').click(function(){
 				url = null;
 			});
 		});

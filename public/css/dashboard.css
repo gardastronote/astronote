@@ -270,7 +270,7 @@ body::-webkit-scrollbar-thumb:active{
   top: 47px;
   left: 0;
   right: 0;
-  padding-left: 225px;
+  margin-left: 225px;
   z-index: 1000;
 }
 /*

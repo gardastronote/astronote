@@ -3,7 +3,10 @@ body{
 	background-image: url('../images/bg.png');
 	background-position: fixed;
 	background-repeat: no-repeat;
+	background-size: cover;
 	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 }
 .logo-bjb{
 	margin-top: -70px;

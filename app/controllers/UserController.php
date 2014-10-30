@@ -82,12 +82,12 @@ class UserController extends BaseController
 			$user->avatar = 'default.png';
 			$user->save();
 			if(!$delete){
-				return Redirect::to('/')->with('alert.error',ERR_DEV);
+				return Redirect::to('/dashboard')->with('alert.error',ERR_DEV);
 			}
 			if($type == 'admin'){
 				return Redirect::to('/user')->with('alert.success','Avatar berhasil di hapus');
 			}
-			return Redirect::to('/')->with('alert.success','Avatar berhasil di hapus');
+			return Redirect::to('/dashboard')->with('alert.success','Avatar berhasil di hapus');
 		}
 
 		return Redirect::to('/')->with('alert.error',ERR_DEV);

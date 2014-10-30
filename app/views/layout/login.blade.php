@@ -9,6 +9,7 @@
 </head>
 <body>
 <div class="container">
+	<div class="background-rgba">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2 text-center">
 		 <img class="logo-bjb" src="{{asset('images/logo_bjb/logo_diklat(putih).png')}}"></img>
@@ -50,6 +51,7 @@
 			</div>
 			{{Form::close()}}
 		</div>
+	</div>
 	</div>
 </div>
 <div class="astro-dev">

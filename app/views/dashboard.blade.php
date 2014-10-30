@@ -1,5 +1,6 @@
 @extends('layout.dashboard')
 @section('content')
+@include('notif')
  	<div class="row">
    		<div class="col-md-6 pull-left">
 			<ul class="list-group">
@@ -56,7 +57,7 @@
   <div class="row">
 
   	<!--Pelatihan-->
-	<div class="col-lg-4 col-md-4">
+	<div class="col-md-4">
 		<div class="panel panel-green">
 			<a href="/vendor/pelatihan" to-active="pelatihan" to-side="vendor" class="linkClick loadContent">
 		 	<div class="panel-heading">
@@ -83,7 +84,7 @@
 	</div><!--Kotak pelatihan over-->
 
 	<!--Catering-->
-	<div class="col-lg-4 col-md-4">
+	<div class="col-md-4">
 		<div class="panel panel-red">
 			<a href="/vendor/catering" to-active="catering" to-side="vendor" class="loadContent linkClick">
 		 	<div class="panel-heading">
@@ -110,7 +111,7 @@
 	</div><!--Kotak catering over-->
 
    	<!--Hotel-->
-	<div class="col-lg-4 col-md-4">
+	<div class=" col-md-4">
 		<div class="panel panel-orange">
 			<a href="/vendor/hotel" to-active="hotel" to-side="vendor" class="loadContent linkClick">
 		 	<div class="panel-heading">
@@ -146,7 +147,7 @@
 		        </ol>
 		    </div>
 		</div>
-		<div class="col-lg-12">
+		<div class="col-md-12">
 					<!--CHART SPACE-->
 					<canvas height="120" width="760" id="lineChart"></canvas>
 					<script type="text/javascript" src="{{asset('js/Chart.js')}}"></script>

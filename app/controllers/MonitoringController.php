@@ -194,6 +194,9 @@ class MonitoringController extends BaseController
 		$input = Input::all();
 		$validated = Validator::make($input,Pelatihan_data::rules(),Pelatihan_data::messages());
 		if($validated->fails()){
+			if(isset($input['data_pelatihan'])){
+				return Redirect::to('/add_data_pelatihan/'.$input['id_pegawai'].'?id_pelatihan='.$input['data_pelatihan'])->withInput()->withErrors($validated);
+			}
 			return Redirect::to('/add_data_pelatihan/'.$input['id_pegawai'])->withInput()->withErrors($validated);
 		}
 		$check = Pelatihan_data::where('id_pegawai','=',$input['id_pegawai'])->where('id_pelatihan','=',$input['id_pelatihan'])->count();
