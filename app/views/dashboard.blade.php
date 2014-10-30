@@ -53,9 +53,8 @@
 	        </ol>
 	    </div>
 	</div>	
-  <div class="row">
-
-  	<!--Pelatihan-->
+<div class="row">
+	<!--Pelatihan-->
 	<div class="col-lg-4 col-md-4">
 		<div class="panel panel-green">
 			<a href="/vendor/pelatihan" to-active="pelatihan" to-side="vendor" class="linkClick loadContent">
@@ -138,10 +137,10 @@
 </div><!--Row over-->
 
 <div class="row">
-	<!--Pelatihan-->
+	<!--Daftar Pegawai-->
 	<div class="col-lg-4 col-md-4">
 		<div class="panel panel-primary">
-			<a href="#" to-active="pelatihan" to-side="vendor" class="linkClick loadContent">
+			<a href="/data_pegawai" to-active="data_pegawai" to-side="data_pegawai" class="linkClick2 loadContent">
 		 	<div class="panel-heading">
 				<div class="row">
 					<div class="col-xs-3">
@@ -154,7 +153,7 @@
 				</div>	
 			</div>
 		</a>
-			<a href="/vendor/pelatihan" to-active="pelatihan" to-side="vendor" class="linkClick loadContent">
+			<a href="/data_pegawai" to-active="data_pegawai" to-side="data_pegawai" class="linkClick2 loadContent">
 			<div class="panel-footer">
 				<span class="pull-left">Lihat Selengkapnya</span>
 				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -162,12 +161,12 @@
 			</div>
 		 	</a>
 		</div>
-	</div><!--Kotak pelatihan over-->
+	</div><!--Daftar Pegawai Over-->
 
-	<!--Pelatihan-->
+	<!--Daftar Pelatihan-->
 	<div class="col-lg-4 col-md-4">
 		<div class="panel panel-primary">
-			<a href="#" to-active="pelatihan" to-side="vendor" class="linkClick loadContent">
+			<a href="/pengaturan_data_pelatihan" to-active="data_pelatihan" to-side="data_pegawai" class="linkClick2 loadContent">
 		 	<div class="panel-heading">
 				<div class="row">
 					<div class="col-xs-3">
@@ -180,7 +179,7 @@
 				</div>	
 			</div>
 		</a>
-			<a href="/vendor/pelatihan" to-active="pelatihan" to-side="vendor" class="linkClick loadContent">
+			<a href="/pengaturan_data_pelatihan" to-active="data_pelatihan" to-side="data_pegawai" class="linkClick loadContent">
 			<div class="panel-footer">
 				<span class="pull-left">Lihat Selengkapnya</span>
 				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -188,12 +187,12 @@
 			</div>
 		 	</a>
 		</div>
-	</div><!--Kotak pelatihan over-->
+	</div><!--Daftar Pelatihan Over-->
 
-	<!--Pelatihan-->
+	<!--Pelatihan Bulan Ini-->
 	<div class="col-lg-4 col-md-4">
 		<div class="panel panel-primary">
-			<a href="#" to-active="pelatihan" to-side="vendor" class="linkClick loadContent">
+			<a href="{{url('/kegiatan_pelatihan?bulan='.date('n').'&&'.'tahun='.date('Y'))}}" to-active="kegiatan_pelatihan" to-side="data_pelatihan" class="linkClick2 loadContent">
 		 	<div class="panel-heading">
 				<div class="row">
 					<div class="col-xs-3">
@@ -206,7 +205,7 @@
 				</div>	
 			</div>
 		</a>
-			<a href="/vendor/pelatihan" to-active="pelatihan" to-side="vendor" class="linkClick loadContent">
+			<a href="{{url('/kegiatan_pelatihan?bulan='.date('n').'&&'.'tahun='.date('Y'))}}" to-active="kegiatan_pelatihan" to-side="data_pelatihan" class="linkClick2 loadContent">
 			<div class="panel-footer">
 				<span class="pull-left">Lihat Selengkapnya</span>
 				<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -214,7 +213,7 @@
 			</div>
 		 	</a>
 		</div>
-	</div><!--Kotak pelatihan over-->
+	</div><!--Pelatihan Bulan Ini Over-->
 </div><!---Row Over-->
 
 	<!--Row-->

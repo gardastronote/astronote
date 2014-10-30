@@ -63,10 +63,10 @@
 		<li class="side-link side-pelatihan">
 			<a href='#' data-toggle="collapse" data-target="#data_pelatihan"><i class="caret"></i> <i class="fa fa-list"></i> Pelatihan &amp; Pegawai </a>
 			<ul id="data_pelatihan" class="dropdown-side collapse">
-				<li><a class="loadContent drop-click" href="/pengaturan_data_pelatihan"> <i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
-				<li><a class="loadContent drop-click" id="pegawai" href="/data_pegawai"><i class="fa fa-users"></i> Daftar Pegawai</a></li>
-				<li><a class="loadContent drop-click" id="pegawai" href="{{url('/kegiatan_pelatihan?bulan='.date('n').'&&'.'tahun='.date('Y'))}}"> <i class="fa fa-book"></i> Data Pelatihan</a></li>
-				<li><a class="loadContent drop-click" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
+				<li><a class="target-data_pelatihan loadContent drop-click" href="/pengaturan_data_pelatihan"> <i class="fa fa-institution"></i> Daftar Pelatihan</a></li>
+				<li><a class="target-data_pegawai loadContent drop-click" id="pegawai" href="/data_pegawai"><i class="fa fa-users"></i> Daftar Pegawai</a></li>
+				<li><a class="target-kegiatan_pelatihan loadContent drop-click" id="pegawai" href="{{url('/kegiatan_pelatihan?bulan='.date('n').'&&'.'tahun='.date('Y'))}}"> <i class="fa fa-book"></i> Data Pelatihan</a></li>
+				<li><a class="target-pengaturan_pegawai loadContent drop-click" href="/pengaturan_data_pegawai"><i class="fa fa-cog"></i> Atur Data Pegawai</a></li>
 			</ul>
 		</li>
 	</ul>
@@ -177,6 +177,18 @@ var errorLoad =
 			var side = $(this).attr('to-side');
 			side = '.side-'+side;
 			$('#vendor-menu').collapse('show');
+			$('.side-link').removeClass('active');
+			$(side).addClass('active');
+			toActive = '.target-'+toActive;
+			$('.drop-click').removeClass('dropdown-active');
+			$(toActive).addClass('dropdown-active');
+		});
+
+		$(document).on('click','.linkClick2',function(){
+			var toActive = $(this).attr('to-active');
+			var side = $(this).attr('to-side');
+			side = '.side-'+side;
+			$('#data_pelatihan').collapse('show');
 			$('.side-link').removeClass('active');
 			$(side).addClass('active');
 			toActive = '.target-'+toActive;
